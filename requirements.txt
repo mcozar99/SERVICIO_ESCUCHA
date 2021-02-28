@@ -1,0 +1,16 @@
+pip
+tensorflow
+torch
+torchvision
+bertopic
+bertopic[visualization]
+sklearn
+pandas
+hdbscan
+numpy
+seaborn
+umap-learn
+typing
+matplotlib
+wget
+tweepy
