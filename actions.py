@@ -8,13 +8,13 @@ import BERTclassifier as bc
 from bertopic import BERTopic as bt
 
 
-action = ''         # SILHOUETTE, INFO OR TRAIN
+action = 'train'         # SILHOUETTE, INFO OR TRAIN
 #################################################
-model_name = 'info'
+model_name = 'EMBEDDING_CHILE'
 min_topic_sizes = [100]
 ################################################# GENERAL
-corpus = 'TEST_1.txt'
-iterations = 1                                #Number of tries to improve %classified
+corpus = 'CORPUS_SERVICIO_ESCUCHA.txt'
+iterations = 10                                #Number of tries to improve %classified
 ################################################# TRAIN
 info = 'topics'          # TOPICS O INFO
 n_topics = 10            # Number of topics to show

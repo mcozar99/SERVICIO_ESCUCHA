@@ -5,6 +5,7 @@ import random
 from subprocess import call
 import pandas as pd
 import numpy as np
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, AutoModelForMaskedLM
 
 
 # DO THIS COMMAND IF TRAINING DOESN´T WORK
@@ -36,7 +37,7 @@ def getEmbedding(corpus):
     embedding = []
     for line in corpus:
         embedding.append(quitaInsignificante(line))
-    print('EMBEDDING READY TO TRAIN. LENGTH = %s'%embedding.__len__())
+    print('EMBEDDING READY. LENGTH = %s'%embedding.__len__())
     return embedding
 
 def randomCorpus(corpus, numero):
@@ -51,8 +52,10 @@ def randomCorpus(corpus, numero):
         return nuevo
 
 def defineModel(min_topic_size):
+    #tokenizer = AutoTokenizer.from_pretrained("dccuchile/bert-base-spanish-wwm-cased")
+    sentence_model = AutoModelForMaskedLM.from_pretrained("dccuchile/bert-base-spanish-wwm-cased")
     print('CREATED NEW MODEL')
-    return BERTopic(language='spanish', min_topic_size=min_topic_size, verbose=True, calculate_probabilities=True)
+    return BERTopic(language='spanish', min_topic_size=min_topic_size, verbose=True, calculate_probabilities=True, embedding_model=sentence_model)
 
 def trainModel(model, corpus):
     print('TRAINING')
