@@ -41,4 +41,3 @@ elif action == 'silhouette':
      for min_topic_size in min_topic_sizes:
           silhouette.silhouette(model='%s_MINTOPICSIZE_%s'%(model_name, min_topic_size), metric=metric, save=save)
 
-bc.visualizeModel('TEST_MINTOPICSIZE_100')

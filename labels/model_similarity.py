@@ -63,6 +63,12 @@ for label in label_set:
     encoding = sbert_model.encode(get_topic_accurate_list(label))
     accurate_embeddings_codification.update({label : encoding})
 
+centroids = {}
+
+for label in label_set:
+    centroid = 
+
+
 def determine_proximity_to_topic(input, topic):
     input = [sbert_model.encode(input)]
     topics = accurate_embeddings_codification.get(topic)
