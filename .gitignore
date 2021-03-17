@@ -37,6 +37,7 @@
 /visualization/UMAP_reducedDimensionality/COVID_3D_250neighbors.csv
 /visualization/UMAP_reducedDimensionality/SEGUNDO_SERVICIO_ESCUCHA_MINTOPICSIZE_200_2D_250neighbors.csv
 /visualization/UMAP_reducedDimensionality/
+/visualization/TSNE
 /visualization/TSNE/tsne_result_SEGUNDO_SERVICIO_ESCUCHA_MINTOPICSIZE_200_negros_True.csv
 /visualization/TSNE/tsne_result_SEGUNDO_SERVICIO_ESCUCHA_MINTOPICSIZE_200_negros_False.csv
 /visualization/TSNE/tsne_result_COVID_negros_True.csv

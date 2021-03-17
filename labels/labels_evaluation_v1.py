@@ -17,8 +17,22 @@ from xlutils.copy import copy
 r = lambda: random.randint(0,255) #Generador de numeros aleatorios para colores
 
 corpus = 'CORPUS_SERVICIO_ESCUCHA.txt'
-model = 'SENTENCE_TRANSFORMER_KNEIGHBORS_MINTOPICSIZE_30'
-relabel = 'optimus_dictionary_SENTENCE_TRANSFORMER_KNEIGHBORS_MINTOPICSIZE_30.txt'
+model = 'EMBEDDING_CHILE_MINTOPICSIZE_30'
+relabel = 'optimus_dictionary_EMBEDDING_CHILE_MINTOPICSIZE_30.txt'
+
+# PARA USAR ESTE SCRIPT
+# DICCIONARIO OPTIMO
+optimus_dictionary = False
+# EVALUACION
+evaluacion = False
+
+# PARA UTILIZAR EL MODELO DE SIMILARITY GORDO
+# SOLO EVALUACION
+model_similarity = False
+# EVALUACION Y REETIQUETADO
+label_in_model_similarity = False
+# PARA UTILIZAR K-MEANS
+use_kmeans = True
 
 def getTopicList(corpus):
     # GETS ACCURATE LABELS FOR EVERY INPUT
@@ -223,9 +237,11 @@ def evaluation(corpus, model, relabel):
 
 #topicsEnCluster(1, model, corpus)
 #effectiveDictionary(corpus, model)
-#optimusDictionary(corpus, model)
-#accuracyXTopic(corpus,model,relabel)
-#evaluation(corpus, model, relabel)
+if optimus_dictionary:
+    optimusDictionary(corpus, model)
+if evaluacion:
+    accuracyXTopic(corpus,model,relabel)
+    evaluation(corpus, model, relabel)
 
 
 

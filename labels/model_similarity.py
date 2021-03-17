@@ -10,7 +10,7 @@ import nltk
 nltk.download('stopwords')
 import re
 from sklearn.metrics.pairwise import cosine_similarity
-from labels.labels_evaluation_v1 import corpus, model, relabel, getTopicList, evaluation, reclassify
+from labels.labels_evaluation_v1 import corpus, model, relabel, getTopicList, reclassify, model_similarity, label_in_model_similarity
 from sentence_transformers import SentenceTransformer
 from BERTclassifier import getSamples, getTopics
 from sklearn.metrics import f1_score, recall_score, accuracy_score, precision_score, confusion_matrix
@@ -30,7 +30,7 @@ def get_accurate_indexes():
     return index_list
 
 index_correct = get_accurate_indexes()
-text = getEmbedding(corpus)
+text = getSamples(corpus)
 topics = getTopicList(corpus)
 
 def get_topic_accurate_list(topic):
@@ -63,7 +63,6 @@ for label in label_set:
     encoding = sbert_model.encode(get_topic_accurate_list(label))
     accurate_embeddings_codification.update({label : encoding})
 
-centroids = {}
 
 #for label in label_set:
 #    centroid = 
@@ -158,6 +157,8 @@ def complete_evaluation():
     print(pd.DataFrame(cm, index=label_set,columns=label_set))
 
 
-label()
-discards_evaluation()
-complete_evaluation()
+if model_similarity:
+    if label_in_model_similarity:
+        label()
+    discards_evaluation()
+    complete_evaluation()
