@@ -6,6 +6,7 @@ from subprocess import call
 import pandas as pd
 import numpy as np
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, AutoModelForMaskedLM
+from sentence_transformers import SentenceTransformer
 
 
 # DO THIS COMMAND IF TRAINING DOESN´T WORK
@@ -53,7 +54,8 @@ def randomCorpus(corpus, numero):
 
 def defineModel(min_topic_size):
     #tokenizer = AutoTokenizer.from_pretrained("dccuchile/bert-base-spanish-wwm-cased")
-    sentence_model = AutoModelForMaskedLM.from_pretrained("dccuchile/bert-base-spanish-wwm-cased")
+    #sentence_model = AutoModelForMaskedLM.from_pretrained("dccuchile/bert-base-spanish-wwm-cased")
+    sentence_model = SentenceTransformer("dccuchile/bert-base-spanish-wwm-cased")
     #embeddings = sentence_model.encode(samples, show_progress_bar=True)
     print('CREATED NEW MODEL')
     return BERTopic(language='spanish', min_topic_size=min_topic_size, verbose=True, calculate_probabilities=True, embedding_model=sentence_model)
@@ -93,7 +95,7 @@ def loadModel(model):
 
 def getProbabilities(model, format):
     # GETS PROBS IN SOME FORMATS FOR FURTHER USES
-    probs = pd.df_csv('./results/%s/probabilities.csv'%model, header=None)
+    probs = pd.read_csv('./results/%s/probabilities.csv'%model, header=None)
     if format == 'df':
         return probs
     if format == 'list':

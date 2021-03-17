@@ -14,19 +14,14 @@ from BERTclassifier import getProbabilities
 ###########################################################################################
 # CONFIGURACION A
 # TOCAR PARA VISUALIZAR
-model = 'TEST_MINTOPICSIZE_100'             # MODELO A VISUALIZAR
+model = 'SENTENCE_TRANSFORMER_KNEIGHBORS_MINTOPICSIZE_30'             # MODELO A VISUALIZAR
 negros = True               # TRUE PARA ENSEÑAR LOS TOPICS A -1 Y FALSE PARA OCULTARLOS
-modo = 'topic'              # topic muestra los nombres de los temas y texto los valores mas significativos, vacio para no mostrar nada
+modo = ''              # topic muestra los nombres de los temas y texto los valores mas significativos, vacio para no mostrar nada
 dimensions = 2              # 2 O 3 DIMENSIONES, RECOMENDADO 2
-represent = ['intertopic']        # INTERTOPIC, PCA UMAP O TSNE, PODEMOS METER VARIOS EN UNA LISTA
+represent = ['tsne']        # INTERTOPIC, PCA UMAP O TSNE, PODEMOS METER VARIOS EN UNA LISTA
 n_neighbors = 250          #SOLO PARA UMAP
 mode = 'visualize'              # TRAIN PARA GENERAR MODELO, VISUALIZE PARA ENSEÑARLO, SOLO UMAP
 ###########################################################################################
-
-df = getProbabilities(model=model, format='df')
-embeddings = np.array(df)
-print('LOADED EMBEDDINGS')
-rndperm = v.seed(df)
 
 if 'tsne' in represent:
     if not os.path.isfile('./visualization/TSNE/tsne_result_%s_negros_%s.csv'%(model, negros)):
