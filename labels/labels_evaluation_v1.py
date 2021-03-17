@@ -17,8 +17,8 @@ from xlutils.copy import copy
 r = lambda: random.randint(0,255) #Generador de numeros aleatorios para colores
 
 corpus = 'CORPUS_SERVICIO_ESCUCHA.txt'
-model = 'SENTENCE_TRANSFORMER_KNEIGHBORS_MINTOPICSIZE_30'
-relabel = 'optimus_dictionary_SENTENCE_TRANSFORMER_KNEIGHBORS_MINTOPICSIZE_30.txt'
+model = 'EMBEDDING_CHILE_MINTOPICSIZE_30'
+relabel = 'optimus_dictionary_EMBEDDING_CHILE_MINTOPICSIZE_30.txt'
 
 def getTopicList(corpus):
     # GETS ACCURATE LABELS FOR EVERY INPUT

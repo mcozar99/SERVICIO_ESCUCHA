@@ -30,7 +30,7 @@ def get_accurate_indexes():
     return index_list
 
 index_correct = get_accurate_indexes()
-text = getEmbedding(corpus)
+text = getSamples(corpus)
 topics = getTopicList(corpus)
 
 def get_topic_accurate_list(topic):
@@ -158,6 +158,6 @@ def complete_evaluation():
     print(pd.DataFrame(cm, index=label_set,columns=label_set))
 
 
-label()
+#label()
 discards_evaluation()
 complete_evaluation()
