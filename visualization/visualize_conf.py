@@ -6,7 +6,7 @@ sys.path.append('..')
 sys.path.append('../../')
 sys.path.append('../../../')
 import visualization as v
-from BERTclassifier import getProbabilities
+from BERTclassifier import getProbabilities, getEmbeddings
 
 # TO USE VISUALIZATION.PY CONFIG THIS FILE AN EXEC IT FROM THE ROOT FOLDER /BERTOPIC
 # python visualization/visualize_conf.py
@@ -15,13 +15,24 @@ from BERTclassifier import getProbabilities
 # CONFIGURACION A
 # TOCAR PARA VISUALIZAR
 model = 'SENTENCE_TRANSFORMER_KNEIGHBORS_MINTOPICSIZE_30'             # MODELO A VISUALIZAR
-negros = True               # TRUE PARA ENSEÑAR LOS TOPICS A -1 Y FALSE PARA OCULTARLOS
-modo = ''              # topic muestra los nombres de los temas y texto los valores mas significativos, vacio para no mostrar nada
+formato = 'embeddings'       #REPRESENTAMOS EMBEDDINGS O PROBABILITIES
+negros = False               # TRUE PARA ENSEÑAR LOS TOPICS A -1 Y FALSE PARA OCULTARLOS
+modo = 'topic'              # topic muestra los nombres de los temas y texto los valores mas significativos, vacio para no mostrar nada
 dimensions = 2              # 2 O 3 DIMENSIONES, RECOMENDADO 2
 represent = ['tsne']        # INTERTOPIC, PCA UMAP O TSNE, PODEMOS METER VARIOS EN UNA LISTA
 n_neighbors = 250          #SOLO PARA UMAP
 mode = 'visualize'              # TRAIN PARA GENERAR MODELO, VISUALIZE PARA ENSEÑARLO, SOLO UMAP
 ###########################################################################################
+if 'probs' in formato:
+    df = getProbabilities(model=model, format='df')
+    embeddings = np.array(df)
+    print('LOADED PROBS')
+if 'embeddings' in formato:
+    df = getEmbeddings(model=model, format='numpy')
+    embeddings = np.array(df)
+    print('LOADED EMBEDDINGS')
+
+rndperm = v.seed(df)
 
 if 'tsne' in represent:
     if not os.path.isfile('./visualization/TSNE/tsne_result_%s_negros_%s.csv'%(model, negros)):

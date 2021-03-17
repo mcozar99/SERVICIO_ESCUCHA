@@ -27,7 +27,9 @@
 /results/SEGUNDO_SERVICIO_ESCUCHA_MINTOPICSIZE_50/
 /results/EMBEDDING_CHILE_MINTOPICSIZE_85/
 /results/EMBEDDING_CHILE_MINTOPICSIZE_60/
+/results
 /results/COVID/
+/results/
 /silhouette/silhouettes/
 /silhouette/silhouettes/silhouette_TEST_MINTOPICSIZE_100_metric_cosine.pdf
 /venv/
@@ -49,5 +51,5 @@
 /visualization/Images/Pintada(5).png
 /visualization/Images/Pintada(2).png
 /visualization/Images/pca2D(3).png
-/results/SEGUNDO_SERVICIO_ESCUCHA_MINTOPICSIZE_200/
-/labels/label_dict/optimus_dictionary_EMBEDDING_CHILE_MINTOPICSIZE_30.txt
+/sentence_transformers
+/transformers

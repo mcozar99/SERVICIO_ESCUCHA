@@ -10,11 +10,11 @@ from bertopic import BERTopic as bt
 
 action = 'train'         # SILHOUETTE, INFO OR TRAIN
 #################################################
-model_name = 'EMBEDDING_CHILE'
-min_topic_sizes = [100]
+model_name = 'TEST'
+min_topic_sizes = [50]
 ################################################# GENERAL
 corpus = 'CORPUS_SERVICIO_ESCUCHA.txt'
-iterations = 10                                #Number of tries to improve %classified
+iterations = 0                                #Number of tries to improve %classified
 ################################################# TRAIN
 info = 'topics'          # TOPICS O INFO
 n_topics = 10            # Number of topics to show
@@ -41,4 +41,3 @@ elif action == 'silhouette':
      for min_topic_size in min_topic_sizes:
           silhouette.silhouette(model='%s_MINTOPICSIZE_%s'%(model_name, min_topic_size), metric=metric, save=save)
 
-bc.visualizeModel('TEST_MINTOPICSIZE_100')

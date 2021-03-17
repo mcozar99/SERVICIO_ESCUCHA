@@ -8,11 +8,10 @@ import numpy as np
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, AutoModelForMaskedLM
 from sentence_transformers import SentenceTransformer
 
-
 # DO THIS COMMAND IF TRAINING DOESN´T WORK
 # TORCH_HOME=<PATH_TO_ROOT> export TORCH_HOME
 # EXAMPLE:
-# TORCH_HOME=/home/mcozar/workspace/BERTOPIC export TORCH_HOME
+# TORCH_HOME=/home/mcozar/workspace/SERVICIO_ESCUCHA export TORCH_HOME
 
 def sacaCorpus(corpus):
     # Devuelve una lista con todas las frases de nuestro corpus sin procesar
@@ -32,10 +31,11 @@ def quitaInsignificante(string):
             cadena.append(word)
     return ' '.join(cadena)
 
-def getEmbedding(corpus):
+def getSamples(corpus):
     # GETS EMBEDDING TO USE FOR TRAINING
     corpus = sacaCorpus(corpus=corpus)
     embedding = []
+    i = 0
     for line in corpus:
         embedding.append(quitaInsignificante(line))
     print('EMBEDDING READY. LENGTH = %s'%embedding.__len__())
@@ -52,17 +52,25 @@ def randomCorpus(corpus, numero):
             nuevo.append(corpus[random.randrange(len(corpus))])
         return nuevo
 
+def sentence_transformer_encode(samples):
+    #sentence_model = SentenceTransformer("distiluse-base-multilingual-cased-v2", device='cuda')
+    sentence_model = SentenceTransformer('xlm-r-100langs-bert-base-nli-stsb-mean-tokens', device='cuda')
+    embeddings = sentence_model.encode(samples, show_progress_bar=True)
+    np.savetxt("embeddings.csv", embeddings, delimiter=",")
+    print('SAVED EMBEDDINGS')
+    return embeddings
+
 def defineModel(min_topic_size):
     #tokenizer = AutoTokenizer.from_pretrained("dccuchile/bert-base-spanish-wwm-cased")
     #sentence_model = AutoModelForMaskedLM.from_pretrained("dccuchile/bert-base-spanish-wwm-cased")
-    sentence_model = SentenceTransformer("dccuchile/bert-base-spanish-wwm-cased")
     #embeddings = sentence_model.encode(samples, show_progress_bar=True)
+    #sentence_model = SentenceTransformer("dccuchile/bert-base-spanish-wwm-uncased")
     print('CREATED NEW MODEL')
-    return BERTopic(language='spanish', min_topic_size=min_topic_size, verbose=True, calculate_probabilities=True, embedding_model=sentence_model)
+    return BERTopic(language='spanish', min_topic_size=min_topic_size, verbose=True, calculate_probabilities=True)
 
-def trainModel(model, corpus):
+def trainModel(model, samples, embeddings):
     print('TRAINING')
-    topics, probabilities = model.fit_transform(corpus)
+    topics, probabilities = model.fit_transform(samples, embeddings)
     print('TRAINED')
     return topics, probabilities
 
@@ -73,6 +81,7 @@ def saveModel(model, nombre):
     call('mv %s.result ./results/%s'%(nombre, nombre), shell = True)
     call('mv probabilities.csv ./results/%s'%nombre, shell = True)
     call('mv topics.txt ./results/%s'%nombre, shell = True)
+    call('mv embeddings.csv ./results/%s'%nombre, shell = True)
     # COMMENT IF USING LINUX
     #call(r'move %s.result .\results\%s' % (nombre, nombre), shell=True)
     #call(r'move probabilities.txt .\results\%s' % nombre, shell=True)
@@ -92,6 +101,15 @@ def saveResults(topics, probabilities):
 def loadModel(model):
     # GETS MODEL YOU WANT
     return BERTopic.load('./results/%s/%s.result'%(model, model))
+
+def getEmbeddings(model, format):
+    embeddings = pd.read_csv('./results/%s/embeddings.csv'%model, header=None)
+    if format == 'df':
+        return embeddings
+    if format == 'list':
+        return embeddings.values.tolist()
+    if format == 'numpy':
+        return np.array(embeddings)
 
 def getProbabilities(model, format):
     # GETS PROBS IN SOME FORMATS FOR FURTHER USES
@@ -150,19 +168,20 @@ def topicText2(model, embeddings):
 
 def train(corpus, name, min_topic_size, iterations):
     # TRAINS MODEL WITH AN ITERATIVE TRAINING
-    embedding = getEmbedding(corpus)
+    samples = getSamples(corpus)
+    embeddings = sentence_transformer_encode(samples)
     model = defineModel(min_topic_size=min_topic_size)
-    topics, probabilities = trainModel(model, embedding)
+    topics, probabilities = trainModel(model, samples, embeddings)
     discards = model.get_topic_freq()['Count'][0]
-    accuracy = (len(embedding) - discards)/len(embedding)
+    accuracy = (len(samples) - discards)/len(samples)
     print('FIRST %CLASSIFIED: '+'{:.2%}'.format(accuracy))
     iteration = 0
     while iteration < iterations:
         print('TRYING TO IMPROVE: TRY NUMBER %s OF %s'%((iteration+1), iterations))
         new_model = defineModel(min_topic_size=min_topic_size)
-        new_topics, new_probs = trainModel(new_model, embedding)
+        new_topics, new_probs = trainModel(new_model, samples, embeddings)
         new_discards = new_model.get_topic_freq()['Count'][0]
-        new_accuracy = (len(embedding) - new_discards)/len(embedding)
+        new_accuracy = (len(samples) - new_discards)/len(samples)
         if new_accuracy > accuracy:
             print('IMPROVED %CLASSIFIED: NEW %CLASSIFIED = '+ '{:.2%}'.format(new_accuracy))
             model, topics, probabilities, discards, accuracy = new_model, new_topics, new_probs, new_discards, new_accuracy
