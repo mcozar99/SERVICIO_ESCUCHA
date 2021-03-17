@@ -35,6 +35,7 @@ def getSamples(corpus):
     # GETS EMBEDDING TO USE FOR TRAINING
     corpus = sacaCorpus(corpus=corpus)
     embedding = []
+    i = 0
     for line in corpus:
         embedding.append(quitaInsignificante(line))
     print('EMBEDDING READY. LENGTH = %s'%embedding.__len__())
@@ -52,7 +53,8 @@ def randomCorpus(corpus, numero):
         return nuevo
 
 def sentence_transformer_encode(samples):
-    sentence_model = SentenceTransformer("distiluse-base-multilingual-cased-v2", device='cuda')
+    #sentence_model = SentenceTransformer("distiluse-base-multilingual-cased-v2", device='cuda')
+    sentence_model = SentenceTransformer('xlm-r-100langs-bert-base-nli-stsb-mean-tokens', device='cuda')
     embeddings = sentence_model.encode(samples, show_progress_bar=True)
     np.savetxt("embeddings.csv", embeddings, delimiter=",")
     print('SAVED EMBEDDINGS')
@@ -100,9 +102,18 @@ def loadModel(model):
     # GETS MODEL YOU WANT
     return BERTopic.load('./results/%s/%s.result'%(model, model))
 
+def getEmbeddings(model, format):
+    embeddings = pd.read_csv('./results/%s/embeddings.csv'%model, header=None)
+    if format == 'df':
+        return embeddings
+    if format == 'list':
+        return embeddings.values.tolist()
+    if format == 'numpy':
+        return np.array(embeddings)
+
 def getProbabilities(model, format):
     # GETS PROBS IN SOME FORMATS FOR FURTHER USES
-    probs = pd.df_csv('./results/%s/probabilities.csv'%model, header=None)
+    probs = pd.read_csv('./results/%s/probabilities.csv'%model, header=None)
     if format == 'df':
         return probs
     if format == 'list':

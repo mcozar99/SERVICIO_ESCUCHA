@@ -8,8 +8,7 @@ sys.path.append('..')
 sys.path.append('../../')
 sys.path.append('../../../')
 
-from BERTclassifier import getTopics, loadModel, getProbabilities
-
+from BERTclassifier import getTopics, loadModel
 import seaborn as sns
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
@@ -115,15 +114,23 @@ def pca2D(model, embeddings, negros, modo):
 
 def tsne(model, embeddings, negros, modo):
     embeddings, colors = asignaColores(model=model, negros=negros, embeddings=embeddings)
+    if embeddings[0].__len__() > 100:
+        print('TOO MANY DIMENSIONS, FIRST REDUCE WITH PCA TO 50 DIMENSIONS')
+        pca = PCA(n_components=50)
+        print('done pca')
+        embeddings = pca.fit_transform(embeddings)
+        print('done training')
+    print(embeddings[0].__len__())
     tsne = TSNE(n_components=2,
                 verbose=1,
                 perplexity=40,
                 init="pca",
-                n_iter=300)#300)
+                n_iter=250)#300)
     tsne_results = tsne.fit_transform(embeddings)
     print('REDUCED DIMENSIONALITY WITH TSNE, SAVING MODEL')
     saveTSNE(tsne_results=tsne_results, file='tsne_result_%s_negros_%s'%(model, negros))
     print('SAVED MODEL, REPRESENTING')
+    print(tsne_results[0:20])
     plotColores(tsne_results[:,0], tsne_results[:,1], colors, 'Modelo %s, TSNE 2 Dimensiones'%model, model, negros, modo)
 
 def saveTSNE(tsne_results, file):
@@ -190,11 +197,11 @@ def plotColores(x_coor, y_coor, colors, title, model, negros, modo):
         text =readTopicText(model)
         if not negros:
             text = deleteNull(text=text, model=model)
-    d = {'x': x_coor, 'y': y_coor}
-    data = pd.DataFrame(d)
+    #d = {'x': x_coor, 'y': y_coor}
+    data = pd.DataFrame(np.column_stack([x_coor, y_coor]), columns=['x', 'y'])
     plt.figure(figsize=(16, 7))
     sns.scatterplot(
-        x='x', y='y',
+        x = 'x', y = 'y',
         c=colors,
         data=data
     )

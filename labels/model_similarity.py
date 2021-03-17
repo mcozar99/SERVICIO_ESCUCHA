@@ -12,7 +12,7 @@ import re
 from sklearn.metrics.pairwise import cosine_similarity
 from labels.labels_evaluation_v1 import corpus, model, relabel, getTopicList, evaluation, reclassify
 from sentence_transformers import SentenceTransformer
-from BERTclassifier import getEmbedding, getTopics
+from BERTclassifier import getSamples, getTopics
 from sklearn.metrics import f1_score, recall_score, accuracy_score, precision_score, confusion_matrix
 
 #sbert_model = SentenceTransformer('bert-base-nli-mean-tokens')
@@ -65,8 +65,8 @@ for label in label_set:
 
 centroids = {}
 
-for label in label_set:
-    centroid = 
+#for label in label_set:
+#    centroid = 
 
 
 def determine_proximity_to_topic(input, topic):
