@@ -16,13 +16,14 @@ from BERTclassifier import getProbabilities, getEmbeddings
 # TOCAR PARA VISUALIZAR
 model = 'SENTENCE_TRANSFORMER_KNEIGHBORS_MINTOPICSIZE_30'             # MODELO A VISUALIZAR
 formato = 'embeddings'       #REPRESENTAMOS EMBEDDINGS O PROBABILITIES
-negros = False               # TRUE PARA ENSEÑAR LOS TOPICS A -1 Y FALSE PARA OCULTARLOS
-modo = 'topic'              # topic muestra los nombres de los temas y texto los valores mas significativos, vacio para no mostrar nada
+negros = True               # TRUE PARA ENSEÑAR LOS TOPICS A -1 Y FALSE PARA OCULTARLOS
+modo = 'texto'              # topic muestra los nombres de los temas y texto los valores mas significativos, vacio para no mostrar nada
 dimensions = 2              # 2 O 3 DIMENSIONES, RECOMENDADO 2
 represent = ['tsne']        # INTERTOPIC, PCA UMAP O TSNE, PODEMOS METER VARIOS EN UNA LISTA
 n_neighbors = 250          #SOLO PARA UMAP
 mode = 'visualize'              # TRAIN PARA GENERAR MODELO, VISUALIZE PARA ENSEÑARLO, SOLO UMAP
 ###########################################################################################
+
 if 'probs' in formato:
     df = getProbabilities(model=model, format='df')
     embeddings = np.array(df)

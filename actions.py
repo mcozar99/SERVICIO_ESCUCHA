@@ -10,11 +10,11 @@ from bertopic import BERTopic as bt
 
 action = 'train'         # SILHOUETTE, INFO OR TRAIN
 #################################################
-model_name = 'TEST'
-min_topic_sizes = [50]
+model_name = 'NEW_PREPROCESS'
+min_topic_sizes = [30]
 ################################################# GENERAL
 corpus = 'CORPUS_SERVICIO_ESCUCHA.txt'
-iterations = 0                                #Number of tries to improve %classified
+iterations = 10                                #Number of tries to improve %classified
 ################################################# TRAIN
 info = 'topics'          # TOPICS O INFO
 n_topics = 10            # Number of topics to show

@@ -20,6 +20,23 @@ corpus = 'CORPUS_SERVICIO_ESCUCHA.txt'
 model = 'EMBEDDING_CHILE_MINTOPICSIZE_30'
 relabel = 'optimus_dictionary_EMBEDDING_CHILE_MINTOPICSIZE_30.txt'
 
+
+# PARA USAR ESTE SCRIPT
+# DICCIONARIO OPTIMO
+optimus_dictionary = False
+# EVALUACION
+evaluacion = False
+
+# PARA UTILIZAR EL MODELO DE SIMILARITY GORDO
+# SOLO EVALUACION
+model_similarity = False
+# EVALUACION Y REETIQUETADO
+label_in_model_similarity = False
+# PARA UTILIZAR K-MEANS
+centroid_label = False
+centroid_evaluation = False
+centroid_plot = True
+
 def getTopicList(corpus):
     # GETS ACCURATE LABELS FOR EVERY INPUT
     f = open('./corpus/%s'%corpus, 'r', encoding='utf-8')
@@ -223,9 +240,11 @@ def evaluation(corpus, model, relabel):
 
 #topicsEnCluster(1, model, corpus)
 #effectiveDictionary(corpus, model)
-#optimusDictionary(corpus, model)
-#accuracyXTopic(corpus,model,relabel)
-#evaluation(corpus, model, relabel)
+if optimus_dictionary:
+    optimusDictionary(corpus, model)
+if evaluacion:
+    accuracyXTopic(corpus,model,relabel)
+    evaluation(corpus, model, relabel)
 
 
 

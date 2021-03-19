@@ -10,7 +10,7 @@ import nltk
 nltk.download('stopwords')
 import re
 from sklearn.metrics.pairwise import cosine_similarity
-from labels.labels_evaluation_v1 import corpus, model, relabel, getTopicList, evaluation, reclassify
+from labels.labels_evaluation_v1 import corpus, model, relabel, getTopicList, reclassify, model_similarity, label_in_model_similarity
 from sentence_transformers import SentenceTransformer
 from BERTclassifier import getSamples, getTopics
 from sklearn.metrics import f1_score, recall_score, accuracy_score, precision_score, confusion_matrix
@@ -63,17 +63,14 @@ for label in label_set:
     encoding = sbert_model.encode(get_topic_accurate_list(label))
     accurate_embeddings_codification.update({label : encoding})
 
-centroids = {}
 
-#for label in label_set:
-#    centroid = 
 
 
 def determine_proximity_to_topic(input, topic):
     input = [sbert_model.encode(input)]
     topics = accurate_embeddings_codification.get(topic)
     if len(topics) == 0:
-        return 0
+        return -1
     similarity =  cosine_similarity(input, topics)
     if type(np.max(similarity)) == np.float32:
         return np.max(similarity)
@@ -86,7 +83,7 @@ def label_discard(discard):
     proximities = []
     for label in label_set:
         proximities.append(determine_proximity_to_topic(discard, label))
-    print(label_set[np.argmax(proximities)])
+    #print(label_set[np.argmax(proximities)])
     return label_set[np.argmax(proximities)]
 
 
@@ -97,21 +94,17 @@ def get_discard_indexes():
             indexes.append(i)
     return indexes
 
-#for label in label_set:
-#     print(determine_proximity_to_topic('Es verdad q en Paradores ya tienen una lista de la gente q no paga? Alguien puede informar?',  label))
-
-#print(accurate_embeddings_codification.get('SDG'))
 
 
 def label():
     for i in range(len(predicts)):
         if 'desc' in predicts[i]:
-            print(i)
+            #print(i)
             predicts[i] = label_discard(text[i])
     f = open('./results/%s/predicts.txt'%model, 'w', encoding='utf-8')
     for line in predicts:
         f.write(line.replace('\n', "") + '\n')
-    f.close
+    f.close()
 
 def get_final_predicts():
     final_predicts = []
@@ -144,7 +137,7 @@ def discards_evaluation():
     f1 = f1_score(y_true=y_true, y_pred=y_pred, labels=label_set, average='weighted')
     print('ACC: %s \nPREC: %s \nRECALL: %s \nF1: %s'%(acc, prec, recall, f1))
     cm = confusion_matrix(y_true, y_pred, label_set)
-    print(pd.DataFrame(cm, index=label_set,columns=label_set))
+    print(pd.DataFrame(cm, index=label_set,columns=label_set).to_string())
 
 def complete_evaluation():
     y_true = topics
@@ -155,9 +148,11 @@ def complete_evaluation():
     f1 = f1_score(y_true=y_true, y_pred=y_pred, labels=label_set, average='weighted')
     print('ACC: %s \nPREC: %s \nRECALL: %s \nF1: %s'%(acc, prec, recall, f1))
     cm = confusion_matrix(y_true, y_pred, label_set)
-    print(pd.DataFrame(cm, index=label_set,columns=label_set))
+    print(pd.DataFrame(cm, index=label_set,columns=label_set).to_string())
 
 
-#label()
-discards_evaluation()
-complete_evaluation()
+if model_similarity:
+    if label_in_model_similarity:
+        label()
+    discards_evaluation()
+    complete_evaluation()
