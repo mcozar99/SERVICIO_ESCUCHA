@@ -17,6 +17,9 @@
 /labels/label_dict/effective_dictionary_SERVICIO_PRECISO_MINTOPICSIZE_85.txt
 /labels/label_dict/effective_dictionary_SERVICIO_PRECISO_MINTOPICSIZE_30.txt
 /labels/label_dict/effective_dictionary_SEGUNDO_SERVICIO_ESCUCHA_MINTOPICSIZE_200.txt
+/labels/label_dict
+/labels/__pycache__
+/labels/TSNE_centroid_representation/
 /results/
 /results/TEST_MINTOPICSIZE_100/
 /results/TEST_MINTOPICSIZE_75/
@@ -28,9 +31,7 @@
 /results/SEGUNDO_SERVICIO_ESCUCHA_MINTOPICSIZE_50/
 /results/EMBEDDING_CHILE_MINTOPICSIZE_85/
 /results/EMBEDDING_CHILE_MINTOPICSIZE_60/
-/results
 /results/COVID/
-/results/
 /silhouette/silhouettes/
 /silhouette/silhouettes/silhouette_TEST_MINTOPICSIZE_100_metric_cosine.pdf
 /venv/
@@ -58,3 +59,11 @@
 new_preprocess.txt
 centroides.txt
 /__pycache__
+/utils/__pycache__
+/silhouette/__pycache__
+/silhouette/silhouettes
+complete_trial.txt
+complete_trial2.txt
+centroides.txt
+centroides_preprocess_chile.txt
+

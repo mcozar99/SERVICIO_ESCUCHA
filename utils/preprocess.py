@@ -10,14 +10,14 @@ from ekphrasis.classes.preprocessor import TextPreProcessor
 from ekphrasis.dicts.emoticons import emoticons
 from nltk.corpus import stopwords
 from nltk.tokenize.treebank import TreebankWordDetokenizer
-from BERTclassifier import getSamples
-from labels.labels_evaluation_v1 import getTopicList
+from BERTclassifier import sacaCorpus, getIndexes, getLabels
 
 
 corpus = 'CORPUS_SERVICIO_ESCUCHA.txt'
 
-samples = getSamples(corpus)
-classes = getTopicList(corpus)
+samples = sacaCorpus(corpus)
+classes = getLabels(corpus)
+indexes = getIndexes(corpus)
 preprocessing = True
 stopwords_removal = True
 
@@ -92,12 +92,14 @@ if preprocessing:
                  #max_length=0,
                  name="BERTopic",
                  preprocess=preprocessor)
-
+    new_classes = []
+    new_indexes = []
     samples = preprocessed_samples.data
     samples_detokenized = []
     num_stopwords_removed = 0
     num_sentences_with_stopwords = 0
     num_words = 0
+    n = 0
     for item in samples:
         aux_sample = item
         # STOPWORDS REMOVAL
@@ -117,9 +119,11 @@ if preprocessing:
             print(aux_sample)
         if len(aux_sample) > 0:
             samples_detokenized.append(aux_sample)
+            new_classes.append(classes[n])
+            new_indexes.append(indexes[n])
         else:
             print("item <%s> DISCARDED (0 length)!!!" % item)
-    print(samples[0])
+        n+=1
     samples = samples_detokenized
 
     if stopwords_removal:
@@ -132,8 +136,8 @@ if preprocessing:
 
 f = open('./corpus/preprocessed/preprocess_%s'%corpus, 'w', encoding='utf-8')
 
-for line in samples:
-    f.write(line + '\n')
+for i in range(len(samples)):
+    f.write(new_indexes[i] + '\t' + new_classes[i] + '\t' + samples[i] + '\n')
 f.close()
 
 print('Finished preprocessing corpus: %s'%corpus)

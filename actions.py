@@ -10,18 +10,20 @@ from bertopic import BERTopic as bt
 
 action = 'train'         # SILHOUETTE, INFO OR TRAIN
 #################################################
-model_name = 'NEW_PREPROCESS'
+model_name = 'COMPLETE_TRIAL'
 min_topic_sizes = [30]
 ################################################# GENERAL
 corpus = 'CORPUS_SERVICIO_ESCUCHA.txt'
 iterations = 10                                #Number of tries to improve %classified
 ################################################# TRAIN
-info = 'topics'          # TOPICS O INFO
-n_topics = 10            # Number of topics to show
+info = 'info'          # TOPICS O INFO
+n_topics = 60            # Number of topics to show
 ################################################# INFO
 metric = 'cosine'       #metric to measure results: euclidean, cosine, manhattan, chebyshev...
 save = True             #TRUE TO SAVE FIGURE IN SILHOUETTE/SILHOUETTES
 ################################################# SILHOUETTE
+
+complete_evaluation = True  #LABELS, KNEIGHBORS FOR -1 AND KMEANS FOR -1
 
 print('SELECTED: %s'%action)
 
@@ -41,3 +43,5 @@ elif action == 'silhouette':
      for min_topic_size in min_topic_sizes:
           silhouette.silhouette(model='%s_MINTOPICSIZE_%s'%(model_name, min_topic_size), metric=metric, save=save)
 
+if complete_evaluation:
+    import labels.centroids

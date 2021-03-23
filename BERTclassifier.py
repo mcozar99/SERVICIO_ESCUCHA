@@ -8,6 +8,9 @@ import numpy as np
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, AutoModelForMaskedLM
 from sentence_transformers import SentenceTransformer
 import os
+from collections import Counter
+import matplotlib.pyplot as plt
+
 # DO THIS COMMAND IF TRAINING DOESN´T WORK
 # TORCH_HOME=<PATH_TO_ROOT> export TORCH_HOME
 # EXAMPLE:
@@ -21,6 +24,51 @@ def sacaCorpus(corpus):
     for line in corpus:
         lista.append(line.split('\t')[2])
     return lista
+
+def getLabels(corpus):
+    corpus = open('./corpus/%s'%corpus, 'r', encoding = 'utf-8')
+    lista = []
+    for line in corpus:
+        lista.append(line.split('\t')[1])
+    return lista
+
+
+def getIndexes(corpus):
+    # Devuelve una lista con todos los indexes de nuestro corpus
+    corpus = open('./corpus/%s'%corpus, 'r', encoding = 'utf-8')
+    lista = []
+    for line in corpus:
+        lista.append(line.split('\t')[0])
+    return lista
+
+def getTopicDetail(corpus):
+    f = open('./corpus/%s'%corpus, 'r', encoding='utf-8')
+    topic_list = []
+    for line in f:
+        topic_list.append(line.split('\t')[1].strip())
+    topics = Counter(topic_list)
+    print('Labels: ')
+    print(topics)
+    return dict(topics)
+
+def getCorpusPie(corpus):
+    topics = getTopicDetail(corpus)
+    label_set = np.array(list(topics.keys()))
+    quantity = np.array(list(topics.values()))
+    porcent = 100.*quantity/quantity.sum()
+    labels = ['{0} - {1:1.2f} %'.format(i,j) for i,j in zip(label_set, porcent)]
+
+    patches, texts = plt.pie(quantity, radius=1, startangle=90, wedgeprops={"edgecolor":"0",'linewidth': 1,
+'linestyle': 'dashed', 'antialiased': True})
+    plt.title('Labels distribution for %s'%corpus)
+    patches, labels, dummy =  zip(*sorted(zip(patches, labels, quantity),
+                                          key=lambda x: x[2],
+                                          reverse=True))
+    plt.legend(patches, labels, loc='best', bbox_to_anchor=(-0.1, 1.),
+           fontsize=8)
+
+    corpus = corpus.replace('.txt', '.png')
+    plt.savefig('./corpus/%s'%corpus, bbox_inches='tight')
 
 def quitaInsignificante(string):
     # Quita las palabras insignificantes de una frase en base al array de palabras vacias de significado
@@ -44,7 +92,7 @@ def getSamples(corpus):
 def loadPreprocessedText(corpus):
     samples = []
     for line in open('./corpus/preprocessed/preprocess_%s'%corpus, 'r', encoding='utf-8'):
-        samples.append(line)
+        samples.append(line.split('\t')[2].replace('\n', ''))
     return samples
 
 def randomCorpus(corpus, numero):
@@ -60,7 +108,8 @@ def randomCorpus(corpus, numero):
 
 def sentence_transformer_encode(samples):
     #sentence_model = SentenceTransformer("distiluse-base-multilingual-cased-v2", device='cuda')
-    sentence_model = SentenceTransformer('xlm-r-100langs-bert-base-nli-stsb-mean-tokens', device='cuda')
+    #sentence_model = SentenceTransformer('xlm-r-100langs-bert-base-nli-stsb-mean-tokens', device='cuda')
+    sentence_model = SentenceTransformer("dccuchile/bert-base-spanish-wwm-cased")
     embeddings = sentence_model.encode(samples, show_progress_bar=True)
     np.savetxt("embeddings.csv", embeddings, delimiter=",")
     print('SAVED EMBEDDINGS')
@@ -182,6 +231,7 @@ def train(corpus, name, min_topic_size, iterations):
         print('NOT DETECTED PREPROCESSING: PROCEEDING', flush=True)
         import utils.preprocess
         samples = loadPreprocessedText(corpus)
+    getCorpusPie(corpus)
     embeddings = sentence_transformer_encode(samples)
     model = defineModel(min_topic_size=min_topic_size)
     topics, probabilities = trainModel(model, samples, embeddings)

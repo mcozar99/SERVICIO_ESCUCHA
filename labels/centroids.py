@@ -17,19 +17,21 @@ from sklearn.manifold import TSNE
 from sklearn.metrics.pairwise import cosine_similarity
 import random
 from sklearn.metrics import f1_score, recall_score, accuracy_score, precision_score, confusion_matrix
+from xlrd import open_workbook
+from xlutils.copy import copy
+import xlwt
+
 # -*- coding: utf-8 -*-
-__author__ = 'RicardoMoya'
+__author__ = 'Miguel Cozar'
 
 r = lambda: random.randint(0,255) #Generador de numeros aleatorios para colores
 
 # Constant
 NUM_CLUSTERS = 1
-MAX_ITERATIONS = 10
+MAX_ITERATIONS = 30
 INITIALIZE_CLUSTERS = ['k-means++', 'random']
-CONVERGENCE_TOLERANCE = 0.1
+CONVERGENCE_TOLERANCE = 0.001
 NUM_THREADS = 8
-COLORS = ['red', 'blue', 'green', 'yellow', 'gray', 'pink', 'violet', 'brown',
-          'cyan', 'magenta']
 
 np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)
 
@@ -92,7 +94,6 @@ def plotCentroids(centroids):  #CENTROIDS IS THE DICTIONARY OF CENTROIDS
     j = 0
     aux_label_set=label_set
     while j < len(values):
-        print(j)
         if values[j] is not None:
             values[j] = values[j].tolist()[0]
             j+=1
@@ -103,7 +104,7 @@ def plotCentroids(centroids):  #CENTROIDS IS THE DICTIONARY OF CENTROIDS
     if values.__len__() > 50:
         pca = PCA(n_components=50)
         values = pca.fit_transform(values)
-    tsne = TSNE(n_components=2, verbose=1, perplexity=40, init="pca", n_iter=300)
+    tsne = TSNE(n_components=2, verbose=1, perplexity=40, init="pca", n_iter=1000)
     tsne_results = tsne.fit_transform(values)
     j = 0
     for point in tsne_results:
@@ -127,6 +128,8 @@ def centroid_discards_evaluation():
     y_pred = []
     y_true = []
     clusters = getTopics(model)
+    label_set = ['SDG', 'cine', 'deportes', 'economía', 'entretenimiento', 'fútbol', 'hoteles', 'literatura', 'marcas',
+             'música', 'otros', 'política', 'restaurantes', 'tecnología']
     final_predicts = get_final_centroid_predicts()
     for i in range(len(clusters)):
         if clusters[i] == -1:
@@ -137,19 +140,55 @@ def centroid_discards_evaluation():
     recall = recall_score(y_true=y_true, y_pred=y_pred, labels=label_set, average='weighted')
     f1 = f1_score(y_true=y_true, y_pred=y_pred, labels=label_set, average='weighted')
     print('ACC: %s \nPREC: %s \nRECALL: %s \nF1: %s'%(acc, prec, recall, f1))
-    cm = confusion_matrix(y_true, y_pred, label_set)
-    print(pd.DataFrame(cm, index=label_set,columns=label_set).to_string())
+    confusion_m = confusion_matrix(y_true, y_pred, label_set)
+    print(pd.DataFrame(confusion_m, index=label_set,columns=label_set).to_string())
+    matrix = pd.DataFrame(confusion_m, index=label_set,columns=label_set)
+    matrix.to_excel('./results/%s/evaluation/kmeans_evaluation.xls'%model, columns=label_set, index=label_set, startcol=1, startrow=1, merge_cells=True)
+    rb = open_workbook('./results/%s/evaluation/kmeans_evaluation.xls'%model)
+    wb = copy(rb)
+    w_sheet = wb.get_sheet(0)
+    w_sheet.write(0, 0, model)
+    w_sheet.write(len(label_set) + 2, 1, 'ACC', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(len(label_set) + 3, 1, 'PREC', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(len(label_set) + 4, 1, 'RECALL', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(len(label_set) + 5, 1, 'F1', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(len(label_set) + 2, 2, acc)
+    w_sheet.write(len(label_set) + 3, 2, prec)
+    w_sheet.write(len(label_set) + 4, 2, recall)
+    w_sheet.write(len(label_set) + 5, 2, f1)
+    wb.save('./results/%s/evaluation/kmeans_evaluation.xls'%model)
 
 def centroid_complete_evaluation():
     y_true = topics
     y_pred = get_final_centroid_predicts()
+    print(y_pred.__len__())
+    print(y_true.__len__())
+    label_set = ['SDG', 'cine', 'deportes', 'economía', 'entretenimiento', 'fútbol', 'hoteles', 'literatura', 'marcas',
+             'música', 'otros', 'política', 'restaurantes', 'tecnología']
     acc = accuracy_score(y_true=y_true, y_pred=y_pred)
     prec = precision_score(y_true=y_true, y_pred=y_pred, labels=label_set, average='weighted')
     recall = recall_score(y_true=y_true, y_pred=y_pred, labels=label_set, average='weighted')
     f1 = f1_score(y_true=y_true, y_pred=y_pred, labels=label_set, average='weighted')
     print('ACC: %s \nPREC: %s \nRECALL: %s \nF1: %s'%(acc, prec, recall, f1))
-    cm = confusion_matrix(y_true, y_pred, label_set)
-    print(pd.DataFrame(cm, index=label_set,columns=label_set).to_string())
+    confusion_m = confusion_matrix(y_true, y_pred, label_set)
+    print(pd.DataFrame(confusion_m, index=label_set,columns=label_set).to_string())
+    matrix = pd.DataFrame(confusion_m, index=label_set,columns=label_set)
+    matrix.to_excel('./results/%s/evaluation/kmeans_final_evaluation.xls'%model, columns=label_set, index=label_set, startcol=1, startrow=1, merge_cells=True)
+    rb = open_workbook('./results/%s/evaluation/kmeans_final_evaluation.xls'%model)
+    wb = copy(rb)
+    w_sheet = wb.get_sheet(0)
+    w_sheet.write(0, 0, model)
+    w_sheet.write(len(label_set) + 2, 1, 'ACC', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(len(label_set) + 3, 1, 'PREC', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(len(label_set) + 4, 1, 'RECALL', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(len(label_set) + 5, 1, 'F1', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(len(label_set) + 2, 2, acc)
+    w_sheet.write(len(label_set) + 3, 2, prec)
+    w_sheet.write(len(label_set) + 4, 2, recall)
+    w_sheet.write(len(label_set) + 5, 2, f1)
+    wb.save('./results/%s/evaluation/kmeans_final_evaluation.xls'%model)
+
+
 
 centroids = {}
 for label in label_set:
@@ -160,8 +199,8 @@ for label in label_set:
         centroid = None
     centroids.update({label : centroid})
 accurate_embeddings_codification = centroids
-
-
+print(len(accurate_embeddings_codification))
+print(len(accurate_embeddings_codification.values()))
 if centroid_plot:
     plotCentroids(centroids)
 

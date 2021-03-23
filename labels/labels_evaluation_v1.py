@@ -5,7 +5,7 @@ sys.path.append('../../')
 sys.path.append('../../../')
 import pandas as pd
 import numpy as np
-from BERTclassifier import getTopics
+from BERTclassifier import getTopics, loadPreprocessedText
 from collections import Counter
 import random
 import matplotlib.pyplot as plt
@@ -13,17 +13,19 @@ from sklearn.metrics import f1_score, recall_score, accuracy_score, precision_sc
 import xlwt
 from xlrd import open_workbook
 from xlutils.copy import copy
+from subprocess import call
 
 r = lambda: random.randint(0,255) #Generador de numeros aleatorios para colores
 
 corpus = 'CORPUS_SERVICIO_ESCUCHA.txt'
-model = 'EMBEDDING_CHILE_MINTOPICSIZE_30'
-relabel = 'optimus_dictionary_EMBEDDING_CHILE_MINTOPICSIZE_30.txt'
+model = 'COMPLETE_TRIAL_MINTOPICSIZE_30'
+relabel = 'optimus_dictionary_COMPLETE_TRIAL_MINTOPICSIZE_30.txt'
 
 
 # PARA USAR ESTE SCRIPT
 # DICCIONARIO OPTIMO
 optimus_dictionary = False
+effective_dictionary = False
 # EVALUACION
 evaluacion = False
 
@@ -33,18 +35,16 @@ model_similarity = False
 # EVALUACION Y REETIQUETADO
 label_in_model_similarity = False
 # PARA UTILIZAR K-MEANS
-centroid_label = False
-centroid_evaluation = False
-centroid_plot = True
+centroid_label = True
+centroid_evaluation = True
+centroid_plot = False
 
 def getTopicList(corpus):
     # GETS ACCURATE LABELS FOR EVERY INPUT
-    f = open('./corpus/%s'%corpus, 'r', encoding='utf-8')
-    topic_list = []
-    for line in f:
-        topic_list.append(line.split('\t')[1].strip())
-    print('GOT LABELS')
-    return topic_list
+    topics = []
+    for line in open('./corpus/preprocessed/preprocess_%s'%corpus, 'r', encoding='utf-8'):
+        topics.append(line.split('\t')[1].strip())
+    return topics
 
 def effectiveDictionary(corpus, model):
     # BUILDS THE MOST EFFECTIVE DICTIONARY DEPENDING ON THE TOPIC WITH MOST PRESENCE IN EACH CLUSTER
@@ -53,6 +53,9 @@ def effectiveDictionary(corpus, model):
     n_clusters = list(dict.fromkeys(clusters))
     f = open('./labels/label_dict/effective_dictionary_%s.txt'%model, 'w', encoding='utf-8')
     for n_cluster in n_clusters:
+        if n_cluster == -1:
+            f.write('-1,descarte\n')
+            continue
         lista_topics = []
         for i in range(len(clusters)):
             if n_cluster == clusters[i]:
@@ -199,6 +202,7 @@ def accuracyXTopic(corpus, model, relabel):
     plt.show()
 
 def evaluation(corpus, model, relabel):
+    call('mkdir ./results/%s/evaluation'%model, shell=True)
     print('EVALUATING MODEL: %s'%model)
     y_pred = reclassify(relabel, model)
     y_true = getTopicList(corpus)
@@ -215,8 +219,8 @@ def evaluation(corpus, model, relabel):
         confusion_m.append(line)
     ##################################### RESULTS TO EXCEL
     matrix = pd.DataFrame(confusion_m, index=label_set,columns=label_set)
-    matrix.to_excel('./results/%s/evaluation.xls'%model, columns=label_set, index=label_set, startcol=1, startrow=1, merge_cells=True)
-    rb = open_workbook('./results/%s/evaluation.xls'%model)
+    matrix.to_excel('./results/%s/evaluation/first_evaluation.xls'%model, columns=label_set, index=label_set, startcol=1, startrow=1, merge_cells=True)
+    rb = open_workbook('./results/%s/evaluation/first_evaluation.xls'%model)
     wb = copy(rb)
     w_sheet = wb.get_sheet(0)
     w_sheet.write(0, 0, model)
@@ -228,11 +232,9 @@ def evaluation(corpus, model, relabel):
     w_sheet.write(len(label_set) + 3, 2, prec)
     w_sheet.write(len(label_set) + 4, 2, recall)
     w_sheet.write(len(label_set) + 5, 2, f1)
-    wb.save('./results/%s/evaluation.xls'%model)
+    wb.save('./results/%s/evaluation/first_evaluation.xls'%model)
     #################################### EDIT EXCEL
-    for i in range(len(label_set)):
-        a = 1
-    print(matrix)
+    print(matrix.to_string())
 
 
 
@@ -240,11 +242,13 @@ def evaluation(corpus, model, relabel):
 
 #topicsEnCluster(1, model, corpus)
 #effectiveDictionary(corpus, model)
+if effective_dictionary:
+    effectiveDictionary(corpus, model)
 if optimus_dictionary:
     optimusDictionary(corpus, model)
 if evaluacion:
-    accuracyXTopic(corpus,model,relabel)
     evaluation(corpus, model, relabel)
+    accuracyXTopic(corpus,model,relabel)
 
 
 
