@@ -11,6 +11,7 @@ import os
 from collections import Counter
 import matplotlib.pyplot as plt
 
+
 # DO THIS COMMAND IF TRAINING DOESN´T WORK
 # TORCH_HOME=<PATH_TO_ROOT> export TORCH_HOME
 # EXAMPLE:
@@ -106,10 +107,10 @@ def randomCorpus(corpus, numero):
             nuevo.append(corpus[random.randrange(len(corpus))])
         return nuevo
 
-def sentence_transformer_encode(samples):
+def sentence_transformer_encode(samples, sentence_transformer):
     #sentence_model = SentenceTransformer("distiluse-base-multilingual-cased-v2", device='cuda')
     #sentence_model = SentenceTransformer('xlm-r-100langs-bert-base-nli-stsb-mean-tokens', device='cuda')
-    sentence_model = SentenceTransformer("dccuchile/bert-base-spanish-wwm-cased")
+    sentence_model = SentenceTransformer(sentence_transformer)
     embeddings = sentence_model.encode(samples, show_progress_bar=True)
     np.savetxt("embeddings.csv", embeddings, delimiter=",")
     print('SAVED EMBEDDINGS')
@@ -221,7 +222,7 @@ def topicText2(model, embeddings):
             text.append('')
     pd.DataFrame(text).to_csv('./results/%s/relevants.csv'%model, header=None, index=None, encoding='utf-8')
 
-def train(corpus, name, min_topic_size, iterations):
+def train(corpus, name, min_topic_size, iterations, sentence_transformer):
     # TRAINS MODEL WITH AN ITERATIVE TRAINING
     print('TRAINING', flush=True)
     if os.path.isfile('./corpus/preprocessed/preprocess_%s'%corpus):
@@ -232,10 +233,10 @@ def train(corpus, name, min_topic_size, iterations):
         import utils.preprocess
         samples = loadPreprocessedText(corpus)
     getCorpusPie(corpus)
-    embeddings = sentence_transformer_encode(samples)
+    embeddings = sentence_transformer_encode(samples, sentence_transformer)
     model = defineModel(min_topic_size=min_topic_size)
     topics, probabilities = trainModel(model, samples, embeddings)
-    discards = model.get_topic_freq()['Count'][0]
+    discards = int(model.get_topic_freq()[model.get_topic_freq().eq(-1).any(1)]['Count'])
     accuracy = (len(samples) - discards)/len(samples)
     print('FIRST %CLASSIFIED: '+'{:.2%}'.format(accuracy), flush=True)
     iteration = 0
@@ -243,7 +244,7 @@ def train(corpus, name, min_topic_size, iterations):
         print('TRYING TO IMPROVE: TRY NUMBER %s OF %s'%((iteration+1), iterations), flush=True)
         new_model = defineModel(min_topic_size=min_topic_size)
         new_topics, new_probs = trainModel(new_model, samples, embeddings)
-        new_discards = new_model.get_topic_freq()['Count'][0]
+        new_discards = int(new_model.get_topic_freq()[new_model.get_topic_freq().eq(-1).any(1)]['Count'])
         new_accuracy = (len(samples) - new_discards)/len(samples)
         if new_accuracy > accuracy:
             print('IMPROVED %CLASSIFIED: NEW %CLASSIFIED = '+ '{:.2%}'.format(new_accuracy), flush=True)
@@ -268,7 +269,7 @@ def getInfo(name):
     # GETS INFO OF A MODEL
     model = loadModel(name)
     n_topics = model.get_topic_freq().__len__()
-    discards = model.get_topic_freq()['Count'][0]
+    discards = int(model.get_topic_freq()[model.get_topic_freq().eq(-1).any(1)]['Count'])
     total = model.get_topic_freq()['Count'].to_numpy().sum()
     accuracy = (total-discards)/total
     print('MODEL NAME: %s'%name)

@@ -92,13 +92,12 @@ def pca(model, df, embeddings, rndperm, negros):
         xs=df.loc[rndperm,:]["pca-one"],
         ys=df.loc[rndperm,:]["pca-two"],
         zs=df.loc[rndperm,:]["pca-three"],
-        c=colors,
-        # c=df.loc[rndperm,:]["y"],
-        cmap='tab10'
+        c=colors
     )
     ax.set_xlabel('pca-one')
     ax.set_ylabel('pca-two')
     ax.set_zlabel('pca-three')
+    plt.savefig('./images/PCA_3D_%s.png'%model)
     plt.show()
 
 def pca2D(model, embeddings, negros, modo):
@@ -169,11 +168,12 @@ def umapping(model, negros, embeddings, df, rndperm, file):
         xs=df.loc[rndperm,:]["UMAP-one"],
         ys=df.loc[rndperm,:]["UMAP-two"],
         zs=df.loc[rndperm,:]["UMAP-three"],
-        c=colors,
+        x = 'x', y = 'y',
+        palette= sns.color_palette("hls", list(dict.fromkeys(getTopics(model))).__len__()),
+        hue = getTopics(model)
         ################################
         #c=df.loc[rndperm,:]["y"],
         #zs=umap_embeddings[:, 2],
-        cmap='tab10'
     )
     ax.set_xlabel('UMAP-one')
     ax.set_ylabel('UMAP-two')
@@ -202,13 +202,15 @@ def plotColores(x_coor, y_coor, colors, title, model, negros, modo):
     plt.figure(figsize=(16, 7))
     sns.scatterplot(
         x = 'x', y = 'y',
-        c=colors,
-        data=data
+        palette= sns.color_palette("hls", list(dict.fromkeys(getTopics(model))).__len__()),
+        data=data,
+        hue = getTopics(model)
     )
     if text != []:
         for i in range(len(x_coor)):
             plt.text(x_coor[i], y_coor[i], text[i])
     plt.title(title)
+    plt.savefig('./images/%s.png'%"".join(title.split(' ')))
     plt.show()
 
 def readTopicText(model):

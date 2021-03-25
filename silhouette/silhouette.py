@@ -62,6 +62,6 @@ def silhouette(model, metric, save):
         plt.yticks([])  # Clear the yaxis labels / ticks
 
         if save:
-            plt.savefig('./silhouette/silhouettes/silhouette_%s_metric_%s.pdf'%(model,metric))
+            plt.savefig('./silhouette/silhouettes/silhouette_%s_metric_%s.png'%(model,metric))
     plt.show()
 

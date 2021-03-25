@@ -56,7 +56,7 @@ class StreamListener(tweepy.StreamListener):
             wget.download(media_file, 'M:/Universidad/4º/CDPS/LABS/p4_creativa/media')
         """
 
-        with open("./corpus/TEST_1.txt", "a", encoding='utf-8') as f:
+        with open("./corpus/TEST_2.txt", "a", encoding='utf-8') as f:
             #f.write("%s,%s,%s,%s,%s,%s\n" % (status.created_at,status.user.screen_name,is_retweet,is_quote,text,quoted_text))
             f.write("%s\t%s\t%s\n" %(status.id_str, status.user.screen_name, text))
 
@@ -76,5 +76,5 @@ if __name__ == "__main__":
     #with open("out.csv", "w", encoding='utf-8') as f:
         #f.write("date,user,is_retweet,is_quote,text,quoted_text\n")
         #f.write("date, id, user, text\n")
-    tags = ['Maradona', 'Messi', 'Hernandez', 'Sevilla', 'Barcelona', 'Papu', 'Cortina', 'Alcalá la Real']
+    tags = ['Depay', 'AstraZeneca', 'Gibraltar', 'Canal de Suez', 'Torrelodones', 'Aznar', 'Toni Canto', 'Elton John', 'Adolfo Dominguez', 'Lc 1', 'Anunciación']
     stream.filter(track=tags)

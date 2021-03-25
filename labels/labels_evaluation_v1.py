@@ -14,37 +14,12 @@ import xlwt
 from xlrd import open_workbook
 from xlutils.copy import copy
 from subprocess import call
-
+from config import corpus, relabel, optimus_dictionary, effective_dictionary, evaluacion, label_importance_in_cluster
+from config import model_label as model
+from labels.common_functions import getTopicList, relabelDict, reclassify, get_label_set
 r = lambda: random.randint(0,255) #Generador de numeros aleatorios para colores
 
-corpus = 'CORPUS_SERVICIO_ESCUCHA.txt'
-model = 'COMPLETE_TRIAL_MINTOPICSIZE_30'
-relabel = 'optimus_dictionary_COMPLETE_TRIAL_MINTOPICSIZE_30.txt'
 
-
-# PARA USAR ESTE SCRIPT
-# DICCIONARIO OPTIMO
-optimus_dictionary = False
-effective_dictionary = False
-# EVALUACION
-evaluacion = False
-
-# PARA UTILIZAR EL MODELO DE SIMILARITY GORDO
-# SOLO EVALUACION
-model_similarity = False
-# EVALUACION Y REETIQUETADO
-label_in_model_similarity = False
-# PARA UTILIZAR K-MEANS
-centroid_label = True
-centroid_evaluation = True
-centroid_plot = False
-
-def getTopicList(corpus):
-    # GETS ACCURATE LABELS FOR EVERY INPUT
-    topics = []
-    for line in open('./corpus/preprocessed/preprocess_%s'%corpus, 'r', encoding='utf-8'):
-        topics.append(line.split('\t')[1].strip())
-    return topics
 
 def effectiveDictionary(corpus, model):
     # BUILDS THE MOST EFFECTIVE DICTIONARY DEPENDING ON THE TOPIC WITH MOST PRESENCE IN EACH CLUSTER
@@ -124,23 +99,6 @@ def w_acc(dictionary, corpus, model):
         accuracy_list.append(corrects / Counter(y_true)[topic])
     return sum(accuracy_list)/len(accuracy_list)
 
-def relabelDict(relabel):
-    # GETS THE DICTIONARY OF RELABEL
-    df = pd.read_csv('./labels/label_dict/%s'%relabel, header=None, delimiter=',')
-    clusters = list(df[0])
-    topics = list(df[1])
-    print('GOT DICTIONARY')
-    return dict(zip(clusters, topics))
-
-def reclassify(relabel, model):
-    # PUTS LABELS TO EVERY CLUSTER DEPENDING ON THE DICTIONARY
-    diccionario = relabelDict(relabel)
-    nuevo = getTopics(model=model)
-    new_topic_list = []
-    for line in nuevo:
-        new_topic_list.append(diccionario.get(line))
-    print('PUT LABELS IN CLUSTERS')
-    return new_topic_list
 
 def accuracy(old_topics, new_topics):
     # CALCULATES GENERAL PRECISION
@@ -169,17 +127,12 @@ def topicsEnCluster(n_cluster, model, corpus):
     print('LISTA TEMAS CLUSTER %s'%n_cluster)
     print(Counter(lista_topics))
 
-def generateColorList(n):
-    color_list = []
-    for i in range(n):
-        color_list.append('#%02X%02X%02X' % (r(), r(), r()))
-    return color_list
 
 def accuracyXTopic(corpus, model, relabel):
     # HISTOGRAM OF PRECISION IN EACH TOPIC OF A MODEL
     clasification = reclassify(relabel, model)
     topics = getTopicList(corpus)
-    topic_set = list(dict.fromkeys(topics))
+    topic_set = get_label_set(corpus)
     accuracy_list = []
     for topic in topic_set:
         corrects = 0
@@ -206,8 +159,7 @@ def evaluation(corpus, model, relabel):
     print('EVALUATING MODEL: %s'%model)
     y_pred = reclassify(relabel, model)
     y_true = getTopicList(corpus)
-    label_set = ['SDG', 'cine', 'deportes', 'economía', 'entretenimiento', 'fútbol', 'hoteles', 'literatura', 'marcas',
-                 'música', 'otros', 'política', 'restaurantes', 'tecnología']
+    label_set = get_label_set(corpus)
     acc = accuracy_score(y_true=y_true, y_pred=y_pred)
     prec = precision_score(y_true=y_true, y_pred=y_pred, labels=label_set, average='weighted')
     recall = recall_score(y_true=y_true, y_pred=y_pred, labels=label_set, average='weighted')
@@ -238,21 +190,14 @@ def evaluation(corpus, model, relabel):
 
 
 
-#accuracy(getTopicList(corpus), reclassify(relabel,model))
-
-#topicsEnCluster(1, model, corpus)
-#effectiveDictionary(corpus, model)
 if effective_dictionary:
     effectiveDictionary(corpus, model)
 if optimus_dictionary:
     optimusDictionary(corpus, model)
+if label_importance_in_cluster:
+    clusters = list(dict.fromkeys(getTopics(model)))
+    for cluster in clusters:
+        topicsEnCluster(cluster, model, corpus)
 if evaluacion:
     evaluation(corpus, model, relabel)
     accuracyXTopic(corpus,model,relabel)
-
-
-
-"""
-clusters = list(dict.fromkeys(getTopics(model)))
-for cluster in clusters:
-    topicsEnCluster(cluster, model, corpus)"""

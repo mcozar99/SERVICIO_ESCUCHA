@@ -8,8 +8,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from BERTclassifier import getTopics
-from labels.labels_evaluation_v1 import centroid_label, centroid_evaluation, centroid_plot, model, corpus, relabel, getTopicList, reclassify, model_similarity, label_in_model_similarity
-from labels.model_similarity import accurate_embeddings_codification, sbert_model, label_set, label, discards_evaluation, complete_evaluation, predicts, index_correct, text, topics, get_final_predicts, label_discard, get_discard_indexes, get_discard_labels
+from config import centroid_label, centroid_evaluation, centroid_plot, model_label as model, corpus, relabel
+from labels.model_similarity import accurate_embeddings_codification
+from labels.common_functions import getTopicList, reclassify, get_label_set, sbert_model, predicts, get_accurate_embeddings_codification, get_accurate_indexes, text
 from datetime import datetime
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -33,30 +34,34 @@ INITIALIZE_CLUSTERS = ['k-means++', 'random']
 CONVERGENCE_TOLERANCE = 0.001
 NUM_THREADS = 8
 
+index_correct = get_accurate_indexes()
+label_set = get_label_set(corpus)
+topics = getTopicList(corpus)
+accurate_embeddings_codification = get_accurate_embeddings_codification(corpus, label_set)
+
+def reclassify(relabel, model):
+    # PUTS LABELS TO EVERY CLUSTER DEPENDING ON THE DICTIONARY
+    diccionario = relabelDict(relabel)
+    nuevo = getTopics(model=model)
+    new_topic_list = []
+    for line in nuevo:
+        new_topic_list.append(diccionario.get(line))
+    print('PUT LABELS IN CLUSTERS')
+    return new_topic_list
+
+def getTopicList(corpus):
+    # GETS ACCURATE LABELS FOR EVERY INPUT
+    topics = []
+    for line in open('./corpus/preprocessed/preprocess_%s'%corpus, 'r', encoding='utf-8'):
+        topics.append(line.split('\t')[1].strip())
+    return topics
+
 np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)
-
-def plot_results(centroids, num_cluster_points, points):
-    plt.plot()
-    for nc in range(len(centroids)):
-        # plot points
-        points_in_cluster = [boolP == nc for boolP in num_cluster_points]
-        for i, p in enumerate(points_in_cluster):
-            if bool(p):
-                plt.plot(points[i][0], points[i][1], linestyle='None',
-                         color=COLORS[nc], marker='.')
-        # plot centroids
-        centroid = centroids[nc]
-        plt.plot(centroid[0], centroid[1], 'o', markerfacecolor=COLORS[nc],
-                 markeredgecolor='k', markersize=10)
-    plt.show()
-
 
 def k_means(embeddings, num_clusters, max_iterations, init_cluster, tolerance,
             num_threads):
     if len(embeddings) < 1:
         return
-    # Read data set
-    #points = dataset_to_list_points(dataset)
     points = embeddings
     # Object KMeans
     kmeans = KMeans(n_clusters=num_clusters, max_iter=max_iterations,
@@ -66,10 +71,6 @@ def k_means(embeddings, num_clusters, max_iterations, init_cluster, tolerance,
     # Obtain centroids and number Cluster of each point
     centroids = kmeans.cluster_centers_
     num_cluster_points = kmeans.labels_.tolist()
-    # Print final result
-    #print_results(centroids, num_cluster_points)
-    # Plot Final results
-    #plot_results(centroids, num_cluster_points, points)
     return centroids
 
 def determine_proximity_to_centroid(input, topic):
@@ -125,11 +126,10 @@ def get_final_centroid_predicts():
 
 
 def centroid_discards_evaluation():
+    print('CENTROID MODEL EVALUATION', flush = True)
     y_pred = []
     y_true = []
     clusters = getTopics(model)
-    label_set = ['SDG', 'cine', 'deportes', 'economía', 'entretenimiento', 'fútbol', 'hoteles', 'literatura', 'marcas',
-             'música', 'otros', 'política', 'restaurantes', 'tecnología']
     final_predicts = get_final_centroid_predicts()
     for i in range(len(clusters)):
         if clusters[i] == -1:
@@ -159,12 +159,9 @@ def centroid_discards_evaluation():
     wb.save('./results/%s/evaluation/kmeans_evaluation.xls'%model)
 
 def centroid_complete_evaluation():
+    print('FINAL SYSTEM MONOLABELING+CENTORIDS EVALUATION', flush = True)
     y_true = topics
     y_pred = get_final_centroid_predicts()
-    print(y_pred.__len__())
-    print(y_true.__len__())
-    label_set = ['SDG', 'cine', 'deportes', 'economía', 'entretenimiento', 'fútbol', 'hoteles', 'literatura', 'marcas',
-             'música', 'otros', 'política', 'restaurantes', 'tecnología']
     acc = accuracy_score(y_true=y_true, y_pred=y_pred)
     prec = precision_score(y_true=y_true, y_pred=y_pred, labels=label_set, average='weighted')
     recall = recall_score(y_true=y_true, y_pred=y_pred, labels=label_set, average='weighted')
@@ -201,6 +198,7 @@ for label in label_set:
 accurate_embeddings_codification = centroids
 print(len(accurate_embeddings_codification))
 print(len(accurate_embeddings_codification.values()))
+
 if centroid_plot:
     plotCentroids(centroids)
 

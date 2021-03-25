@@ -10,7 +10,8 @@ import nltk
 nltk.download('stopwords')
 import re
 from sklearn.metrics.pairwise import cosine_similarity
-from labels.labels_evaluation_v1 import corpus, model, relabel, getTopicList, reclassify, model_similarity, label_in_model_similarity
+from config import corpus, relabel, label_in_model_similarity, eval_model_similarity, sentence_transformer, model_label as model
+from labels.common_functions import reclassify, relabelDict, getTopicList, sbert_model, get_label_set, get_accurate_indexes, predicts, get_accurate_embeddings_codification
 from sentence_transformers import SentenceTransformer
 from BERTclassifier import getSamples, getTopics, loadPreprocessedText
 from sklearn.metrics import f1_score, recall_score, accuracy_score, precision_score, confusion_matrix
@@ -19,23 +20,11 @@ from xlrd import open_workbook
 from xlutils.copy import copy
 import xlwt
 
-#sbert_model = SentenceTransformer('bert-base-nli-mean-tokens')
-#sbert_model = SentenceTransformer("distiluse-base-multilingual-cased-v2")
-sbert_model = SentenceTransformer('xlm-r-100langs-bert-base-nli-stsb-mean-tokens')
-predicts = reclassify(relabel, model)
 
-
-def get_accurate_indexes():
-    index_list = []
-    solutions = getTopicList(corpus)
-    for i in range(len(solutions)):
-        if predicts[i] in solutions[i]:
-            index_list.append(i)
-    return index_list
-
-index_correct = get_accurate_indexes()
 text = loadPreprocessedText(corpus)
 topics = getTopicList(corpus)
+label_set = get_label_set(corpus)
+accurate_embeddings_codification = get_accurate_embeddings_codification(corpus, label_set)
 
 def get_topic_accurate_list(topic):
     topic_list = []
@@ -57,16 +46,6 @@ def determine_proximity_to_topic(input, topic):
         return np.max(similarity)
     else:
         return np.max(similarity)[0]
-
-
-label_set = ['SDG', 'cine', 'deportes', 'economía', 'entretenimiento', 'fútbol', 'hoteles', 'literatura', 'marcas',
-             'música', 'otros', 'política', 'restaurantes', 'tecnología']
-
-accurate_embeddings_codification = {}
-for label in label_set:
-    encoding = sbert_model.encode(get_topic_accurate_list(label))
-    accurate_embeddings_codification.update({label : encoding})
-
 
 
 
@@ -127,6 +106,7 @@ def get_discard_labels():
             discard_labels.append(guess[clusters.index(cluster)])
 
 def discards_evaluation():
+    print('KNEIGHBORS EVALUATION', flush = True)
     y_pred = []
     y_true = []
     clusters = getTopics(model)
@@ -162,6 +142,7 @@ def discards_evaluation():
 
 
 def complete_evaluation():
+    print('FINAL EVALUATION WITH KNEIGHBORS AND MONOLABELING', flush = True)
     y_true = topics
     y_pred = get_final_predicts()
     acc = accuracy_score(y_true=y_true, y_pred=y_pred)
@@ -187,10 +168,11 @@ def complete_evaluation():
     w_sheet.write(len(label_set) + 5, 2, f1)
     wb.save('./results/%s/evaluation/kneighbors_final_evaluation.xls'%model)
 
-if model_similarity:
-    print('hola', flush=True)
-    if label_in_model_similarity:
-        print('label', flush=True)
-        label()
+
+if label_in_model_similarity:
+    print('Labeling discards with KNeighbors', flush = True)
+    label()
+
+if eval_model_similarity:
     discards_evaluation()
     complete_evaluation()

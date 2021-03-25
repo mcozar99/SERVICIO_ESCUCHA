@@ -5,24 +5,10 @@ sys.path.append('.')
 sys.path.append('..')
 sys.path.append('../../')
 sys.path.append('../../../')
-import visualization as v
+import visualization.visualization as v
 from BERTclassifier import getProbabilities, getEmbeddings
+from config import model, formato, negros, modo, dimensions, represent, n_neighbors, mode
 
-# TO USE VISUALIZATION.PY CONFIG THIS FILE AN EXEC IT FROM THE ROOT FOLDER /BERTOPIC
-# python visualization/visualize_conf.py
-
-###########################################################################################
-# CONFIGURACION A
-# TOCAR PARA VISUALIZAR
-model = 'SENTENCE_TRANSFORMER_KNEIGHBORS_MINTOPICSIZE_30'             # MODELO A VISUALIZAR
-formato = 'embeddings'       #REPRESENTAMOS EMBEDDINGS O PROBABILITIES
-negros = True               # TRUE PARA ENSEÑAR LOS TOPICS A -1 Y FALSE PARA OCULTARLOS
-modo = 'texto'              # topic muestra los nombres de los temas y texto los valores mas significativos, vacio para no mostrar nada
-dimensions = 2              # 2 O 3 DIMENSIONES, RECOMENDADO 2
-represent = ['tsne']        # INTERTOPIC, PCA UMAP O TSNE, PODEMOS METER VARIOS EN UNA LISTA
-n_neighbors = 250          #SOLO PARA UMAP
-mode = 'visualize'              # TRAIN PARA GENERAR MODELO, VISUALIZE PARA ENSEÑARLO, SOLO UMAP
-###########################################################################################
 
 if 'probs' in formato:
     df = getProbabilities(model=model, format='df')
