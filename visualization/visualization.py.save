@@ -7,8 +7,6 @@ sys.path.append('.')
 sys.path.append('..')
 sys.path.append('../../')
 sys.path.append('../../../')
-import os.path
-from subprocess import call
 
 from BERTclassifier import getTopics, loadModel
 import seaborn as sns
@@ -20,7 +18,7 @@ import umap.umap_ as umap
 
 from scipy.sparse.csr import csr_matrix
 from typing import List, Tuple, Dict, Union
-from config import formato
+
 
 r = lambda: random.randint(0,255) #Generador de numeros aleatorios para colores
 
@@ -99,7 +97,6 @@ def pca(model, df, embeddings, rndperm, negros):
     ax.set_xlabel('pca-one')
     ax.set_ylabel('pca-two')
     ax.set_zlabel('pca-three')
-    plt.savefig('./images/PCA_3D_%s.png'%model)
     plt.show()
 
 def pca2D(model, embeddings, negros, modo):
@@ -131,6 +128,7 @@ def tsne(model, embeddings, negros, modo):
     print('REDUCED DIMENSIONALITY WITH TSNE, SAVING MODEL')
     saveTSNE(tsne_results=tsne_results, file='tsne_result_%s_negros_%s'%(model, negros))
     print('SAVED MODEL, REPRESENTING')
+    print(tsne_results[0:20])
     plotColores(tsne_results[:,0], tsne_results[:,1], colors, 'Modelo %s, TSNE 2 Dimensiones'%model, model, negros, modo)
 
 def saveTSNE(tsne_results, file):
@@ -175,6 +173,7 @@ def umapping(model, negros, embeddings, df, rndperm, file):
         ################################
         #c=df.loc[rndperm,:]["y"],
         #zs=umap_embeddings[:, 2],
+        cmap='tab10'
     )
     ax.set_xlabel('UMAP-one')
     ax.set_ylabel('UMAP-two')
@@ -198,21 +197,20 @@ def plotColores(x_coor, y_coor, colors, title, model, negros, modo):
         text =readTopicText(model)
         if not negros:
             text = deleteNull(text=text, model=model)
-
+    #d = {'x': x_coor, 'y': y_coor}
     data = pd.DataFrame(np.column_stack([x_coor, y_coor]), columns=['x', 'y'])
-    plt.figure(figsize=(25, 9))
+    plt.figure(figsize=(16, 7))
     sns.scatterplot(
         x = 'x', y = 'y',
-        palette= sns.color_palette("hls", n_colors=list(dict.fromkeys(getTopics(model))).__len__()),
+        palette= sns.color_palette("hls", list(dict.fromkeys(getTopics(model))).__len__()),
         data=data,
-        hue = getTopics(model),
-        legend="brief"
+        hue = getTopics(model)
     )
     if text != []:
         for i in range(len(x_coor)):
             plt.text(x_coor[i], y_coor[i], text[i])
     plt.title(title)
-    plt.savefig('./images/%s_%s_%s.png'%(model, "_".join(title.split(',')[1].split(' ')), formato))
+    plt.savefig('./images/%s.png'%"".join(title.split(' ')))
     plt.show()
 
 def readTopicText(model):
@@ -239,12 +237,10 @@ def deleteNull(text, model):
     return np.delete(text, borrar, axis=0)
 
 def visualizeModel(model):
-    if not os.path.exists('./visualization/Intertopic'):
-        call('mkdir ./visualization/Intertopic', shell=True)
-
-    print('IF DOESN´T WORK GO TO ./anaconda3/lib/python3.8/site-packages/bertopic/_bertopic.py or similar (bertopics library)')
-    print('WRITE    fig.write_html(\'./visualization/Intertopic/intertopic.html\') IN LINE 1102')
     modelo = loadModel(model)
-    modelo.visualize_topics()
-    call('mv ./visualization/Intertopic/intertopic.html ./visualization/Intertopic/%s_intertopic.html'%model, shell=True)
+    a = modelo.visualize_topics().to_html()
+    f = open('./visualization/Intertopic/%s.html'%model, 'w', encoding='utf-8')
+    for line in a:
+        f.write(line)
+    f.close()
     print('FILE DONE')

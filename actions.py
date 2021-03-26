@@ -20,7 +20,7 @@ if 'info' in actions:
      if info == 'info':
           for min_topic_size in min_topic_sizes:
                bc.getInfo(name='%s_MINTOPICSIZE_%s'%(model_name, min_topic_size))
-     elif info == 'topics':
+     if info == 'topics':
           for min_topic_size in min_topic_sizes:
                bc.getTopTopics(name='%s_MINTOPICSIZE_%s'%(model_name, min_topic_size), n=n_topics)
 
@@ -46,3 +46,6 @@ if 'complete_evaluation' in actions:
 
 if 'visualization' in actions:
     import visualization.visualize_conf
+
+if 'centroid_evaluation' in actions:
+    import centroid_differences.labels_centroid_eval

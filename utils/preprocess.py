@@ -11,7 +11,8 @@ from ekphrasis.dicts.emoticons import emoticons
 from nltk.corpus import stopwords
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 from BERTclassifier import sacaCorpus, getIndexes, getLabels
-
+from subprocess import call
+import os.path
 
 corpus = 'CORPUS_SERVICIO_ESCUCHA.txt'
 
@@ -133,6 +134,12 @@ if preprocessing:
         print('num_stopwords = %d (%0.2f %%)' % (num_stopwords_removed, 100*(num_stopwords_removed/num_words)))
         print('num sentences with stopwords = %d (%0.2f %%)' % (num_sentences_with_stopwords, 100*(num_sentences_with_stopwords/num_sentences)))
         print('num_stopwords per sentence (AVG) = %0.2f' % (num_stopwords_removed/num_sentences))
+
+
+
+
+if not os.path.exists('./corpus/preprocessed'):
+        call('mkdir ./corpus/preprocessed', shell=True)
 
 f = open('./corpus/preprocessed/preprocess_%s'%corpus, 'w', encoding='utf-8')
 

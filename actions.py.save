@@ -1,0 +1,32 @@
+import sys
+sys.path.append('.')
+sys.path.append('..')
+sys.path.append('../../')
+sys.path.append('../../../')
+import silhouette.silhouette as silhouette
+import BERTclassifier as bc
+from bertopic import BERTopic as bt
+from config import actions, model_name, min_topic_sizes, corpus, iterations, info, n_topics, metric, save, complete_evaluation
+
+
+
+print('SELECTED: %s'%actions)
+
+if 'train' in actions:
+     for min_topic_size in min_topic_sizes:
+          bc.train(corpus=corpus, name=model_name, min_topic_size=min_topic_size, iterations=iterations, sentence_transformer=sentence_transformer)
+
+elif 'info' in actions:
+     if info == 'info':
+          for min_topic_size in min_topic_sizes:
+               bc.getInfo(name='%s_MINTOPICSIZE_%s'%(model_name, min_topic_size))
+     elif info == 'topics':
+          for min_topic_size in min_topic_sizes:
+               bc.getTopTopics(name='%s_MINTOPICSIZE_%s'%(model_name, min_topic_size), n=n_topics)
+
+elif 'silhouette' in actions:
+     for min_topic_size in min_topic_sizes:
+          silhouette.silhouette(model='%s_MINTOPICSIZE_%s'%(model_name, min_topic_size), metric=metric, save=save)
+
+if complete_evaluation:
+    import labels.centroids
