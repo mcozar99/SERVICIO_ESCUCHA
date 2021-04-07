@@ -1,8 +1,10 @@
 /corpus/preprocessed
+/corpus/stats
 /corpus/COVID.txt
 /corpus/ELECCIONES_CATALUNYA.txt
 /corpus/TEST_1.txt
 /corpus/TEST_1.txt
+/corpus
 /labels/label_dict/SEGUNDO_SERVICIO_ESCUCHA_MINTOPICSIZE_200.txt
 /labels/label_dict/optimus_dictionary_SERVICIO_PRECISO_MINTOPICSIZE_85.txt
 /labels/label_dict/optimus_dictionary_SERVICIO_PRECISO_MINTOPICSIZE_60.txt
@@ -20,6 +22,7 @@
 /labels/label_dict
 /labels/__pycache__
 /labels/TSNE_centroid_representation/
+/labels/complete_evaluation.py
 /results/
 /results/TEST_MINTOPICSIZE_100/
 /results/TEST_MINTOPICSIZE_75/
@@ -70,5 +73,5 @@ centroides_preprocess_chile.txt
 /images
 /centroid_differences/__pycache__
 /centroid_differences/representations
-/escenario_multilabel
+/escenario_multilabel/multilabel_dicts
 

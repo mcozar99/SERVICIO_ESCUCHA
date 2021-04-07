@@ -13,8 +13,7 @@ from nltk.tokenize.treebank import TreebankWordDetokenizer
 from BERTclassifier import sacaCorpus, getIndexes, getLabels
 from subprocess import call
 import os.path
-
-corpus = 'CORPUS_SERVICIO_ESCUCHA.txt'
+from config import corpus
 
 samples = sacaCorpus(corpus)
 classes = getLabels(corpus)
@@ -119,7 +118,7 @@ if preprocessing:
         if samples.index(item)%5000 == 0:
             print(aux_sample)
         if len(aux_sample) > 0:
-            samples_detokenized.append(aux_sample)
+            samples_detokenized.append(aux_sample.lower())
             new_classes.append(classes[n])
             new_indexes.append(indexes[n])
         else:

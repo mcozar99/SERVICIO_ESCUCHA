@@ -10,6 +10,9 @@ import pandas as pd
 import numpy as np
 from collections import Counter
 
+global power_on
+power_on = True
+
 def getTopicList(corpus):
     # GETS ACCURATE LABELS FOR EVERY INPUT
     topics = []
@@ -103,8 +106,9 @@ if effective_dictionary:
     effectiveDictionary(corpus, model)
 effective_dictionary = False
 
-topics = getTopicList(corpus)
-text = loadPreprocessedText(corpus)
+if power_on:
+    topics = getTopicList(corpus)
+    text = loadPreprocessedText(corpus)
 
 def relabelDict(relabel):
     # GETS THE DICTIONARY OF RELABEL
@@ -126,13 +130,12 @@ def reclassify(relabel, model):
     return new_topic_list
 
 
-
-sbert_model = SentenceTransformer(sentence_transformer)
-predicts = reclassify(relabel, model)
+if power_on:
+    sbert_model = SentenceTransformer(sentence_transformer)
+    predicts = reclassify(relabel, model)
 
 def get_label_set(corpus):
     return list(dict.fromkeys(getTopicList(corpus)))
-
 
 
 def get_accurate_indexes():
@@ -143,7 +146,8 @@ def get_accurate_indexes():
             index_list.append(i)
     return index_list
 
-index_correct = get_accurate_indexes()
+if power_on:
+    index_correct = get_accurate_indexes()
 
 def get_topic_accurate_list(topic):
     topic_list = []
@@ -160,3 +164,4 @@ def get_accurate_embeddings_codification(corpus, label_set):
         accurate_embeddings_codification.update({label : encoding})
     return accurate_embeddings_codification
 
+power_on = False

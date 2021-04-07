@@ -122,6 +122,7 @@ def get_centroid_distances(pred_centroids, true_centroids):
             similarities.append(cosine_similarity(centroids)[0,1])
     df = pd.DataFrame(list(zip(distances, similarities)), index=label_set, columns=['euclidean', 'cosine'])
     print(df)
+    return df
 
 # DICTIONARY WITH KEYS = LABELS : VALUES = SAMPLES WITH LABEL IN KEY
 pred_organised_labels = get_organised_labels(predictions)

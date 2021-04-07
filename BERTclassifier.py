@@ -10,7 +10,7 @@ from sentence_transformers import SentenceTransformer
 import os
 from collections import Counter
 import matplotlib.pyplot as plt
-
+from config import corpus_pie
 
 # DO THIS COMMAND IF TRAINING DOESN´T WORK
 # TORCH_HOME=<PATH_TO_ROOT> export TORCH_HOME
@@ -43,7 +43,7 @@ def getIndexes(corpus):
     return lista
 
 def getTopicDetail(corpus):
-    f = open('./corpus/%s'%corpus, 'r', encoding='utf-8')
+    f = open('./corpus/preprocessed/preprocess_%s'%corpus, 'r', encoding='utf-8')
     topic_list = []
     for line in f:
         topic_list.append(line.split('\t')[1].strip())
@@ -238,7 +238,8 @@ def train(corpus, name, min_topic_size, iterations, sentence_transformer):
         print('NOT DETECTED PREPROCESSING: PROCEEDING', flush=True)
         import utils.preprocess
         samples = loadPreprocessedText(corpus)
-    getCorpusPie(corpus)
+    if corpus_pie:
+        getCorpusPie(corpus)
     embeddings = sentence_transformer_encode(samples, sentence_transformer)
     model = defineModel(min_topic_size=min_topic_size)
     topics, probabilities = trainModel(model, samples, embeddings)

@@ -1,0 +1,72 @@
+30
+                Discards of topic % discard Correct  Total Accuracy Accuracy Without Discards
+hoteles                      1105     7.97%   12506  13872   90.15%                    97.96%
+restaurantes                  907     7.04%   11594  12889   89.95%                    96.76%
+fútbol                       1934    53.78%    1015   3596   28.23%                    61.07%
+marcas                       2154    57.15%     759   3769   20.14%                    47.00%
+SDG                            55    16.27%     242    338   71.60%                    85.51%
+política                    18098    57.68%   12345  31379   39.34%                    92.95%
+otros                       14059    49.88%   12416  28188   44.05%                    87.88%
+entretenimiento              2722    50.21%     705   5421   13.00%                    26.12%
+cine                          198    33.22%     287    596   48.15%                    72.11%
+economía                     1335    52.37%      29   2549    1.14%                     2.39%
+música                        538    35.91%     117   1498    7.81%                    12.19%
+tecnología                    165    57.49%       0    287    0.00%                     0.00%
+literatura                     53    56.99%       0     93    0.00%                     0.00%
+deportes                       54    40.00%       0    135    0.00%                     0.00%
+ACCURACY IS: 0.49722779848962817
+ACCURACY WITHOUT DISCARDS: 0.8494602583574217
+35
+                Discards of topic % discard Correct  Total Accuracy Accuracy Without Discards
+hoteles                      1105     7.97%   12491  13872   90.04%                    97.84%
+restaurantes                  907     7.04%   11554  12889   89.64%                    96.43%
+fútbol                       1934    53.78%     993   3596   27.61%                    59.75%
+marcas                       2154    57.15%     759   3769   20.14%                    47.00%
+SDG                            55    16.27%     242    338   71.60%                    85.51%
+política                    18098    57.68%   12314  31379   39.24%                    92.72%
+otros                       14059    49.88%   12293  28188   43.61%                    87.01%
+entretenimiento              2722    50.21%     613   5421   11.31%                    22.71%
+cine                          198    33.22%     287    596   48.15%                    72.11%
+economía                     1335    52.37%      29   2549    1.14%                     2.39%
+música                        538    35.91%      83   1498    5.54%                     8.65%
+tecnología                    165    57.49%       0    287    0.00%                     0.00%
+literatura                     53    56.99%       0     93    0.00%                     0.00%
+deportes                       54    40.00%       0    135    0.00%                     0.00%
+ACCURACY IS: 0.49381512283720486
+ACCURACY WITHOUT DISCARDS: 0.8436300687537766
+20
+                Discards of topic % discard Correct  Total Accuracy Accuracy Without Discards
+hoteles                      1105     7.97%   12517  13872   90.23%                    98.04%
+restaurantes                  907     7.04%   11748  12889   91.15%                    98.05%
+fútbol                       1934    53.78%    1015   3596   28.23%                    61.07%
+marcas                       2154    57.15%     820   3769   21.76%                    50.77%
+SDG                            55    16.27%     242    338   71.60%                    85.51%
+política                    18098    57.68%   12406  31379   39.54%                    93.41%
+otros                       14059    49.88%   13105  28188   46.49%                    92.75%
+entretenimiento              2722    50.21%     730   5421   13.47%                    27.05%
+cine                          198    33.22%     287    596   48.15%                    72.11%
+economía                     1335    52.37%     376   2549   14.75%                    30.97%
+música                        538    35.91%     125   1498    8.34%                    13.02%
+tecnología                    165    57.49%       0    287    0.00%                     0.00%
+literatura                     53    56.99%       0     93    0.00%                     0.00%
+deportes                       54    40.00%       0    135    0.00%                     0.00%
+ACCURACY IS: 0.5101902303795048
+ACCURACY WITHOUT DISCARDS: 0.8716051802132837
+15
+                Discards of topic % discard Correct  Total Accuracy Accuracy Without Discards
+hoteles                      1105     7.97%   12517  13872   90.23%                    98.04%
+restaurantes                  907     7.04%   11754  12889   91.19%                    98.10%
+fútbol                       1934    53.78%    1015   3596   28.23%                    61.07%
+marcas                       2154    57.15%     820   3769   21.76%                    50.77%
+SDG                            55    16.27%     242    338   71.60%                    85.51%
+política                    18098    57.68%   12479  31379   39.77%                    93.96%
+otros                       14059    49.88%   13338  28188   47.32%                    94.40%
+entretenimiento              2722    50.21%     748   5421   13.80%                    27.71%
+cine                          198    33.22%     287    596   48.15%                    72.11%
+economía                     1335    52.37%     376   2549   14.75%                    30.97%
+música                        538    35.91%     139   1498    9.28%                    14.48%
+tecnología                    165    57.49%       0    287    0.00%                     0.00%
+literatura                     53    56.99%       0     93    0.00%                     0.00%
+deportes                       54    40.00%       6    135    4.44%                     7.41%
+ACCURACY IS: 0.5135359908230571
+ACCURACY WITHOUT DISCARDS: 0.87732105237372

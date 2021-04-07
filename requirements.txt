@@ -14,5 +14,7 @@ typing
 matplotlib
 wget
 tweepy
+textblob
 xlutils
 xlrd
+textstat

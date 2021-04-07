@@ -108,7 +108,7 @@ def accuracy(old_topics, new_topics):
             a +=1
     print('ENTRADAS CLASIFICADAS CORRECTAMENTE: %s'%(len(old_topics) - a))
     print('ENTRADAS MAL CLASIFICADAS: %s'%a)
-    print('PRECISION: ' + '{:.2%}'.format((len(old_topics)-a)/len(old_topics)))
+    print('ACCURACY: ' + '{:.2%}'.format((len(old_topics)-a)/len(old_topics)))
     return (len(old_topics)-a) / len(old_topics)
 
 def weightedAccuracy(accuracy_list):
@@ -134,14 +134,15 @@ def accuracyXTopic(corpus, model, relabel):
     topics = getTopicList(corpus)
     topic_set = get_label_set(corpus)
     accuracy_list = []
+    df = pd.DataFrame(columns = ['Corrects', 'Total', 'Accuracy'], index=topic_set)
     for topic in topic_set:
         corrects = 0
         for i in range(len(clasification)):
             if topic in clasification[i] and clasification[i] in topics[i]:
                 corrects+=1
         accuracy_list.append(corrects/Counter(topics)[topic])
-        print('TOPIC: %s \t CORRECTS %s \t TOTAL %s \t PRECISION: %s'%(topic, corrects, Counter(topics)[topic], corrects/Counter(topics)[topic]))
-
+        df.loc[topic] = [corrects, Counter(topics)[topic], '{:.2%}'.format(corrects/Counter(topics)[topic])]
+    print(df)
     x_values = np.arange(1, len(topic_set) + 1, 1)
     plt.bar(x_values, accuracy_list).set_label('Accuracy per topic')
     plt.title("Distribución de accuracy por tema en modelo %s"%model)
@@ -151,7 +152,7 @@ def accuracyXTopic(corpus, model, relabel):
     plt.axhline(y=weightedAccuracy(accuracy_list), color='black', linestyle='--').set_label('Weighted Accuracy')
     plt.grid()
     plt.legend()
-    plt.ylabel("Precision")
+    plt.ylabel("Accuracy")
     plt.show()
 
 def evaluation(corpus, model, relabel):

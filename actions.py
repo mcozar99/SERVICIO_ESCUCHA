@@ -9,7 +9,6 @@ from bertopic import BERTopic as bt
 from config import actions, model_name, min_topic_sizes, corpus, sentence_transformer, iterations, info, n_topics, metric, save, label_number
 
 
-
 print('SELECTED: %s'%actions)
 
 if 'train' in actions:
@@ -17,10 +16,10 @@ if 'train' in actions:
           bc.train(corpus=corpus, name=model_name, min_topic_size=min_topic_size, iterations=iterations, sentence_transformer=sentence_transformer)
 
 if 'info' in actions:
-     if info == 'info':
+     if 'info' in info:
           for min_topic_size in min_topic_sizes:
                bc.getInfo(name='%s_MINTOPICSIZE_%s'%(model_name, min_topic_size))
-     if info == 'topics':
+     if 'topics' in info:
           for min_topic_size in min_topic_sizes:
                bc.getTopTopics(name='%s_MINTOPICSIZE_%s'%(model_name, min_topic_size), n=n_topics)
 
@@ -28,6 +27,8 @@ if 'silhouette' in actions:
      for min_topic_size in min_topic_sizes:
           silhouette.silhouette(model='%s_MINTOPICSIZE_%s'%(model_name, min_topic_size), metric=metric, save=save)
 
+if 'stats' in actions:
+    import stats
 
 if 'complete_evaluation' in actions:
     # 1 ONLY FIRST LABELING, 2 LABEL +  KNEIGHBORS, 3 LABEL + CENTROIDS, 4 LABEL + KNEIGBORS AND LABEL + CENTROIDS
