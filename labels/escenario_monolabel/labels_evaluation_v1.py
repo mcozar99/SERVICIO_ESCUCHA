@@ -16,7 +16,7 @@ from xlutils.copy import copy
 from subprocess import call
 from config import corpus, relabel, optimus_dictionary, effective_dictionary, evaluacion, label_importance_in_cluster
 from config import model_label as model
-from labels.common_functions import getTopicList, relabelDict, reclassify, get_label_set
+from labels.escenario_monolabel.common_functions import getTopicList, relabelDict, reclassify, get_label_set
 r = lambda: random.randint(0,255) #Generador de numeros aleatorios para colores
 
 
@@ -26,7 +26,7 @@ def effectiveDictionary(corpus, model):
     topics = getTopicList(corpus)
     clusters = getTopics(model)
     n_clusters = list(dict.fromkeys(clusters))
-    f = open('./labels/label_dict/effective_dictionary_%s.txt'%model, 'w', encoding='utf-8')
+    f = open('./labels/escenario_monolabel/label_dict/effective_dictionary_%s.txt'%model, 'w', encoding='utf-8')
     for n_cluster in n_clusters:
         if n_cluster == -1:
             f.write('-1,descarte\n')
@@ -78,7 +78,7 @@ def optimusDictionary(corpus, model):
             w_prec = new_w_prec
             percent = perc
     print('Final perc = %s \nFinal w_prec = %s'%(percent, w_prec))
-    f = open('./labels/label_dict/optimus_dictionary_%s.txt'%model, 'w', encoding='utf-8')
+    f = open('./labels/escenario_monolabel/label_dict/optimus_dictionary_%s.txt'%model, 'w', encoding='utf-8')
     for i in range(optimus_dict.values().__len__()):
         f.write(str(list(optimus_dict.keys())[i]) + ',' + list(optimus_dict.values())[i] + '\n')
     f.close()
@@ -142,7 +142,9 @@ def accuracyXTopic(corpus, model, relabel):
                 corrects+=1
         accuracy_list.append(corrects/Counter(topics)[topic])
         df.loc[topic] = [corrects, Counter(topics)[topic], '{:.2%}'.format(corrects/Counter(topics)[topic])]
+    print('FIRST ACCURACY X TOPIC')
     print(df)
+    """
     x_values = np.arange(1, len(topic_set) + 1, 1)
     plt.bar(x_values, accuracy_list).set_label('Accuracy per topic')
     plt.title("Distribución de accuracy por tema en modelo %s"%model)
@@ -154,6 +156,7 @@ def accuracyXTopic(corpus, model, relabel):
     plt.legend()
     plt.ylabel("Accuracy")
     plt.show()
+    """
 
 def evaluation(corpus, model, relabel):
     call('mkdir ./results/%s/evaluation'%model, shell=True)
@@ -165,6 +168,7 @@ def evaluation(corpus, model, relabel):
     prec = precision_score(y_true=y_true, y_pred=y_pred, labels=label_set, average='weighted')
     recall = recall_score(y_true=y_true, y_pred=y_pred, labels=label_set, average='weighted')
     f1 = f1_score(y_true=y_true, y_pred=y_pred, labels=label_set, average='weighted')
+    print('FIRST EVALUATION')
     print('ACC: %s \nPREC: %s \nRECALL: %s \nF1: %s'%(acc, prec, recall, f1))
     cm = confusion_matrix(y_true, y_pred, label_set)
     confusion_m = []

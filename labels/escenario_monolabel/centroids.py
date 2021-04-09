@@ -9,8 +9,8 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from BERTclassifier import getTopics
 from config import centroid_label, centroid_evaluation, centroid_plot, model_label as model, corpus, relabel
-from labels.model_similarity import accurate_embeddings_codification
-from labels.common_functions import getTopicList, reclassify, get_label_set, sbert_model, predicts, get_accurate_embeddings_codification, get_accurate_indexes, text
+from labels.escenario_monolabel.model_similarity import prediction_embeddings_codification
+from labels.escenario_monolabel.common_functions import getTopicList, reclassify, get_label_set, sbert_model, predicts, get_prediction_embeddings_codification, get_prediction_indexes, text
 from datetime import datetime
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -34,10 +34,10 @@ INITIALIZE_CLUSTERS = ['k-means++', 'random']
 CONVERGENCE_TOLERANCE = 0.001
 NUM_THREADS = 8
 
-index_correct = get_accurate_indexes()
+index_correct = get_prediction_indexes()
 label_set = get_label_set(corpus)
 topics = getTopicList(corpus)
-accurate_embeddings_codification = get_accurate_embeddings_codification(corpus, label_set)
+prediction_embeddings_codification = get_prediction_embeddings_codification(corpus, label_set)
 
 def reclassify(relabel, model):
     # PUTS LABELS TO EVERY CLUSTER DEPENDING ON THE DICTIONARY
@@ -143,8 +143,8 @@ def centroid_discards_evaluation():
     confusion_m = confusion_matrix(y_true, y_pred, label_set)
     print(pd.DataFrame(confusion_m, index=label_set,columns=label_set).to_string())
     matrix = pd.DataFrame(confusion_m, index=label_set,columns=label_set)
-    matrix.to_excel('./results/%s/evaluation/kmeans_evaluation.xls'%model, columns=label_set, index=label_set, startcol=1, startrow=1, merge_cells=True)
-    rb = open_workbook('./results/%s/evaluation/kmeans_evaluation.xls'%model)
+    matrix.to_excel('./results/%s/evaluation/centroids_evaluation.xls'%model, columns=label_set, index=label_set, startcol=1, startrow=1, merge_cells=True)
+    rb = open_workbook('./results/%s/evaluation/centroids_evaluation.xls'%model)
     wb = copy(rb)
     w_sheet = wb.get_sheet(0)
     w_sheet.write(0, 0, model)
@@ -156,7 +156,7 @@ def centroid_discards_evaluation():
     w_sheet.write(len(label_set) + 3, 2, prec)
     w_sheet.write(len(label_set) + 4, 2, recall)
     w_sheet.write(len(label_set) + 5, 2, f1)
-    wb.save('./results/%s/evaluation/kmeans_evaluation.xls'%model)
+    wb.save('./results/%s/evaluation/centroids_evaluation.xls'%model)
 
 def centroid_complete_evaluation():
     print('FINAL SYSTEM MONOLABELING+CENTORIDS EVALUATION', flush = True)
@@ -170,8 +170,8 @@ def centroid_complete_evaluation():
     confusion_m = confusion_matrix(y_true, y_pred, label_set)
     print(pd.DataFrame(confusion_m, index=label_set,columns=label_set).to_string())
     matrix = pd.DataFrame(confusion_m, index=label_set,columns=label_set)
-    matrix.to_excel('./results/%s/evaluation/kmeans_final_evaluation.xls'%model, columns=label_set, index=label_set, startcol=1, startrow=1, merge_cells=True)
-    rb = open_workbook('./results/%s/evaluation/kmeans_final_evaluation.xls'%model)
+    matrix.to_excel('./results/%s/evaluation/centroids_final_evaluation.xls'%model, columns=label_set, index=label_set, startcol=1, startrow=1, merge_cells=True)
+    rb = open_workbook('./results/%s/evaluation/centroids_final_evaluation.xls'%model)
     wb = copy(rb)
     w_sheet = wb.get_sheet(0)
     w_sheet.write(0, 0, model)
@@ -183,21 +183,21 @@ def centroid_complete_evaluation():
     w_sheet.write(len(label_set) + 3, 2, prec)
     w_sheet.write(len(label_set) + 4, 2, recall)
     w_sheet.write(len(label_set) + 5, 2, f1)
-    wb.save('./results/%s/evaluation/kmeans_final_evaluation.xls'%model)
+    wb.save('./results/%s/evaluation/centroids_final_evaluation.xls'%model)
 
 
 
 centroids = {}
 for label in label_set:
-    embeddings_set = accurate_embeddings_codification.get(label)
-    if accurate_embeddings_codification.get(label) is not None:
-        centroid = k_means(accurate_embeddings_codification.get(label), NUM_CLUSTERS, MAX_ITERATIONS, INITIALIZE_CLUSTERS[0], CONVERGENCE_TOLERANCE, NUM_THREADS)
+    embeddings_set = prediction_embeddings_codification.get(label)
+    if prediction_embeddings_codification.get(label) is not None:
+        centroid = k_means(prediction_embeddings_codification.get(label), NUM_CLUSTERS, MAX_ITERATIONS, INITIALIZE_CLUSTERS[0], CONVERGENCE_TOLERANCE, NUM_THREADS)
     else:
         centroid = None
     centroids.update({label : centroid})
-accurate_embeddings_codification = centroids
-print(len(accurate_embeddings_codification))
-print(len(accurate_embeddings_codification.values()))
+prediction_embeddings_codification = centroids
+print(len(prediction_embeddings_codification))
+print(len(prediction_embeddings_codification.values()))
 
 if centroid_plot:
     plotCentroids(centroids)

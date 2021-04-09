@@ -11,7 +11,7 @@ nltk.download('stopwords')
 import re
 from sklearn.metrics.pairwise import cosine_similarity
 from config import corpus, relabel, label_in_model_similarity, eval_model_similarity, sentence_transformer, model_label as model
-from labels.common_functions import reclassify, relabelDict, getTopicList, sbert_model, get_label_set, get_accurate_indexes, predicts, get_accurate_embeddings_codification
+from labels.escenario_monolabel.common_functions import reclassify, relabelDict, getTopicList, sbert_model, get_label_set, get_prediction_indexes, predicts, get_prediction_embeddings_codification
 from sentence_transformers import SentenceTransformer
 from BERTclassifier import getSamples, getTopics, loadPreprocessedText
 from sklearn.metrics import f1_score, recall_score, accuracy_score, precision_score, confusion_matrix
@@ -24,11 +24,11 @@ import xlwt
 text = loadPreprocessedText(corpus)
 topics = getTopicList(corpus)
 label_set = get_label_set(corpus)
-accurate_embeddings_codification = get_accurate_embeddings_codification(corpus, label_set)
+prediction_embeddings_codification = get_prediction_embeddings_codification(corpus, label_set)
 
-def get_topic_accurate_list(topic):
+def get_topic_prediction_list(topic):
     topic_list = []
-    indexes = index_correct
+    indexes = index_predict
     for index in indexes:
         if topic in topics[index]:
             topic_list.append(text[index])
@@ -36,12 +36,12 @@ def get_topic_accurate_list(topic):
 
 
 def determine_proximity_to_topic(input, topic):
-    topic_accurate_list = get_topic_accurate_list(topic)
+    topic_predict_list = get_topic_prediction_list(topic)
     input = [sbert_model.encode(input)]
-    topics = sbert_model.encode(topic_accurate_list)
+    topics = sbert_model.encode(topic_predict_list)
     if len(topics) == 0:
         return 0
-    similarity =  cosine_similarity(input, topics)
+    similarity = cosine_similarity(input, topics)
     if type(np.max(similarity)) == np.float32:
         return np.max(similarity)
     else:
@@ -51,7 +51,7 @@ def determine_proximity_to_topic(input, topic):
 
 def determine_proximity_to_topic(input, topic):
     input = [sbert_model.encode(input)]
-    topics = accurate_embeddings_codification.get(topic)
+    topics = prediction_embeddings_codification.get(topic)
     if len(topics) == 0:
         return -1
     similarity =  cosine_similarity(input, topics)

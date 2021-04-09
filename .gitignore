@@ -1,3 +1,4 @@
+!**/__pycache__
 /corpus/preprocessed
 /corpus/stats
 /corpus/COVID.txt
@@ -19,7 +20,8 @@
 /labels/label_dict/effective_dictionary_SERVICIO_PRECISO_MINTOPICSIZE_85.txt
 /labels/label_dict/effective_dictionary_SERVICIO_PRECISO_MINTOPICSIZE_30.txt
 /labels/label_dict/effective_dictionary_SEGUNDO_SERVICIO_ESCUCHA_MINTOPICSIZE_200.txt
-/labels/label_dict
+/labels/escenario_monolabel/label_dict
+/labels/escenario_monolabel/__pycache__
 /labels/__pycache__
 /labels/TSNE_centroid_representation/
 /labels/complete_evaluation.py

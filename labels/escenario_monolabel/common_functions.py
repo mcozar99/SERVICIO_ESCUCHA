@@ -19,13 +19,14 @@ def getTopicList(corpus):
     for line in open('./corpus/preprocessed/preprocess_%s'%corpus, 'r', encoding='utf-8'):
         topics.append(line.split('\t')[1].strip())
     return topics
+solutions = getTopicList(corpus)
 
 def effectiveDictionary(corpus, model):
     # BUILDS THE MOST EFFECTIVE DICTIONARY DEPENDING ON THE TOPIC WITH MOST PRESENCE IN EACH CLUSTER
     topics = getTopicList(corpus)
     clusters = getTopics(model)
     n_clusters = list(dict.fromkeys(clusters))
-    f = open('./labels/label_dict/effective_dictionary_%s.txt'%model, 'w', encoding='utf-8')
+    f = open('./labels/escenario_monolabel/label_dict/effective_dictionary_%s.txt'%model, 'w', encoding='utf-8')
     for n_cluster in n_clusters:
         if n_cluster == -1:
             f.write('-1,descarte\n')
@@ -71,13 +72,13 @@ def optimusDictionary(corpus, model):
             else:
                 new_dict.update({n_cluster : Counter(lista_topics).most_common()[0][0]})
         new_w_prec = w_acc(new_dict, corpus, model)
-        print(new_w_prec)
+        #print(new_w_prec)
         if w_prec <= new_w_prec:
             optimus_dict = new_dict
             w_prec = new_w_prec
             percent = perc
     print('Final perc = %s \nFinal w_prec = %s'%(percent, w_prec))
-    f = open('./labels/label_dict/optimus_dictionary_%s.txt'%model, 'w', encoding='utf-8')
+    f = open('./labels/escenario_monolabel/label_dict/optimus_dictionary_%s.txt'%model, 'w', encoding='utf-8')
     for i in range(optimus_dict.values().__len__()):
         f.write(str(list(optimus_dict.keys())[i]) + ',' + list(optimus_dict.values())[i] + '\n')
     f.close()
@@ -112,7 +113,7 @@ if power_on:
 
 def relabelDict(relabel):
     # GETS THE DICTIONARY OF RELABEL
-    df = pd.read_csv('./labels/label_dict/%s'%relabel, header=None, delimiter=',')
+    df = pd.read_csv('./labels/escenario_monolabel/label_dict/%s'%relabel, header=None, delimiter=',')
     clusters = list(df[0])
     topics = list(df[1])
     print('GOT DICTIONARY')
@@ -138,30 +139,30 @@ def get_label_set(corpus):
     return list(dict.fromkeys(getTopicList(corpus)))
 
 
-def get_accurate_indexes():
+def get_prediction_indexes():
     index_list = []
-    solutions = getTopicList(corpus)
     for i in range(len(solutions)):
-        if predicts[i] in solutions[i]:
+        if 'descart' not in predicts[i]:
             index_list.append(i)
     return index_list
 
-if power_on:
-    index_correct = get_accurate_indexes()
 
-def get_topic_accurate_list(topic):
+if power_on:
+    index_predict = get_prediction_indexes()
+
+def get_topic_prediction_list(topic):
     topic_list = []
-    indexes = index_correct
+    indexes = index_predict
     for index in indexes:
-        if topic in topics[index]:
+        if topic in predicts[index]:
             topic_list.append(text[index])
     return topic_list
 
-def get_accurate_embeddings_codification(corpus, label_set):
-    accurate_embeddings_codification = {}
+def get_prediction_embeddings_codification(corpus, label_set):
+    prediction_embeddings_codification = {}
     for label in label_set:
-        encoding = sbert_model.encode(get_topic_accurate_list(label))
-        accurate_embeddings_codification.update({label : encoding})
-    return accurate_embeddings_codification
+        encoding = sbert_model.encode(get_topic_prediction_list(label))
+        prediction_embeddings_codification.update({label : encoding})
+    return prediction_embeddings_codification
 
 power_on = False

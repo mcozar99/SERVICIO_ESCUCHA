@@ -6,7 +6,7 @@ sys.path.append('../../../')
 import pandas as pd
 import numpy as np
 from sklearn.metrics import f1_score, recall_score, accuracy_score, precision_score, confusion_matrix
-from config import model_label as model, corpus
+from config import model_label as model, corpus, percent
 from BERTclassifier import getTrueLabels, getTopics
 from collections import Counter
 import os.path
@@ -25,9 +25,9 @@ def multilabel_dictionary(corpus, model, second_label_importance):
     true_labels = getTrueLabels(corpus)
     clusters = getTopics(model)
     n_clusters = list(dict.fromkeys(clusters))
-    if not os.path.exists('./escenario_multilabel/multilabel_dicts'):
-        call('mkdir ./escenario_multilabel/multilabel_dicts', shell=True)
-    f = open('./escenario_multilabel/multilabel_dicts/multilabel_%s_%s_dict.csv'%(model, second_label_importance), 'w', encoding='utf-8')
+    if not os.path.exists('./labels/escenario_multilabel/multilabel_dicts'):
+        call('mkdir ./labels/escenario_multilabel/multilabel_dicts', shell=True)
+    f = open('./labels/escenario_multilabel/multilabel_dicts/multilabel_%s_%s_dict.csv'%(model, second_label_importance), 'w', encoding='utf-8')
     for cluster in n_clusters:
         importance = importance_cluster_list(clusters, cluster, true_labels)
         #print('CLUSTER %s'%cluster)
@@ -46,7 +46,7 @@ def multilabel_dictionary(corpus, model, second_label_importance):
 
 
 def get_multilabel_dict(model, second_label_importance):
-    return pd.read_csv('./escenario_multilabel/multilabel_dicts/multilabel_%s_%s_dict.csv'%(model, second_label_importance), delimiter=',', names=['cluster', 'label'])
+    return pd.read_csv('./labels/escenario_multilabel/multilabel_dicts/multilabel_%s_%s_dict.csv'%(model, second_label_importance), delimiter=',', names=['cluster', 'label'])
 
 
 def label_samples(model, second_label_importance):
@@ -96,23 +96,7 @@ def accuracy_per_label(model, second_label_importance):
     print(df.to_string())
 
 
-print('30')
-multilabel_dictionary(corpus, model, 30)
-label_samples(model, 30)
-accuracy_per_label(model, 30)
-get_accuracy(model, 30)
-print('35')
-multilabel_dictionary(corpus, model, 35)
-label_samples(model, 35)
-accuracy_per_label(model, 35)
-get_accuracy(model, 35)
-print('20')
-multilabel_dictionary(corpus, model, 20)
-label_samples(model, 20)
-accuracy_per_label(model, 20)
-get_accuracy(model, 20)
-print('15')
-multilabel_dictionary(corpus, model, 15)
-label_samples(model, 15)
-accuracy_per_label(model, 15)
-get_accuracy(model, 15)
+multilabel_dictionary(corpus, model, percent)
+label_samples(model, percent)
+accuracy_per_label(model, percent)
+get_accuracy(model, percent)

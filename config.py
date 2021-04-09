@@ -1,12 +1,12 @@
 # FICHERO DE CONFIGURACION DONDE SE MUEVEN TODOS LOS PARAMETROS
 
 
-actions = ['t1rain', 'i1nfo', 's1iluette', 'stats', 'v1isualization', 'com1plete_evaluation', 'c1entroid_evaluation']         # SILHOUETTE, INFO, TRAIN, STATS, VISUALIZATION, COMPLETE_EVALUATION, CENTROID_EVALUATION
+actions = ['t1rain', 'i1nfo', 's1iluette', 's1tats', 'v1isualization', 'monolabel_evaluation', 'multilabel_evaluation', 'c1entroid_evaluation']         # SILHOUETTE, INFO, TRAIN, STATS, VISUALIZATION, MONOLABEL_EVALUATION, MULTILABEL_EVALUATION, CENTROID_EVALUATION
 
 
 # GENERAL CONFIG
-model_name = 'PRUEBITA'
-min_topic_sizes = [100]
+model_name = 'TEST'
+min_topic_sizes = [1500]
 sentence_transformer = "dccuchile/bert-base-spanish-wwm-cased"
 corpus_pie = False
 
@@ -42,23 +42,29 @@ mode = 'visualize'          # TRAIN PARA GENERAR MODELO, VISUALIZE PARA ENSEÑAR
 
 
 # LABELING CONFIG
-label_number = 1            # 1 ONLY FIRST LABELING, 2 LABEL +  KNEIGHBORS, 3 LABEL + CENTROIDS, 4 LABEL + KNEIGBORS AND LABEL + CENTROIDS
-model_label = 'NEW_PREPROCESS_CHILE_MINTOPICSIZE_30'                    # MODEL TO RELABEL
-relabel = 'optimus_dictionary_NEW_PREPROCESS_CHILE_MINTOPICSIZE_30.txt' # RELABEL DICTIONARY, CHEK LABELS/LABEL_DICT ONCE GENERATED
+# MONOLABEL
+mono_label_number = 4            # 1 ONLY FIRST LABELING, 2 LABEL +  KNEIGHBORS, 3 LABEL + CENTROIDS, 4 LABEL + KNEIGBORS AND LABEL + CENTROIDS
+model_label = 'TEST_MINTOPICSIZE_1500'                    # MODEL TO RELABEL
+relabel = 'optimus_dictionary_TEST_MINTOPICSIZE_1500.txt' # RELABEL DICTIONARY, CHEK LABELS/LABEL_DICT ONCE GENERATED
 ##### FIRST EVALUATION
 label_importance_in_cluster = False
 global optimus_dictionary
 global effective_dictionary
-optimus_dictionary = False
+optimus_dictionary = True
 effective_dictionary = False
 evaluacion = True
 ##### KNEIGHBORS
 eval_model_similarity = True          #EVALUATING
-label_in_model_similarity = False #LABELING
+label_in_model_similarity = True      #LABELING
 ##### CENTROIDS
-centroid_label = False
+centroid_label = True
 centroid_evaluation = True
 centroid_plot = False
+
+
+# MULTILABEL (SAME MODEL AS MONOLABEL)
+multi_label_number = 1  # 1 ONLY FIRST LABELING, 2 MULTI-LABEL +  KNEIGHBORS, 3 LABEL + CENTROIDS, 4 MULTI-LABEL + KNEIGBORS AND LABEL + CENTROIDS
+percent = 30    # SECOND LABEL IMPORTANCE PERCENT
 
 
 ## CENTROID DIFFERENCE EVALUATION USE VARIABLE MODEL_LABEL TO SELECT YOUR MODEL TO EVALAUTE
