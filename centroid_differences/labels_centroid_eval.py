@@ -19,7 +19,7 @@ import os.path
 
 true_labels = getTrueLabels(corpus)
 predictions = []
-for line in open('./results/%s/predicts.txt'%model, 'r', encoding='utf-8'):
+for line in open('./results/%s/labels/multilabel/centroid_multilabel_predicts.txt'%model, 'r', encoding='utf-8'):
     predictions.append(line.replace('\n','').strip())
 embeddings_code = getEmbeddings(model, 'numpy')
 label_set = list(dict.fromkeys(true_labels))

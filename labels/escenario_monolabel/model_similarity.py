@@ -86,14 +86,14 @@ def label():
             if i%7500 == 0:
                 print(datetime.now().strftime('%H:%M:%S'), flush=True)
                 print(i, flush=True)
-    f = open('./results/%s/predicts.txt'%model, 'w', encoding='utf-8')
+    f = open('./results/%s/labels/monolabel/predicts.txt'%model, 'w', encoding='utf-8')
     for line in predicts:
         f.write(line.replace('\n', "") + '\n')
     f.close()
 
 def get_final_predicts():
     final_predicts = []
-    for line in open('./results/%s/predicts.txt'%model, 'r', encoding='utf-8'):
+    for line in open('./results/%s/labels/monolabel/predicts.txt'%model, 'r', encoding='utf-8'):
         final_predicts.append(line.replace('\n', ""))
     return final_predicts
 
@@ -125,8 +125,8 @@ def discards_evaluation():
     confusion_m = confusion_matrix(y_true, y_pred, label_set)
     print(pd.DataFrame(confusion_m, index=label_set,columns=label_set).to_string(), flush=True)
     matrix = pd.DataFrame(confusion_m, index=label_set,columns=label_set)
-    matrix.to_excel('./results/%s/evaluation/kneighbors_evaluation.xls'%model, columns=label_set, index=label_set, startcol=1, startrow=1, merge_cells=True)
-    rb = open_workbook('./results/%s/evaluation/kneighbors_evaluation.xls'%model)
+    matrix.to_excel('./results/%s/evaluation/kneighbors_monolabel_evaluation.xls'%model, columns=label_set, index=label_set, startcol=1, startrow=1, merge_cells=True)
+    rb = open_workbook('./results/%s/evaluation/kneighbors_monolabel_evaluation.xls'%model)
     wb = copy(rb)
     w_sheet = wb.get_sheet(0)
     w_sheet.write(0, 0, model)
@@ -138,7 +138,7 @@ def discards_evaluation():
     w_sheet.write(len(label_set) + 3, 2, prec)
     w_sheet.write(len(label_set) + 4, 2, recall)
     w_sheet.write(len(label_set) + 5, 2, f1)
-    wb.save('./results/%s/evaluation/kneighbors_evaluation.xls'%model)
+    wb.save('./results/%s/evaluation/kneighbors_monolabel_evaluation.xls'%model)
 
 
 def complete_evaluation():
@@ -153,8 +153,8 @@ def complete_evaluation():
     confusion_m = confusion_matrix(y_true, y_pred, label_set)
     print(pd.DataFrame(confusion_m, index=label_set,columns=label_set).to_string(), flush=True)
     matrix = pd.DataFrame(confusion_m, index=label_set,columns=label_set)
-    matrix.to_excel('./results/%s/evaluation/kneighbors_final_evaluation.xls'%model, columns=label_set, index=label_set, startcol=1, startrow=1, merge_cells=True)
-    rb = open_workbook('./results/%s/evaluation/kneighbors_final_evaluation.xls'%model)
+    matrix.to_excel('./results/%s/evaluation/kneighbors_final_monolabel_evaluation.xls'%model, columns=label_set, index=label_set, startcol=1, startrow=1, merge_cells=True)
+    rb = open_workbook('./results/%s/evaluation/kneighbors_final_monolabel_evaluation.xls'%model)
     wb = copy(rb)
     w_sheet = wb.get_sheet(0)
     w_sheet.write(0, 0, model)
@@ -166,7 +166,7 @@ def complete_evaluation():
     w_sheet.write(len(label_set) + 3, 2, prec)
     w_sheet.write(len(label_set) + 4, 2, recall)
     w_sheet.write(len(label_set) + 5, 2, f1)
-    wb.save('./results/%s/evaluation/kneighbors_final_evaluation.xls'%model)
+    wb.save('./results/%s/evaluation/kneighbors_final_monolabel_evaluation.xls'%model)
 
 
 if label_in_model_similarity:

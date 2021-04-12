@@ -6,8 +6,8 @@ sys.path.append('../../../')
 import silhouette.silhouette as silhouette
 import BERTclassifier as bc
 from bertopic import BERTopic as bt
-from config import actions, model_name, min_topic_sizes, corpus, sentence_transformer, iterations, info, n_topics, metric, save, mono_label_number, multi_label_number
-
+from config import actions, model_name, min_topic_sizes, corpus, sentence_transformer, iterations, info, n_topics, metric, save, mono_label_number, multi_label_number, model_label as model
+from subprocess import call
 
 print('SELECTED: %s'%actions)
 
@@ -30,8 +30,28 @@ if 'silhouette' in actions:
 if 'stats' in actions:
     import stats
 
+
+if 'multilabel_evaluation' in actions:
+    call('mkdir ./results/%s/labels'%model, shell=True)
+    call('mkdir ./results/%s/labels/multilabel/'%model, shell=True)
+    if multi_label_number == 1:
+        import labels.escenario_multilabel.multilabel_functions
+    if multi_label_number == 2:
+        import labels.escenario_multilabel.multilabel_functions
+        import labels.escenario_multilabel.kneighbors
+    if multi_label_number == 3:
+        import labels.escenario_multilabel.multilabel_functions
+        import labels.escenario_multilabel.centroides
+    if multi_label_number == 4:
+        import labels.escenario_multilabel.multilabel_functions
+        import labels.escenario_multilabel.centroides
+        import labels.escenario_multilabel.kneighbors
+
+
 if 'monolabel_evaluation' in actions:
     # 1 ONLY FIRST LABELING, 2 LABEL +  KNEIGHBORS, 3 LABEL + CENTROIDS, 4 LABEL + KNEIGBORS AND LABEL + CENTROIDS
+    call('mkdir /results/%s/labels'%model, shell=True)
+    call('mkdir results/%s/labels/monolabel/'%model, shell=True)
     if mono_label_number == 1:
         import labels.escenario_monolabel.labels_evaluation_v1
     elif mono_label_number == 2:
@@ -45,9 +65,6 @@ if 'monolabel_evaluation' in actions:
         import labels.escenario_monolabel.model_similarity
         import labels.escenario_monolabel.centroids
 
-if 'multilabel_evaluation' in actions:
-    if multi_label_number == 1:
-        import labels.escenario_multilabel.multilabel_functions
 
 if 'visualization' in actions:
     import visualization.visualize_conf

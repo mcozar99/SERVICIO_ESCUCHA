@@ -9,9 +9,13 @@ from BERTclassifier import getTopics, loadPreprocessedText
 import pandas as pd
 import numpy as np
 from collections import Counter
-
+from subprocess import call
 global power_on
 power_on = True
+
+call('mkdir /results/%s/labels'%model, shell=True)
+call('mkdir results/%s/labels/monolabel/'%model, shell=True)
+call('mkdir results/%s/labels/multilabel/'%model, shell=True)
 
 def getTopicList(corpus):
     # GETS ACCURATE LABELS FOR EVERY INPUT

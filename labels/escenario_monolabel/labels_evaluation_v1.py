@@ -19,6 +19,7 @@ from config import model_label as model
 from labels.escenario_monolabel.common_functions import getTopicList, relabelDict, reclassify, get_label_set
 r = lambda: random.randint(0,255) #Generador de numeros aleatorios para colores
 
+call('mkdir ./results/%s/evaluation'%model, shell=True)
 
 
 def effectiveDictionary(corpus, model):
@@ -159,7 +160,6 @@ def accuracyXTopic(corpus, model, relabel):
     """
 
 def evaluation(corpus, model, relabel):
-    call('mkdir ./results/%s/evaluation'%model, shell=True)
     print('EVALUATING MODEL: %s'%model)
     y_pred = reclassify(relabel, model)
     y_true = getTopicList(corpus)
@@ -176,8 +176,8 @@ def evaluation(corpus, model, relabel):
         confusion_m.append(line)
     ##################################### RESULTS TO EXCEL
     matrix = pd.DataFrame(confusion_m, index=label_set,columns=label_set)
-    matrix.to_excel('./results/%s/evaluation/first_evaluation.xls'%model, columns=label_set, index=label_set, startcol=1, startrow=1, merge_cells=True)
-    rb = open_workbook('./results/%s/evaluation/first_evaluation.xls'%model)
+    matrix.to_excel('./results/%s/evaluation/first_monolabel_evaluation.xls'%model, columns=label_set, index=label_set, startcol=1, startrow=1, merge_cells=True)
+    rb = open_workbook('./results/%s/evaluation/first_monolabel_evaluation.xls'%model)
     wb = copy(rb)
     w_sheet = wb.get_sheet(0)
     w_sheet.write(0, 0, model)
@@ -189,7 +189,7 @@ def evaluation(corpus, model, relabel):
     w_sheet.write(len(label_set) + 3, 2, prec)
     w_sheet.write(len(label_set) + 4, 2, recall)
     w_sheet.write(len(label_set) + 5, 2, f1)
-    wb.save('./results/%s/evaluation/first_evaluation.xls'%model)
+    wb.save('./results/%s/evaluation/first_monolabel_evaluation.xls'%model)
     #################################### EDIT EXCEL
     print(matrix.to_string())
 
