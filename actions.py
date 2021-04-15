@@ -6,7 +6,7 @@ sys.path.append('../../../')
 import silhouette.silhouette as silhouette
 import BERTclassifier as bc
 from bertopic import BERTopic as bt
-from config import actions, model_name, min_topic_sizes, corpus, sentence_transformer, iterations, info, n_topics, metric, save, mono_label_number, multi_label_number, model_label as model
+from config import actions, model_name, min_topic_sizes, corpus, sentence_transformer, iterations, info, n_topics, metric, save, mono_label_number, multi_label_number, model_label as model, percent, n_samples
 from subprocess import call
 
 print('SELECTED: %s'%actions)
@@ -32,6 +32,7 @@ if 'stats' in actions:
 
 
 if 'multilabel_evaluation' in actions:
+    import labels.dictionaries
     call('mkdir ./results/%s/labels'%model, shell=True)
     call('mkdir ./results/%s/labels/multilabel/'%model, shell=True)
     if multi_label_number == 1:
@@ -49,6 +50,7 @@ if 'multilabel_evaluation' in actions:
 
 
 if 'monolabel_evaluation' in actions:
+    import labels.dictionaries
     # 1 ONLY FIRST LABELING, 2 LABEL +  KNEIGHBORS, 3 LABEL + CENTROIDS, 4 LABEL + KNEIGBORS AND LABEL + CENTROIDS
     call('mkdir /results/%s/labels'%model, shell=True)
     call('mkdir results/%s/labels/monolabel/'%model, shell=True)
@@ -59,15 +61,17 @@ if 'monolabel_evaluation' in actions:
         import labels.escenario_monolabel.model_similarity
     elif mono_label_number == 3:
         import labels.escenario_monolabel.labels_evaluation_v1
-        import labels.escenario_monolabel.centroids
+        import labels.escenario_monolabel.centroides
     elif mono_label_number == 4:
         import labels.escenario_monolabel.labels_evaluation_v1
+        import labels.escenario_monolabel.centroides
         import labels.escenario_monolabel.model_similarity
-        import labels.escenario_monolabel.centroids
-
+    import labels.final_results
 
 if 'visualization' in actions:
     import visualization.visualize_conf
 
 if 'centroid_evaluation' in actions:
     import centroid_differences.labels_centroid_eval
+print('PERCENT: %s,\t N_SAMPLES: %s'%(percent, n_samples))
+print(model)

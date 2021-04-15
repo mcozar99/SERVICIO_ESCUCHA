@@ -194,11 +194,12 @@ def evaluation(corpus, model, relabel):
     print(matrix.to_string())
 
 
-
+"""
 if effective_dictionary:
     effectiveDictionary(corpus, model)
 if optimus_dictionary:
     optimusDictionary(corpus, model)
+"""
 if label_importance_in_cluster:
     clusters = list(dict.fromkeys(getTopics(model)))
     for cluster in clusters:

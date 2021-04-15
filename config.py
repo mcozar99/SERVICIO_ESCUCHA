@@ -1,13 +1,13 @@
 # FICHERO DE CONFIGURACION DONDE SE MUEVEN TODOS LOS PARAMETROS
 
 
-actions = ['t1rain', 'i1nfo', 's1ilhouette', 's1tats', 'v1isualization', 'm1onolabel_evaluation', 'multilabel_evaluation', 'c1entroid_evaluation']         # SILHOUETTE, INFO, TRAIN, STATS, VISUALIZATION, MONOLABEL_EVALUATION, MULTILABEL_EVALUATION, CENTROID_EVALUATION
+actions = ['t1rain', 'i1nfo', 's1ilhouette', 's1tats', 'v1isualization', 'monolabel_evaluation', 'multilabel_evaluation', 'c1entroid_evaluation']         # SILHOUETTE, INFO, TRAIN, STATS, VISUALIZATION, MONOLABEL_EVALUATION, MULTILABEL_EVALUATION, CENTROID_EVALUATION
 
 
 # GENERAL CONFIG
-model_name = 'MPDI'
+model_name = 'ST2_MPDI'
 min_topic_sizes = [30]
-sentence_transformer = "dccuchile/bert-base-spanish-wwm-cased"
+sentence_transformer = 'distiluse-base-multilingual-cased-v2' #"distiluse-base-multilingual-cased-v2" "dccuchile/bert-base-spanish-wwm-cased" 'bert-large-nli-mean-tokens'
 corpus_pie = False
 
 # TRAIN CONFIG
@@ -31,9 +31,9 @@ label_stats = False      # STATS OF LABELS OF A CORPUS
 
 
 # VISUALIZATION CONFIG
-model = 'MPDI_MINTOPICSIZE_30'             # MODELO A VISUALIZAR
+model = 'ST2_MPDI_MINTOPICSIZE_30'             # MODELO A VISUALIZAR
 formato = 'embeddings'      #REPRESENTAMOS EMBEDDINGS O PROBABILITIES
-negros = True               # TRUE PARA ENSEÑAR LOS TOPICS A -1 Y FALSE PARA OCULTARLOS
+negros = False               # TRUE PARA ENSEÑAR LOS TOPICS A -1 Y FALSE PARA OCULTARLOS
 modo = ''              # topic muestra los nombres de los temas y texto los valores mas significativos, vacio para no mostrar nada
 dimensions = 2              # 2 O 3 DIMENSIONES, RECOMENDADO 2
 represent = ['pca', 'intertopic']        # INTERTOPIC, PCA UMAP O TSNE, PODEMOS METER VARIOS EN UNA LISTA
@@ -44,13 +44,13 @@ mode = 'visualize'          # TRAIN PARA GENERAR MODELO, VISUALIZE PARA ENSEÑAR
 # LABELING CONFIG
 # MONOLABEL
 mono_label_number = 4            # 1 ONLY FIRST LABELING, 2 LABEL +  KNEIGHBORS, 3 LABEL + CENTROIDS, 4 LABEL + KNEIGBORS AND LABEL + CENTROIDS
-model_label = 'MPDI_MINTOPICSIZE_30'                    # MODEL TO RELABEL
-relabel = 'optimus_dictionary_MPDI_MINTOPICSIZE_30.txt' # RELABEL DICTIONARY, CHEK LABELS/LABEL_DICT ONCE GENERATED
+model_label = 'ST2_MPDI_MINTOPICSIZE_30'                    # MODEL TO RELABEL
+relabel = 'random_dict_ST2_MPDI_MINTOPICSIZE_30.txt' # RELABEL DICTIONARY, CHEK LABELS/LABEL_DICT ONCE GENERATED
 ##### FIRST EVALUATION
-label_importance_in_cluster = True
+label_importance_in_cluster = False
 global optimus_dictionary
 global effective_dictionary
-optimus_dictionary = True
+optimus_dictionary = False
 effective_dictionary = False
 evaluacion = True
 ##### KNEIGHBORS
@@ -64,12 +64,19 @@ centroid_plot = False
 
 # MULTILABEL (SAME MODEL AS MONOLABEL)
 multi_label_number = 4  # 1 ONLY FIRST LABELING, 2 MULTI-LABEL +  KNEIGHBORS, 3 LABEL + CENTROIDS, 4 MULTI-LABEL + KNEIGBORS AND LABEL + CENTROIDS
-percent = 30    # SECOND LABEL IMPORTANCE PERCENT
+percent = 25    # SECOND LABEL IMPORTANCE PERCENT
 kneighbors_labeling = True
 kneighbors_eval = True
 centroids_labeling = True
 centroids_eval = True
 
 ## CENTROID DIFFERENCE EVALUATION USE VARIABLE MODEL_LABEL TO SELECT YOUR MODEL TO EVALAUTE
-plot_centroid_distances = True         # PLOTS PREDICTIONS AND REAL CENTROIDS PER LABEL
-calculate_centroid_distances = True    # DISPLAYS DISTANCES BETWEEN TRUE AND PRED CENTROIDS
+plot_centroid_distances =False         # PLOTS PREDICTIONS AND REAL CENTROIDS PER LABEL
+calculate_centroid_distances = False    # DISPLAYS DISTANCES BETWEEN TRUE AND PRED CENTROIDS
+
+
+# PARA LOS NUEVOS DICCIONARIOS
+n_samples = 10
+probabilistic_mode = True
+random_mode = True
+multilabel_dict = 'random_multilabel_ST2_MPDI_MINTOPICSIZE_30_25'  # PROBABILITIES O RANDOM + MODELO + PERCENT

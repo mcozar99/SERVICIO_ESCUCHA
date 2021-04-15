@@ -1,0 +1,95 @@
+import sys
+sys.path.append('.')
+sys.path.append('..')
+sys.path.append('../../')
+sys.path.append('../../../')
+import pandas as pd
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+from config import corpus, model_label as model, percent, sentence_transformer
+from sentence_transformers import SentenceTransformer
+from BERTclassifier import getEmbeddings, getTrueLabels, getTopics, loadPreprocessedText
+from datetime import datetime
+from xlrd import open_workbook
+from xlutils.copy import copy
+import xlwt
+
+df = pd.read_csv('results/%s/multilabel_predictions_%s.txt'%(model, percent), names=['pred'], header=None)
+df['true'] = getTrueLabels(corpus)
+df['text'] = loadPreprocessedText(corpus)
+df = df.assign(code=[*getEmbeddings(model, 'numpy')])
+
+label_set = list(dict.fromkeys(getTrueLabels(corpus)))
+
+def kneighbors(df):
+    discards = df[df['pred'] == 'descarte']
+    df.drop(df[df['pred'] == 'descarte'].index, inplace=True)
+    i = 0
+    print(df)
+    for item in discards.iterrows():
+        distance = cosine_similarity([item[1]['code']], df['code'].tolist())
+        df['distance'] = distance[0]
+        item[1]['pred'] = df[df.distance == df.distance.max()]['pred'].tolist()[0]
+        i += 1
+        print(discards)
+        if i == 10:
+            return
+        if i%1500 == 0:
+            print(i)
+    frames = [df, discards]
+    df = pd.concat(frames).sort_index(axis=0)
+    print(df)
+    df['pred'].to_csv('./results/%s/kneighbors_multilabel_predicts.txt'%model, index=False, header=False)
+    return df, discards
+
+def evaluation(true, pred):
+    evaluation = pd.DataFrame(index=label_set, columns=['precision', 'recall', 'f1'])
+    for label in label_set:
+        true_positives = 0
+        true_negatives = 0
+        false_positives = 0
+        false_negatives = 0
+        for i in range(len(true)):
+            if label == true[i] and true[i] in pred[i]:
+                true_positives += 1
+            if label == true[i] and true[i] not in pred[i]:
+                false_negatives += 1
+            if label != true[i] and true[i] in pred[i] and label not in pred[i]:
+                false_positives += 1
+            if label != true[i] and true[i] not in pred[i]:
+                true_negatives += 1
+        topic_precision = 0
+        topic_recall = 0
+        topic_f1 = 0
+        if true_positives + false_positives != 0:
+            topic_precision = true_positives / (true_positives + false_positives)
+        if true_positives + false_negatives != 0:
+            topic_recall = true_positives / (true_positives + false_negatives)
+        if topic_precision + topic_recall != 0:
+            topic_f1 = 2 * (topic_precision * topic_recall) / (topic_precision + topic_recall)
+        evaluation.loc[label] = [topic_precision, topic_recall, topic_f1]
+    tot = len(true)
+    evaluation['Total'] = acc['Total']
+    final_numbers = []
+    acc, prec, recall, f1 = (0,0,0,0)
+
+    for eval in evaluation.iterrows():
+        prec += (eval[1]['precision'] * eval[1]['Total'])/tot
+        recall += (eval[1]['recall'] * eval[1]['Total'])/tot
+        f1 += (eval[1]['f1'] * eval[1]['Total'])/tot
+
+    evaluation = evaluation.drop('Total', axis = 1)
+
+    evaluation.loc['Total'] = [acc, prec, recall, f1]
+
+
+def evaluate_kneighbors():
+    tries = pd.read_csv('./results/%s/kneighbors_multilabel_predicts.txt'%model, names=['pred'], header=None)
+    tries['true']
+    tries['cluster'] = getTopics(model)
+    tries.drop(tries[tries['cluster'] == -1])
+
+
+
+
+kneighbors(df)

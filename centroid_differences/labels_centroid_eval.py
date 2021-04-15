@@ -24,9 +24,21 @@ for line in open('./results/%s/labels/multilabel/centroid_multilabel_predicts.tx
 embeddings_code = getEmbeddings(model, 'numpy')
 label_set = list(dict.fromkeys(true_labels))
 
+etiquetas = []
+for label in label_set:
+    etiquetas.append('true_%s'%label)
+    etiquetas.append('pred_%s'%label)
+
+df = pd.DataFrame(getTrueLabels(corpus), columns=['true'])
+df['pred'] = pd.read_csv('./results/%s/labels/multilabel/centroid_multilabel_predicts.txt'%model, header=None)
+df = df.assign(code=[*getEmbeddings(model, 'numpy')])
+
+centroids = pd.DataFrame(index = etiquetas, columns=['centroide'])
+print(centroids)
+print(df)
 
 def get_topic_centroid(embeddings):
-    kmeans = KMeans(n_clusters=1, max_iter=100, init='k-means++', tol=0.001, n_jobs=8)
+    kmeans = KMeans(n_clusters=1, max_iter=1500, init='k-means++', tol=0.0001, n_jobs=8)
     kmeans.fit(embeddings)
     centroid = kmeans.cluster_centers_
     return centroid[0]
@@ -82,6 +94,7 @@ def get_centroid_data(pred, true):
     return data, style
 
 
+
 def plot_results(data, style):
     points = pd.DataFrame(list(data['Centroid']), columns=['x', 'y'])
     print(data)
@@ -92,9 +105,8 @@ def plot_results(data, style):
         hue=style,
         style = style
     )
-
     for i in range(points.shape[0]):
-        plt.text(x=list(points['x'])[i]+0.05, y=list(points['y'])[i]+0.05, s=list(data['Label'])[i], fontdict=dict(color='black',size=8))
+        plt.text(x=list(points['x'])[i] + 0.01, y=list(points['y'])[i] + 0.01, s=list(data['Label'])[i], fontdict=dict(color='black',size=8))
         #, bbox=dict(facecolor='white',alpha=0.5))
     if not os.path.exists('./centroid_differences/representations'):
         call('mkdir ./centroid_differences/representations', shell=True)
@@ -125,11 +137,11 @@ def get_centroid_distances(pred_centroids, true_centroids):
     return df
 
 # DICTIONARY WITH KEYS = LABELS : VALUES = SAMPLES WITH LABEL IN KEY
-pred_organised_labels = get_organised_labels(predictions)
-true_organised_labels = get_organised_labels(true_labels)
+#pred_organised_labels = get_organised_labels(predictions)
+#true_organised_labels = get_organised_labels(true_labels)
 # DICTIONARY WITH LABEL : CENTROID
-pred = get_pred_centroids(pred_organised_labels)
-true = get_true_centroids(true_organised_labels)
+#pred = get_pred_centroids(pred_organised_labels)
+#true = get_true_centroids(true_organised_labels)
 
 if plot_centroid_distances:
     print('PLOTTING CENTROIDS')

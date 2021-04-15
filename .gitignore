@@ -28,3 +28,6 @@
 /centroid_differences/__pycache__
 /centroid_differences/representations
 ./labels/escenario_multilabel/multilabel_dicts/
+mpdi.txt
+st2_mpdi.txt
+labels/escenario_monolabel/yanovale.py

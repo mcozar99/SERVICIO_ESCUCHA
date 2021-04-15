@@ -73,8 +73,7 @@ def get_centroid_discard_predictions():
     preds = preds.loc[preds['cluster'] == -1]
     return preds
 
-def evaluation(true, pred):
-
+def evaluation(true, pred, title):
     tot = Counter(true)
     for label in label_set:
         if label not in tot.keys():
@@ -118,7 +117,17 @@ def evaluation(true, pred):
             i += 1
     acc = i / sum(tot.values())
     print('Acc: %s \t Prec: %s \t Recall: %s \t F1: %s'%(acc,prec,recall,f1))
-
+    wb = xlwt.Workbook()
+    w_sheet = wb.add_sheet('EVAL')
+    w_sheet.write(0, 1, 'ACC', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(1, 1, 'PREC', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(2, 1, 'RECALL', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(3, 1, 'F1', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(0, 3, acc)
+    w_sheet.write(1, 3, prec)
+    w_sheet.write(2, 3, recall)
+    w_sheet.write(3, 3, f1)
+    wb.save('./results/%s/evaluation/%s.xls'%(model,title))
 
 if centroids_labeling:
     centroides(df)
@@ -126,7 +135,7 @@ if centroids_eval:
     print('CENTROIDS EVALUATION')
     print('DISCARDS EVALUATION')
     discards_pred = get_centroid_discard_predictions()
-    evaluation(discards_pred['true'].tolist(), discards_pred['pred'].tolist())
+    evaluation(discards_pred['true'].tolist(), discards_pred['pred'].tolist(), 'centroids_multilabel_evaluation')
     print('FINAL EVALUATION')
     final_pred = get_centroid_predictions()
-    evaluation(final_pred['true'].tolist(), final_pred['pred'].tolist())
+    evaluation(final_pred['true'].tolist(), final_pred['pred'].tolist(), 'centroids_final_multilabel_evaluation')

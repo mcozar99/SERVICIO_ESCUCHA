@@ -6,13 +6,17 @@ sys.path.append('../../../')
 import pandas as pd
 import numpy as np
 from sklearn.metrics import f1_score, recall_score, accuracy_score, precision_score, confusion_matrix
-from config import model_label as model, corpus, percent
+from config import model_label as model, corpus, percent, multilabel_dict
 from BERTclassifier import getTrueLabels, getTopics
 from collections import Counter
 import os.path
 from subprocess import call
+from xlrd import open_workbook
+from xlutils.copy import copy
+import xlwt
 
 label_set = list(dict.fromkeys(getTrueLabels(corpus)))
+call('mkdir ./results/%s/evaluation'%model, shell=True)
 
 def importance_cluster_list(clusters, cluster, true_labels):
     labels_of_cluster = []
@@ -47,17 +51,17 @@ def multilabel_dictionary(corpus, model, second_label_importance):
     f.close()
 
 
-def get_multilabel_dict(model, second_label_importance):
-    return pd.read_csv('./labels/escenario_multilabel/multilabel_dicts/multilabel_%s_%s_dict.csv'%(model, second_label_importance), delimiter=',', names=['cluster', 'label'])
+def get_multilabel_dict(multilabel_dict):
+    return pd.read_csv('./labels/escenario_multilabel/multilabel_dicts/%s.csv'%(multilabel_dict), delimiter=',', names=['cluster', 'label'])
 
 
-def label_samples(model, second_label_importance):
+def label_samples(model, second_label_importance, multilabel_dict):
     clusters = getTopics(model)
-    multilabel_dict = get_multilabel_dict(model, second_label_importance)
-    multilabel_dict = dict(zip(multilabel_dict.cluster, multilabel_dict.label))
+    multilabel_dicts = get_multilabel_dict(multilabel_dict)
+    multilabel_dicts = dict(zip(multilabel_dicts.cluster, multilabel_dicts.label))
     f = open('./results/%s/labels/multilabel/multilabel_predictions_%s.txt'%(model, second_label_importance), 'w', encoding='utf-8')
     for cluster in clusters:
-        f.write(multilabel_dict.get(cluster) + '\n')
+        f.write(multilabel_dicts.get(cluster) + '\n')
     f.close()
 
 
@@ -120,12 +124,21 @@ def evaluate(model, second_label_importance):
         f1 += (eval[1]['f1'] * eval[1]['Total'])/tot
 
     evaluation = evaluation.drop('Total', axis = 1)
-
     evaluation.loc['Total'] = [acc, prec, recall, f1]
-
     print(evaluation)
 
-
+    wb = xlwt.Workbook()
+    w_sheet = wb.add_sheet('EVAL')
+    w_sheet = wb.get_sheet(0)
+    w_sheet.write(0, 1, 'ACC', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(1, 1, 'PREC', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(2, 1, 'RECALL', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(3, 1, 'F1', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(0, 3, acc)
+    w_sheet.write(1, 3, prec)
+    w_sheet.write(2, 3, recall)
+    w_sheet.write(3, 3, f1)
+    wb.save('./results/%s/evaluation/first_multilabel_evaluation.xls'%model)
 
 def accuracy_per_label(model, second_label_importance):
     true = getTrueLabels(corpus)
@@ -149,6 +162,5 @@ def accuracy_per_label(model, second_label_importance):
     return df
 
 
-multilabel_dictionary(corpus, model, percent)
-label_samples(model, percent)
+label_samples(model, percent, multilabel_dict)
 evaluate(model, percent)

@@ -14,6 +14,9 @@ from datetime import datetime
 from xlrd import open_workbook
 from xlutils.copy import copy
 import xlwt
+from xlrd import open_workbook
+from xlutils.copy import copy
+import xlwt
 
 df = pd.read_csv('results/%s/labels/multilabel/multilabel_predictions_%s.txt'%(model, percent), names=['pred'], header=None)
 df['true'] = getTrueLabels(corpus)
@@ -48,7 +51,7 @@ def get_kneighbors_discard_predictions():
     return preds
 
 
-def evaluation(true, pred):
+def evaluation(true, pred, title):
     tot = Counter(true)
     for label in label_set:
         if label not in tot.keys():
@@ -93,6 +96,18 @@ def evaluation(true, pred):
     acc = i / sum(tot.values())
     print('Acc: %s \t Prec: %s \t Recall: %s \t F1: %s'%(acc,prec,recall,f1))
 
+    wb = xlwt.Workbook()
+    w_sheet = wb.add_sheet('EVAL')
+    w_sheet.write(0, 1, 'ACC', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(1, 1, 'PREC', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(2, 1, 'RECALL', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(3, 1, 'F1', xlwt.easyxf('font: bold 1'))
+    w_sheet.write(0, 2, acc)
+    w_sheet.write(1, 2, prec)
+    w_sheet.write(2, 2, recall)
+    w_sheet.write(3, 2, f1)
+    wb.save('./results/%s/evaluation/%s.xls'%(model,title))
+
 
 if kneighbors_labeling:
     kneighbors(df)
@@ -100,7 +115,8 @@ if kneighbors_eval:
     print('KNEIGHBORS EVALUATION')
     print('DISCARDS EVALUATION')
     discards_pred = get_kneighbors_discard_predictions()
-    evaluation(discards_pred['true'].tolist(), discards_pred['pred'].tolist())
+    evaluation(discards_pred['true'].tolist(), discards_pred['pred'].tolist(), 'kneighbors_multilabel_evaluation')
     print('FINAL EVALUATION')
     final_pred = get_kneighbors_predictions()
-    evaluation(final_pred['true'].tolist(), final_pred['pred'].tolist())
+    evaluation(final_pred['true'].tolist(), final_pred['pred'].tolist(), 'kneighbors_final_multilabel_evaluation')
+

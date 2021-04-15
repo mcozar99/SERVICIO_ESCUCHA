@@ -31,15 +31,11 @@ def seed(df):
     return  rndperm
 
 def borraNulos(embeddings, model):
-    topics = getTopics(model=model)
-    borrar = []
-    i = 0
-    for topic in topics:
-        i += 1
-        if topic == -1:
-            borrar.append(i)
+    df = pd.DataFrame(getTopics(model=model), columns = ['cluster'])
+    df = df.assign(embeddings=[*embeddings])
+    df = df[df['cluster'] != -1]
     print('DELETED -1 TOPICS')
-    return np.delete(embeddings, borrar, axis=0)
+    return df['embeddings'].tolist()
 
 def asignaColores(model, negros, embeddings):
     topics = getTopics(model=model)
@@ -75,7 +71,8 @@ def hdbscanFit(embeddings):
     clusterer.fit(embeddings)
 
 def pca(model, df, embeddings, rndperm, negros):
-    embeddings, colors = asignaColores(model=model, negros=negros, embeddings=embeddings)
+    if not negros:
+        embeddigns = borraNulos(embeddings, model)
     print('TRANSFORMING TO 3D')
     pca = PCA(n_components=3)
     #pca_result = pca.fit_transform(df[feat_cols].values)
@@ -103,7 +100,8 @@ def pca(model, df, embeddings, rndperm, negros):
     plt.show()
 
 def pca2D(model, embeddings, negros, modo):
-    embeddings, colors = asignaColores(model=model, negros=negros, embeddings=embeddings)
+    if not negros:
+        embeddings = borraNulos(embeddings, model)
     print('TRANSFORMING TO 2D')
     pca = PCA(n_components=2)
     #pca_result = pca.fit_transform(df[feat_cols].values)
@@ -111,10 +109,11 @@ def pca2D(model, embeddings, negros, modo):
     #pk.dump(pca, open("pca.pkl","wb")) #GUARDAMOS EL PCA (OPCIONAL)
     print('ENDED, REPRESENTING')
     print('Explained variation per principal component: {}'.format(pca.explained_variance_ratio_))
-    plotColores(pca_result[:,0], pca_result[:,1], colors, 'Modelo %s, PCA 2 Dimensiones'%model, model, negros, modo)
+    plotColores(pca_result[:,0], pca_result[:,1], [], 'Modelo %s, PCA 2 Dimensiones'%model, model, negros, modo)
 
 def tsne(model, embeddings, negros, modo):
-    embeddings, colors = asignaColores(model=model, negros=negros, embeddings=embeddings)
+    if not negros:
+        embeddings = borraNulos(embeddings, model)
     if embeddings[0].__len__() > 100:
         print('TOO MANY DIMENSIONS, FIRST REDUCE WITH PCA TO 50 DIMENSIONS')
         pca = PCA(n_components=50)
@@ -139,7 +138,7 @@ def saveTSNE(tsne_results, file):
 def loadTSNE(file, model, embeddings, negros, title, modo):
     tsne_results = pd.read_csv('./visualization/TSNE/%s.csv'%file, header = None).to_numpy()
     print('LOADED RESULTS, PLOTTING')
-    embeddings, colors = asignaColores(model=model, negros=negros, embeddings=embeddings)
+    embeddings = borraNulos(embeddings, model)
     plotColores(x_coor=tsne_results[:, 0], y_coor=tsne_results[:, 1], colors=colors, title=title, model=model, negros=negros, modo=modo)
 
 def uMAP(model, embeddings, n_neighbors, n_components):
@@ -156,7 +155,8 @@ def uMAP(model, embeddings, n_neighbors, n_components):
 def umapping(model, negros, embeddings, df, rndperm, file):
     umap_embeddings = np.array(pd.read_csv('%s'%file, header=None))
     #df['y'] = classes
-    embeddings, colors = asignaColores(model=model, negros=negros, embeddings=embeddings)
+    if not negros:
+        embeddings = borraNulos(embeddings, model)
     ######################
     df['UMAP-one'] = umap_embeddings[:,0]
     df['UMAP-two'] = umap_embeddings[:,1]
@@ -182,7 +182,8 @@ def umapping(model, negros, embeddings, df, rndperm, file):
     plt.show()
 
 def processUMAP(file, model, embeddings, negros, modo):
-    embeddings, colors = asignaColores(model, negros, embeddings)
+    if not negros:
+        embeddings = borraNulos(embeddings, model)
     coor = np.array(pd.read_csv('%s'%file, header=None))
     x_coor = coor[:, 0]
     y_coor = coor[:, 1]
@@ -198,14 +199,18 @@ def plotColores(x_coor, y_coor, colors, title, model, negros, modo):
         text =readTopicText(model)
         if not negros:
             text = deleteNull(text=text, model=model)
-
+    if negros:
+        hue = getTopics(model)
+    else:
+        hue = pd.DataFrame(getTopics(model), columns=['cluster'])
+        hue = hue[hue['cluster'] != -1]['cluster'].tolist()
     data = pd.DataFrame(np.column_stack([x_coor, y_coor]), columns=['x', 'y'])
     plt.figure(figsize=(25, 9))
     sns.scatterplot(
         x = 'x', y = 'y',
-        palette= sns.color_palette("hls", n_colors=list(dict.fromkeys(getTopics(model))).__len__()),
+        palette= sns.color_palette("hls", n_colors=list(dict.fromkeys(hue)).__len__()),
         data=data,
-        hue = getTopics(model),
+        hue = hue,
         legend="brief"
     )
     if text != []:

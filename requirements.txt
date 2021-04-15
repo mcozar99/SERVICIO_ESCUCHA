@@ -10,6 +10,7 @@ hdbscan
 numpy
 seaborn
 umap-learn
+UliPlot
 typing
 matplotlib
 wget

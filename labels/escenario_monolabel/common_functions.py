@@ -103,6 +103,7 @@ def w_acc(dictionary, corpus, model):
         accuracy_list.append(corrects / Counter(y_true)[topic])
     return sum(accuracy_list)/len(accuracy_list)
 
+"""
 if optimus_dictionary:
     optimusDictionary(corpus, model)
 optimus_dictionary = False
@@ -110,7 +111,7 @@ optimus_dictionary = False
 if effective_dictionary:
     effectiveDictionary(corpus, model)
 effective_dictionary = False
-
+"""
 if power_on:
     topics = getTopicList(corpus)
     text = loadPreprocessedText(corpus)
