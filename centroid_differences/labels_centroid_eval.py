@@ -16,87 +16,52 @@ from config import corpus, model_label as model, sentence_transformer, plot_cent
 from subprocess import call
 import os.path
 
-
-true_labels = getTrueLabels(corpus)
-predictions = []
-for line in open('./results/%s/labels/multilabel/centroid_multilabel_predicts.txt'%model, 'r', encoding='utf-8'):
-    predictions.append(line.replace('\n','').strip())
-embeddings_code = getEmbeddings(model, 'numpy')
-label_set = list(dict.fromkeys(true_labels))
-
-etiquetas = []
-for label in label_set:
-    etiquetas.append('true_%s'%label)
-    etiquetas.append('pred_%s'%label)
-
-df = pd.DataFrame(getTrueLabels(corpus), columns=['true'])
-df['pred'] = pd.read_csv('./results/%s/labels/multilabel/centroid_multilabel_predicts.txt'%model, header=None)
-df = df.assign(code=[*getEmbeddings(model, 'numpy')])
-
-centroids = pd.DataFrame(index = etiquetas, columns=['centroide'])
-print(centroids)
-print(df)
-
 def get_topic_centroid(embeddings):
+    if embeddings.__len__() < 1:
+        return np.zeros(512)
     kmeans = KMeans(n_clusters=1, max_iter=1500, init='k-means++', tol=0.0001, n_jobs=8)
     kmeans.fit(embeddings)
     centroid = kmeans.cluster_centers_
     return centroid[0]
 
-def get_organised_labels(labels):
-    organised_dictionary = {}
-    for label in label_set:
-        embeddings = []
-        indexes = []
-        for i in range(len(labels)):
-            if label in labels[i]:
-                indexes.append(i)
-        for index in indexes:
-            embeddings.append(embeddings_code[index])
-        if embeddings == []:
-            organised_dictionary.update({label : None})
-            continue
-        organised_dictionary.update({label : embeddings})
-    return organised_dictionary
+fichero_predicciones = './results/%s/labels/monolabel/random_kneighbors_predicts_samples100000_percent40.txt'%model
+predicciones_reales = getTrueLabels(corpus)
 
+embeddings_code = getEmbeddings(model, 'numpy')
 
-def get_true_centroids(true_organised_labels):
-    true_centroid_dict = {}
-    for label in label_set:
-        centroid = get_topic_centroid(true_organised_labels.get(label))
-        true_centroid_dict.update({('true_%s'%label) : centroid})
-    return true_centroid_dict
+label_set = list(dict.fromkeys(predicciones_reales))
+# ARRAY DE ETIQUETAS
+etiquetas = []
+for label in label_set:
+    etiquetas.append('true_%s'%label)
+    etiquetas.append('pred_%s'%label)
 
+# DATAFRAME CON PREDICCIONES Y ETIQUETAS REALES, CON LOS EMBEDDINGS
+df = pd.DataFrame(predicciones_reales, columns=['true'])
+df['pred'] = pd.read_csv(fichero_predicciones, header=None)
+df = df.assign(code=[*getEmbeddings(model, 'numpy')])
 
-def get_pred_centroids(pred_organised_labels):
-    pred_centroid_dict = {}
-    for label in label_set:
-        if pred_organised_labels.get(label) is None:
-            pred_centroid_dict.update({('pred_%s'%label) : None})
-            continue
-        centroid = get_topic_centroid(pred_organised_labels.get(label))
-        pred_centroid_dict.update({('pred_%s'%label) : centroid})
-    return pred_centroid_dict
+# DATAFRAME CON LOS CENTROIDES
+centroids = pd.DataFrame(index = etiquetas, columns=['x', 'y'])
 
+# CALCULO DE CADA UNO DE LOS CENTROIDES, REDUCCION DE DIMENSIONANLIDAD Y ASIGNACION
+pca = PCA(n_components=2)
+for label in label_set:
+    print(label)
+    # CENTROIDE
+    centroide_true = get_topic_centroid(df[df.true.str.contains(label)].code.values.tolist())
+    centroide_pred = get_topic_centroid(df[df.pred.str.contains(label)].code.values.tolist())
+    # REDUCCION DIMENSIONAL
+    centroide_true, centroide_pred = pca.fit_transform([centroide_true, centroide_pred])
+    # ASIGNACION
+    centroids.loc['true_%s'%label] = centroide_true
+    centroids.loc['pred_%s'%label] = centroide_pred
 
-
-def get_centroid_data(pred, true):
-    pred = {k: v for k, v in pred.items() if v is not None}
-    pca = PCA(n_components = 2)
-    true_centroids = pca.fit_transform(list(true.values()))
-    pred_centroids = pca.fit_transform(list(pred.values()))
-
-    pred = pd.DataFrame(dict(zip(list(pred.keys()), pred_centroids)).items(), columns= ['Label', 'Centroid'])
-    true = pd.DataFrame(dict(zip(list(true.keys()), true_centroids)).items(), columns= ['Label', 'Centroid'])
-    data = pred.append(true)
-    style = np.append(np.full(len(pred), 'pred'), np.full(len(true), 'true'))
-
-    return data, style
-
-
+print(centroids)
 
 def plot_results(data, style):
-    points = pd.DataFrame(list(data['Centroid']), columns=['x', 'y'])
+    # Pasamos a DATAFRAME DE PUNTOS
+    points = pd.DataFrame(list(data['centroide']), index = etiquetas, columns=['x', 'y'])
     print(data)
     plt.figure(figsize=(16,10))
     sns.scatterplot(
@@ -107,7 +72,7 @@ def plot_results(data, style):
     )
     for i in range(points.shape[0]):
         plt.text(x=list(points['x'])[i] + 0.01, y=list(points['y'])[i] + 0.01, s=list(data['Label'])[i], fontdict=dict(color='black',size=8))
-        #, bbox=dict(facecolor='white',alpha=0.5))
+    # SALVAMOS Y CREAMOS CARPETA SI NO EXISTE
     if not os.path.exists('./centroid_differences/representations'):
         call('mkdir ./centroid_differences/representations', shell=True)
     plt.title('%s Centroids Representation'%model)
@@ -135,18 +100,4 @@ def get_centroid_distances(pred_centroids, true_centroids):
     df = pd.DataFrame(list(zip(distances, similarities)), index=label_set, columns=['euclidean', 'cosine'])
     print(df)
     return df
-
-# DICTIONARY WITH KEYS = LABELS : VALUES = SAMPLES WITH LABEL IN KEY
-#pred_organised_labels = get_organised_labels(predictions)
-#true_organised_labels = get_organised_labels(true_labels)
-# DICTIONARY WITH LABEL : CENTROID
-#pred = get_pred_centroids(pred_organised_labels)
-#true = get_true_centroids(true_organised_labels)
-
-if plot_centroid_distances:
-    print('PLOTTING CENTROIDS')
-    data, style = get_centroid_data(pred, true)
-    plot_results(data, style)
-if calculate_centroid_distances:
-    get_centroid_distances(pred, true)
 

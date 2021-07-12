@@ -1,0 +1,31 @@
+SELECTED: ['t1rain', 'i1nfo', 's1ilhouette', 's1tats', 'visualization', 'l1abel', 'c1entroid_evaluation', 'test']
+PERCENT: 40,	 N_SAMPLES: 100000
+TFG_MINTOPICSIZE_30
+distiluse-base-multilingual-cased-v2
+LOADED PROBS
+IF DOESN´T WORK GO TO ./anaconda3/lib/python3.8/site-packages/bertopic/_bertopic.py or similar (bertopics library)
+WRITE    fig.write_html('./visualization/Intertopic/intertopic.html') IN LINE 1102
+FILE DONE
+30 30 0
+1.0 1.0
+0
+12:58:03 5000
+13:13:49 10000
+13:29:38 15000
+13:45:27 20000
+14:01:15 25000
+14:16:54 30000
+               true  ... cluster
+0      restaurantes  ...     162
+1          política  ...     247
+2             otros  ...     184
+3             otros  ...     262
+4          política  ...     273
+...             ...  ...     ...
+31378         otros  ...     251
+31379      política  ...     201
+31380         otros  ...       1
+31381         otros  ...     190
+31382  restaurantes  ...     156
+
+[31383 rows x 5 columns]

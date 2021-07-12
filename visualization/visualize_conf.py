@@ -19,7 +19,6 @@ if 'embeddings' in formato:
     embeddings = np.array(df)
     print('LOADED EMBEDDINGS')
 
-rndperm = v.seed(df)
 
 if 'tsne' in represent:
     if not os.path.isfile('./visualization/TSNE/tsne_result_%s_negros_%s.csv'%(model, negros)):
@@ -30,7 +29,7 @@ if 'tsne' in represent:
             print('Only 2D representation for TSNE')
     else:
         print('DETECTED MODEL IN CACHE, LOADING AND PLOTTING')
-        v.loadTSNE(file='tsne_result_%s_negros_%s'%(model, negros), model=model, embeddings=embeddings, negros=negros, title='tsne_%s_negros_%s'%(model, negros), modo=modo)
+        v.loadTSNE(file='tsne_result_%s_negros_%s'%(model, negros), model=model, embeddings=embeddings, negros=negros, title='tsne_%s'%(model), modo=modo)
 
 if 'pca' in represent:
     if dimensions == 2:

@@ -1,0 +1,83 @@
+SELECTED: ['t1rain', 'i1nfo', 's1ilhouette', 's1tats', 'visualization', 'label', 'c1entroid_evaluation', 'test']
+PERCENT: 30,	 N_SAMPLES: 100000
+TFG_MINTOPICSIZE_30
+distiluse-base-multilingual-cased-v2
+WE TOOK 41944 SAMPLES TO MAKE THIS PROBS AND RANDOM DICTIONARIES
+Counter({'política otros': 27, 'otros política': 14, 'restaurantes hoteles': 11, 'hoteles restaurantes': 10, 'otros entretenimiento': 5, 'música otros': 4, 'entretenimiento otros': 3, 'otros cine': 2, 'otros música': 1, 'economía política': 1, 'cine otros': 1})
+79
+EVALUATING MODEL: TFG_MINTOPICSIZE_30
+FIRST EVALUATION
+ACC: 0.3888319882010734 
+PREC: 0.6816300131975932 
+RECALL: 0.3888319882010734 
+F1: 0.48502425633216617
+                 otros  política  hoteles  restaurantes  fútbol  marcas  entretenimiento  economía  SDG  música  tecnología  literatura  cine  deportes
+otros             7489      2561      145           149     508     127              147        14    2     118          19           0    38         0
+política          2194      9167       59            49     477     191               43        92    0      13          10           0     3         0
+hoteles            256        42     4022           949      14       6                0         0    0       1           0           0     0         0
+restaurantes       204        67      586          3554      11       2                0         0    0       0           0           0     0         0
+fútbol             237        39        4            12    1694       5                0         0    0       0           4           0     0         0
+marcas             417        46       18            62      22    1589                1         0    1       0           0           0     0         0
+entretenimiento   1263       312       42             7      97      20              550         0    0       5           7           0     1         0
+economía            68       514        5             7      17     109                0        92    0       0           0           0     0         0
+SDG                  9         1        6             8       0       1                1         0  104       0           0           0     0         0
+música             441        42        4             2      14       4                2         0    0     147           4           0     0         0
+tecnología         103        11        1             0       0       3                2         0    0       0          26           0     0         0
+literatura          37         3        0             0       0       0                0         0    0       0           0           0     0         0
+cine               260        10        3             2       5       0                0         0    0       0           0           0    39         0
+deportes            30         8        2             0      13       0                0         0    0       0           0           0     0         0
+FIRST ACCURACY X TOPIC
+                Corrects  Total Accuracy
+otros               7489  19701   38.01%
+política            9167  21910   41.84%
+hoteles             4022   9721   41.37%
+restaurantes        3554   8996   39.51%
+fútbol              1694   2544   66.59%
+marcas              1589   2650   59.96%
+entretenimiento      550   3852   14.28%
+economía              92   1773    5.19%
+SDG                  104    232   44.83%
+música               147   1071   13.73%
+tecnología            26    205   12.68%
+literatura             0     60    0.00%
+cine                  39    410    9.51%
+deportes               0    102    0.00%
+79 79 0
+1.0 1.0
+0
+                Discards of topic % discard Correct  Total  Accuracy Accuracy Without Discards
+otros                        8384    42.56%    8871  19701  0.450282                    78.39%
+política                     9612    43.87%    9652  21910  0.440529                    78.48%
+hoteles                      4431    45.58%    4598   9721  0.472997                    86.92%
+restaurantes                 4572    50.82%    3790   8996  0.421298                    85.67%
+fútbol                        549    21.58%    1694   2544  0.665881                    84.91%
+marcas                        494    18.64%    1589   2650  0.599623                    73.70%
+entretenimiento              1548    40.19%     779   3852  0.202233                    33.81%
+economía                      961    54.20%      92   1773  0.051889                    11.33%
+SDG                           102    43.97%     104    232  0.448276                    80.00%
+música                        411    38.38%     192   1071  0.179272                    29.09%
+tecnología                     59    28.78%      26    205  0.126829                    17.81%
+literatura                     20    33.33%       0     60       0.0                     0.00%
+cine                           91    22.20%     160    410  0.390244                    50.16%
+deportes                       49    48.04%       0    102       0.0                     0.00%
+[]
+                 accuracy precision    recall        f1
+otros            0.450282  0.637743  0.450282  0.527863
+política         0.440529  0.779078  0.440529  0.562815
+hoteles          0.472997  0.863474  0.472997  0.611192
+restaurantes     0.421298  0.841474  0.421298  0.561481
+fútbol           0.665881  0.589833  0.665881  0.625554
+marcas           0.599623  0.772484  0.599623  0.675165
+entretenimiento  0.202233  0.770524  0.202233  0.320378
+economía         0.051889  0.867925  0.051889  0.097924
+SDG              0.448276  0.971963  0.448276  0.613569
+música           0.179272  0.783673  0.179272  0.291793
+tecnología       0.126829  0.371429  0.126829  0.189091
+literatura            0.0         0       0.0         0
+cine             0.390244  0.963855  0.390244  0.555556
+deportes              0.0         0       0.0         0
+Total            0.430811  0.753658  0.430811  0.535771
+LABELING MODEL TFG_MINTOPICSIZE_30 WITH 100000 SAMPLES PER CLUSTER AND 30 PERCENT
+DETECTED CENTROIDS CLUSTER ASSIGNMENT
+15:31:45 10000
+15:32:28 20000

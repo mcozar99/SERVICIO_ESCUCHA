@@ -1,0 +1,257 @@
+SELECTED: ['t1rain', 'i1nfo', 's1ilhouette', 's1tats', 'v1isualization', 'label', 'c1entroid_evaluation']
+PERCENT: 40,	 N_SAMPLES: 50
+ST2_MPDI_MINTOPICSIZE_30
+WE TOOK 17703 SAMPLES TO MAKE THIS PROBS AND RANDOM DICTIONARIES
+EVALUATING MODEL: ST2_MPDI_MINTOPICSIZE_30
+FIRST EVALUATION
+ACC: 0.4068540292515056 
+PREC: 0.6853742834615768 
+RECALL: 0.4068540292515056 
+F1: 0.5042112127403807
+                 hoteles  restaurantes  fútbol  marcas  SDG  política  otros  entretenimiento  cine  economía  música  tecnología  literatura  deportes
+hoteles             6572          1251      17       2    9        63    252               48     0         0       0           0           0         0
+restaurantes        1220          5478      16       1    4        91    239                1     0         0       1           0           1         0
+fútbol                 6            26    2143       4    0        74    314                5     0         0       0           3           1         0
+marcas                32            92      23    1954    0        57    534                6     1         1       0           0           1         0
+SDG                    6            15       0       0  204         2     10                1     0         0       0           0           0         0
+política              80            85     671      85    1     14114   2838              251     4        40       5          16           3         0
+otros                181           200     608      98    5      4024  10469              430   236        35     118          34          11         0
+entretenimiento       10            14     130      15    1       476   1582             1117     3         6       5           9           0         0
+cine                   3             3       5       0    0        14    226                2   221         0       1           0           0         0
+economía               1             5      24       8    0      1005     94                8     0        92       0           2           0         0
+música                 4             5      13       2    0        80    646                2     0         0     147           7           1         0
+tecnología             1             0       1       0    0        15    134                4     0         0       0          37           0         0
+literatura             0             0       0       0    0         5     40                4     0         0       0           0          13         0
+deportes               0             0       8       0    0        20     54                1     0         0       0           0           0         0
+FIRST ACCURACY X TOPIC
+                Corrects  Total Accuracy
+hoteles             6572  13872   47.38%
+restaurantes        5478  12889   42.50%
+fútbol              2143   3596   59.59%
+marcas              1954   3769   51.84%
+SDG                  204    338   60.36%
+política           14114  31379   44.98%
+otros              10469  28188   37.14%
+entretenimiento     1117   5421   20.61%
+cine                 221    596   37.08%
+economía              92   2549    3.61%
+música               147   1498    9.81%
+tecnología            37    287   12.89%
+literatura            13     93   13.98%
+deportes               0    135    0.00%
+                Discards of topic % discard Correct  Total  Accuracy Accuracy Without Discards
+hoteles                      5658    40.79%    6839  13872  0.493007                    83.26%
+restaurantes                 5837    45.29%    6024  12889  0.467375                    85.42%
+fútbol                       1020    28.36%    2143   3596   0.59594                    83.19%
+marcas                       1068    28.34%    1954   3769   0.51844                    72.34%
+SDG                           100    29.59%     204    338   0.60355                    85.71%
+política                    13186    42.02%   14311  31379  0.456069                    78.66%
+otros                       11739    41.65%   11334  28188  0.402086                    68.90%
+entretenimiento              2053    37.87%    1185   5421  0.218594                    35.18%
+cine                          121    20.30%     270    596   0.45302                    56.84%
+economía                     1310    51.39%     125   2549  0.049039                    10.09%
+música                        591    39.45%     188   1498  0.125501                    20.73%
+tecnología                     95    33.10%      37    287   0.12892                    19.27%
+literatura                     31    33.33%      13     93  0.139785                    20.97%
+deportes                       52    38.52%       0    135       0.0                     0.00%
+[195, 272, 82, 186, 364, 141, 45, 143]
+118064
+                 accuracy precision    recall        f1
+hoteles          0.493007  0.866793  0.488605  0.624937
+restaurantes     0.467375  0.787657   0.46629  0.585793
+fútbol            0.59594  0.585679   0.59594  0.590765
+marcas            0.51844  0.900876  0.518028  0.657802
+SDG               0.60355  0.910714   0.60177  0.724689
+política         0.456069  0.720703  0.455939  0.558533
+otros            0.402086  0.625117  0.398958  0.487065
+entretenimiento  0.218594  0.627981  0.218353  0.324036
+cine              0.45302  0.971223  0.452261  0.617143
+economía         0.049039  0.603865  0.047637  0.088308
+música           0.125501  0.432184  0.125417  0.194416
+tecnología        0.12892  0.342593   0.12892  0.187342
+literatura       0.139785  0.419355  0.138298     0.208
+deportes              0.0         0       0.0         0
+Total             0.37799  0.631255  0.376507  0.466166
+LABELING MODEL ST2_MPDI_MINTOPICSIZE_30 WITH 50 SAMPLES PER CLUSTER AND 40 PERCENT
+CENTROIDS LABELING
+                                              centroid
+222  [0.0010638420152773536, 0.02486717640982935, -...
+39   [-0.0037211454258907653, -0.000105572740046893...
+162  [-0.005071192674922015, -0.044773536501312404,...
+223  [-0.008730409813800915, 0.014070786521880934, ...
+251  [-0.013839664903231436, 0.0007443965376216589,...
+..                                                 ...
+340  [0.007566035773995662, -0.03525195537405389, 0...
+100  [0.0097948354454466, -0.037010916649658034, -0...
+322  [-0.04483158216887229, -0.035013555269059096, ...
+139  [-0.0047675722911508095, 0.014927116181191176,...
+6    [0.02990472541665131, -0.024774648995964595, 0...
+
+[378 rows x 1 columns]
+10:43:34 10000
+10:44:06 20000
+10:44:37 30000
+10:45:08 40000
+       multilabel_pred  ...                                               code
+0              hoteles  ...  [0.02229468338191509, 0.04988320916891097, -0....
+1               marcas  ...  [-0.018330132588744164, 0.018677465617656708, ...
+2              hoteles  ...  [-0.019600467756390568, -0.0014924199786037207...
+3              hoteles  ...  [-0.014428417198359966, -0.012858327478170393,...
+4              hoteles  ...  [0.004129432141780852, -0.04616278037428856, 0...
+...                ...  ...                                                ...
+104605    otros música  ...  [-0.042201928794384, 0.003297873307019472, 0.0...
+104606        política  ...  [0.06179757043719292, -0.030855100601911545, 0...
+104607           otros  ...  [-0.01415607053786516, -0.014073787257075308, ...
+104608           otros  ...  [-0.01079250406473875, -0.039611443877220154, ...
+104609           otros  ...  [0.00485140411183238, 0.010219629853963852, 0....
+
+[104610 rows x 5 columns]
+CENTROIDS LABELING COMPLETED, SAVING
+KNEIGHBORS LABELING
+10:59:13 5000
+11:13:11 10000
+11:27:14 15000
+11:41:18 20000
+11:55:22 25000
+12:09:23 30000
+12:23:27 35000
+12:37:31 40000
+FINISHED KNEIGHBORS, LABELING
+KNEIGHBORS EVALUATION
+<class 'list'> <class 'list'>
+['hoteles', 'hoteles', 'hoteles', 'hoteles', 'hoteles', 'hoteles', 'hoteles', 'hoteles', 'hoteles', 'hoteles'] ['hoteles', 'hoteles', 'hoteles', 'restaurantes', 'hoteles', 'hoteles', 'restaurantes', 'hoteles', 'hoteles', 'hoteles']
+ACC: 0.6112549870511654 
+PREC: 0.5935946572136638 
+RECALL: 0.6112549870511654 
+F1: 0.5918446016686854
+                 hoteles  restaurantes  fútbol  marcas  SDG  política  otros  entretenimiento  cine  economía  música  tecnología  literatura  deportes
+hoteles             3575          1415      18      18    9        96    514               10     0         0       3           0           0         0
+restaurantes        1149          4098      30      12    4       106    431                6     0         0       1           0           0         0
+fútbol                10            31     585       1    1        55    329                4     0         2       1           1           0         0
+marcas                28            86      11     537    0        74    313                8     0         9       2           0           0         0
+SDG                   16            31       1       0   23        11     15                2     0         1       0           0           0         0
+política              96           107     198      88    2      9680   2803              140     7        54       8           2           1         0
+otros                274           272     290      77   10      3067   7379              255    22        27      57           5           4         0
+entretenimiento       20            20      51      13    0       341   1376              222     4         4       1           0           1         0
+cine                   1             7       1       0    0        15     92                0     5         0       0           0           0         0
+economía               5             9      14      21    0      1091    108                9     0        53       0           0           0         0
+música                10             8      18       2    0        43    460                8     0         0      41           0           1         0
+tecnología             0             1       0       2    0         8     80                3     0         0       0           1           0         0
+literatura             1             0       0       0    0         3     27                0     0         0       0           0           0         0
+deportes               0             1      16       0    0         9     25                1     0         0       0           0           0         0
+FINAL EVALUATION WITH KNEIGHBORS AND MONOLABELING
+ACC: 0.6572985374247204 
+PREC: 0.6505892552903616 
+RECALL: 0.6572985374247204 
+F1: 0.6439735203393667
+                 hoteles  restaurantes  fútbol  marcas  SDG  política  otros  entretenimiento  cine  economía  música  tecnología  literatura  deportes
+hoteles            10147          2666      35      20   18       159    766               58     0         0       3           0           0         0
+restaurantes        2369          9576      46      13    8       197    670                7     0         0       2           0           1         0
+fútbol                16            57    2728       5    1       129    643                9     0         2       1           4           1         0
+marcas                60           178      34    2491    0       131    847               14     1        10       2           0           1         0
+SDG                   22            46       1       0  227        13     25                3     0         1       0           0           0         0
+política             176           192     869     173    3     23794   5641              391    11        94      13          18           4         0
+otros                455           472     898     175   15      7091  17848              685   258        62     175          39          15         0
+entretenimiento       30            34     181      28    1       817   2958             1339     7        10       6           9           1         0
+cine                   4            10       6       0    0        29    318                2   226         0       1           0           0         0
+economía               6            14      38      29    0      2096    202               17     0       145       0           2           0         0
+música                14            13      31       4    0       123   1106               10     0         0     188           7           2         0
+tecnología             1             1       1       2    0        23    214                7     0         0       0          38           0         0
+literatura             1             0       0       0    0         8     67                4     0         0       0           0          13         0
+deportes               0             1      24       0    0        29     79                2     0         0       0           0           0         0
+                pred             true  cluster
+1             marcas          hoteles       -1
+5            hoteles          hoteles       -1
+19           hoteles          hoteles       -1
+24      restaurantes          hoteles       -1
+25      restaurantes          hoteles       -1
+...              ...              ...      ...
+104596         otros         política       -1
+104598  restaurantes  entretenimiento       -1
+104606      política         política       -1
+104608         otros            otros       -1
+104609         otros           música       -1
+
+[42861 rows x 3 columns]
+CENTROID MODEL EVALUATION
+ACC: 0.5837941251953991 
+PREC: 0.5745857890276247 
+RECALL: 0.5837941251953991 
+F1: 0.5712035351805296
+                 hoteles  restaurantes  fútbol  marcas  SDG  política  otros  entretenimiento  cine  economía  música  tecnología  literatura  deportes
+hoteles             3116          1742       2      25    2       122    629               14     2         2       2           0           0         0
+restaurantes        1068          4003      18      23    2       123    580               18     0         1       0           0           1         0
+fútbol                 9            42     460      12    0        81    406                6     0         2       1           1           0         0
+marcas                39            96       9     512    1        79    309               17     0         4       2           0           0         0
+SDG                   16            31       0       1   18         9     21                3     0         1       0           0           0         0
+política             215           151     100     103    0      8874   3281              241    16       169      26           2           8         0
+otros                336           319     183      89    5      2724   7512              348    47        81      80           5          10         0
+entretenimiento       23            30      27      12    0       317   1342              283     7         5       5           1           1         0
+cine                   4             5       0       0    0        12     94                1     5         0       0           0           0         0
+economía              15             8       8      17    0       914    146               11     0       191       0           0           0         0
+música                 7             5      10       3    0        39    473                7     1         0      45           0           1         0
+tecnología             0             1       0       3    0        11     73                3     1         1       0           2           0         0
+literatura             0             0       0       0    0         2     27                1     0         0       0           0           1         0
+deportes               0             1      10       0    0        10     30                1     0         0       0           0           0         0
+FINAL SYSTEM MONOLABELING+CENTORIDS EVALUATION
+ACC: 0.6460472230188319 
+PREC: 0.6404318657729187 
+RECALL: 0.6460472230188319 
+F1: 0.6356647370369455
+                 hoteles  restaurantes  fútbol  marcas  SDG  política  otros  entretenimiento  cine  economía  música  tecnología  literatura  deportes
+hoteles             9688          2993      19      27   11       185    881               62     2         2       2           0           0         0
+restaurantes        2288          9481      34      24    6       214    819               19     0         1       1           0           2         0
+fútbol                15            68    2603      16    0       155    720               11     0         2       1           4           1         0
+marcas                71           188      32    2466    1       136    843               23     1         5       2           0           1         0
+SDG                   22            46       0       1  222        11     31                4     0         1       0           0           0         0
+política             295           236     771     188    1     22988   6119              492    20       209      31          18          11         0
+otros                517           519     791     187   10      6748  17981              778   283       116     198          39          21         0
+entretenimiento       33            44     157      27    1       793   2924             1400    10        11      10          10           1         0
+cine                   7             8       5       0    0        26    320                3   226         0       1           0           0         0
+economía              16            13      32      25    0      1919    240               19     0       283       0           2           0         0
+música                11            10      23       5    0       119   1119                9     1         0     192           7           2         0
+tecnología             1             1       1       3    0        26    207                7     1         1       0          39           0         0
+literatura             0             0       0       0    0         7     67                5     0         0       0           0          14         0
+deportes               0             1      18       0    0        30     84                2     0         0       0           0           0         0
+KNEIGHBORS MULTILABEL EVALUATION
+Acc: 0.6316931476167145 	 Prec: 0.6154632838097303 	 Recall: 0.6316931476167144 	 F1: 0.6113829519876695
+Acc: 0.6854220437816653 	 Prec: 0.6797223111845145 	 Recall: 0.6854220437816653 	 F1: 0.6714115033602518
+CENTROIDS MULTILABEL EVALUATION
+Acc: 0.6109750122488976 	 Prec: 0.5251605624055649 	 Recall: 0.5386555471585727 	 F1: 0.5236801097676383
+Acc: 0.6769333715705955 	 Prec: 0.5899116762073077 	 Recall: 0.5973746457335272 	 F1: 0.586209370147523
+random
+[PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_first_monolabel_evaluation_50_30.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_first_monolabel_evaluation_50_40.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_first_multilabel_evaluation_50_40.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_kneighbors_monolabel_evaluation_50_40.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_kneighbors_final_monolabel_evaluation_50_40.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_centroids_monolabel_evaluation_50_40.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_centroids_final_monolabel_evaluation_50_40.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_kneighbors_multilabel_evaluation_50_40.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_kneighbors_final_multilabel_evaluation_50_40.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_centroids_multilabel_evaluation_50_40.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_centroids_final_multilabel_evaluation_50_40.xls')]
+first_monolabel_evaluation_50_30.xls
+ACC: 0.4068540292515056 	 PREC: 0.6853742834615768 	 RECALL: 0.4068540292515056 	 F1: 0.5042112127403807 
+
+first_monolabel
+ACC: 0.4068540292515056 	 PREC: 0.6853742834615768 	 RECALL: 0.4068540292515056 	 F1: 0.5042112127403807 
+
+first_multilabel
+ACC: 0.37798990378100017 	 PREC: 0.6312547217805726 	 RECALL: 0.3765068759060157 	 F1: 0.46616614374562876 
+
+kneighbors_monolabel
+ACC: 0.6112549870511654 	 PREC: 0.5935946572136638 	 RECALL: 0.6112549870511654 	 F1: 0.5918446016686854 
+
+kneighbors_final_monolabel
+ACC: 0.6572985374247204 	 PREC: 0.6505892552903616 	 RECALL: 0.6572985374247204 	 F1: 0.6439735203393667 
+
+centroids_monolabel
+ACC: 0.5837941251953991 	 PREC: 0.5745857890276247 	 RECALL: 0.5837941251953991 	 F1: 0.5712035351805296 
+
+centroids_final_monolabel
+ACC: 0.6460472230188319 	 PREC: 0.6404318657729187 	 RECALL: 0.6460472230188319 	 F1: 0.6356647370369455 
+
+kneighbors_multilabel
+ACC: 0.6316931476167145 	 PREC: 0.6154632838097303 	 RECALL: 0.6316931476167144 	 F1: 0.6113829519876695 
+
+kneighbors_final_multilabel
+ACC: 0.6854220437816653 	 PREC: 0.6797223111845145 	 RECALL: 0.6854220437816653 	 F1: 0.6714115033602518 
+
+centroids_multilabel
+ACC: 0.6109750122488976 	 PREC: 0.5251605624055649 	 RECALL: 0.5386555471585727 	 F1: 0.5236801097676383 
+
+centroids_final_multilabel
+ACC: 0.6769333715705955 	 PREC: 0.5899116762073077 	 RECALL: 0.5973746457335272 	 F1: 0.586209370147523 
+
+MULTILABEL CLUSTERING SCORE: 1.0465116279069768

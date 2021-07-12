@@ -24,6 +24,9 @@ from config import formato
 
 r = lambda: random.randint(0,255) #Generador de numeros aleatorios para colores
 
+if not os.path.exists('./images'):
+        call('mkdir ./images', shell=True)
+
 def seed(df):
     np.random.seed(42)
     rndperm = np.random.permutation(df.shape[0])
@@ -130,7 +133,7 @@ def tsne(model, embeddings, negros, modo):
     print('REDUCED DIMENSIONALITY WITH TSNE, SAVING MODEL')
     saveTSNE(tsne_results=tsne_results, file='tsne_result_%s_negros_%s'%(model, negros))
     print('SAVED MODEL, REPRESENTING')
-    plotColores(tsne_results[:,0], tsne_results[:,1], colors, 'Modelo %s, TSNE 2 Dimensiones'%model, model, negros, modo)
+    plotColores(tsne_results[:,0], tsne_results[:,1], [], 'Modelo %s, TSNE 2 Dimensiones'%model, model, negros, modo)
 
 def saveTSNE(tsne_results, file):
     pd.DataFrame(tsne_results).to_csv('./visualization/TSNE/%s.csv'%file, index=None, header=None)
@@ -139,7 +142,7 @@ def loadTSNE(file, model, embeddings, negros, title, modo):
     tsne_results = pd.read_csv('./visualization/TSNE/%s.csv'%file, header = None).to_numpy()
     print('LOADED RESULTS, PLOTTING')
     embeddings = borraNulos(embeddings, model)
-    plotColores(x_coor=tsne_results[:, 0], y_coor=tsne_results[:, 1], colors=colors, title=title, model=model, negros=negros, modo=modo)
+    plotColores(x_coor=tsne_results[:, 0], y_coor=tsne_results[:, 1], colors=[], title=title, model=model, negros=negros, modo=modo)
 
 def uMAP(model, embeddings, n_neighbors, n_components):
     umap_model = umap.UMAP(n_neighbors=n_neighbors,

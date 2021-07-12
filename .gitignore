@@ -31,3 +31,9 @@
 mpdi.txt
 st2_mpdi.txt
 labels/escenario_monolabel/yanovale.py
+zip.py
+./out
+./res
+./TRAIN
+./transformers
+

@@ -1,0 +1,665 @@
+SELECTED: ['t1rain', 'i1nfo', 's1ilhouette', 's1tats', 'v1isualization', 'label', 'c1entroid_evaluation']
+PERCENT: 20,	 N_SAMPLES: 5
+ST2_MPDI_MINTOPICSIZE_30
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 3, 'restaurantes': 2})
+Counter({'hoteles': 5})
+Counter({'restaurantes': 4, 'hoteles': 1})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'otros': 5})
+Counter({'hoteles': 5})
+Counter({'restaurantes': 3, 'hoteles': 2})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'política': 2, 'otros': 2, 'marcas': 1})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'restaurantes': 3, 'fútbol': 1, 'marcas': 1})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'restaurantes': 5})
+Counter({'restaurantes': 5})
+Counter({'otros': 2, 'hoteles': 1, 'restaurantes': 1, 'política': 1})
+Counter({'hoteles': 5})
+Counter({'hoteles': 3, 'restaurantes': 2})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'restaurantes': 2, 'otros': 2, 'hoteles': 1})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'restaurantes': 4, 'hoteles': 1})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'entretenimiento': 3, 'hoteles': 2})
+Counter({'hoteles': 5})
+Counter({'hoteles': 2, 'fútbol': 1, 'marcas': 1, 'SDG': 1})
+Counter({'hoteles': 5})
+Counter({'política': 3, 'economía': 1, 'otros': 1})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 4, 'restaurantes': 1})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'política': 3, 'hoteles': 1, 'otros': 1})
+Counter({'hoteles': 5})
+Counter({'política': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'fútbol': 3, 'hoteles': 1, 'restaurantes': 1})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'SDG': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'otros': 3, 'entretenimiento': 1, 'política': 1})
+Counter({'hoteles': 5})
+Counter({'marcas': 2, 'hoteles': 1, 'restaurantes': 1, 'fútbol': 1})
+Counter({'hoteles': 4, 'marcas': 1})
+Counter({'restaurantes': 3, 'hoteles': 2})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'política': 3, 'hoteles': 1, 'otros': 1})
+Counter({'hoteles': 3, 'restaurantes': 2})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'restaurantes': 4, 'fútbol': 1})
+Counter({'otros': 3, 'hoteles': 1, 'política': 1})
+Counter({'restaurantes': 4, 'hoteles': 1})
+Counter({'hoteles': 5})
+Counter({'hoteles': 5})
+Counter({'hoteles': 3, 'restaurantes': 2})
+Counter({'otros': 3, 'restaurantes': 1, 'música': 1})
+Counter({'política': 3, 'otros': 2})
+Counter({'marcas': 5})
+Counter({'política': 3, 'otros': 1, 'economía': 1})
+Counter({'hoteles': 5})
+Counter({'hoteles': 3, 'restaurantes': 2})
+Counter({'política': 4, 'otros': 1})
+Counter({'otros': 3, 'entretenimiento': 1, 'economía': 1})
+Counter({'restaurantes': 5})
+Counter({'otros': 3, 'marcas': 1, 'política': 1})
+Counter({'política': 4, 'otros': 1})
+Counter({'política': 2, 'economía': 2, 'restaurantes': 1})
+Counter({'hoteles': 5})
+Counter({'hoteles': 2, 'otros': 2, 'política': 1})
+Counter({'política': 3, 'otros': 2})
+Counter({'hoteles': 3, 'restaurantes': 1, 'fútbol': 1})
+Counter({'hoteles': 5})
+Counter({'política': 4, 'otros': 1})
+Counter({'restaurantes': 4, 'hoteles': 1})
+Counter({'otros': 3, 'música': 1, 'entretenimiento': 1})
+Counter({'restaurantes': 5})
+Counter({'política': 2, 'marcas': 1, 'entretenimiento': 1, 'otros': 1})
+Counter({'marcas': 4, 'hoteles': 1})
+Counter({'otros': 3, 'política': 1, 'música': 1})
+Counter({'entretenimiento': 5})
+Counter({'restaurantes': 2, 'hoteles': 1, 'entretenimiento': 1, 'política': 1})
+Counter({'restaurantes': 2, 'marcas': 2, 'hoteles': 1})
+Counter({'política': 4, 'marcas': 1})
+Counter({'hoteles': 1, 'marcas': 1, 'entretenimiento': 1, 'política': 1, 'otros': 1})
+Counter({'política': 2, 'hoteles': 1, 'restaurantes': 1, 'economía': 1})
+Counter({'política': 4, 'otros': 1})
+Counter({'política': 4, 'deportes': 1})
+Counter({'restaurantes': 5})
+Counter({'restaurantes': 5})
+Counter({'política': 2, 'otros': 2, 'entretenimiento': 1})
+Counter({'otros': 4, 'política': 1})
+Counter({'restaurantes': 5})
+Counter({'restaurantes': 3, 'hoteles': 2})
+Counter({'fútbol': 5})
+Counter({'política': 3, 'restaurantes': 1, 'economía': 1})
+Counter({'política': 4, 'otros': 1})
+Counter({'hoteles': 2, 'fútbol': 2, 'restaurantes': 1})
+Counter({'otros': 3, 'política': 2})
+Counter({'política': 4, 'entretenimiento': 1})
+Counter({'otros': 4, 'entretenimiento': 1})
+Counter({'economía': 2, 'política': 2, 'entretenimiento': 1})
+Counter({'marcas': 4, 'fútbol': 1})
+Counter({'política': 2, 'otros': 2, 'entretenimiento': 1})
+Counter({'política': 2, 'otros': 2, 'marcas': 1})
+Counter({'restaurantes': 3, 'hoteles': 2})
+Counter({'otros': 4, 'música': 1})
+Counter({'cine': 2, 'otros': 1, 'entretenimiento': 1, 'fútbol': 1})
+Counter({'restaurantes': 5})
+Counter({'entretenimiento': 3, 'otros': 2})
+Counter({'política': 2, 'otros': 2, 'economía': 1})
+Counter({'otros': 3, 'política': 1, 'entretenimiento': 1})
+Counter({'política': 4, 'otros': 1})
+Counter({'restaurantes': 4, 'hoteles': 1})
+Counter({'otros': 4, 'fútbol': 1})
+Counter({'política': 5})
+Counter({'otros': 4, 'política': 1})
+Counter({'fútbol': 5})
+Counter({'otros': 3, 'música': 1, 'política': 1})
+Counter({'fútbol': 5})
+Counter({'política': 3, 'hoteles': 1, 'SDG': 1})
+Counter({'política': 3, 'economía': 2})
+Counter({'otros': 2, 'fútbol': 2, 'hoteles': 1})
+Counter({'política': 5})
+Counter({'otros': 3, 'hoteles': 1, 'política': 1})
+Counter({'política': 5})
+Counter({'restaurantes': 5})
+Counter({'restaurantes': 5})
+Counter({'restaurantes': 5})
+Counter({'restaurantes': 5})
+Counter({'restaurantes': 5})
+Counter({'otros': 3, 'economía': 1, 'política': 1})
+Counter({'restaurantes': 5})
+Counter({'restaurantes': 5})
+Counter({'otros': 2, 'marcas': 1, 'música': 1, 'entretenimiento': 1})
+Counter({'política': 3, 'marcas': 2})
+Counter({'restaurantes': 5})
+Counter({'marcas': 5})
+Counter({'restaurantes': 5})
+Counter({'otros': 3, 'política': 1, 'cine': 1})
+Counter({'política': 3, 'restaurantes': 1, 'economía': 1})
+Counter({'política': 5})
+Counter({'política': 2, 'restaurantes': 1, 'marcas': 1, 'otros': 1})
+Counter({'política': 3, 'otros': 2})
+Counter({'otros': 3, 'marcas': 1, 'política': 1})
+Counter({'otros': 3, 'restaurantes': 1, 'entretenimiento': 1})
+Counter({'otros': 3, 'política': 2})
+Counter({'literatura': 2, 'restaurantes': 1, 'fútbol': 1, 'marcas': 1})
+Counter({'restaurantes': 4, 'política': 1})
+Counter({'otros': 3, 'restaurantes': 1, 'política': 1})
+Counter({'otros': 2, 'restaurantes': 1, 'música': 1, 'entretenimiento': 1})
+Counter({'entretenimiento': 2, 'otros': 2, 'política': 1})
+Counter({'otros': 2, 'política': 2, 'entretenimiento': 1})
+Counter({'otros': 3, 'política': 2})
+Counter({'otros': 3, 'política': 2})
+Counter({'política': 3, 'fútbol': 1, 'otros': 1})
+Counter({'otros': 3, 'restaurantes': 1, 'política': 1})
+Counter({'música': 2, 'otros': 2, 'restaurantes': 1})
+Counter({'política': 3, 'marcas': 1, 'otros': 1})
+Counter({'otros': 3, 'restaurantes': 1, 'cine': 1})
+Counter({'política': 4, 'marcas': 1})
+Counter({'otros': 3, 'restaurantes': 1, 'fútbol': 1})
+Counter({'otros': 3, 'política': 2})
+Counter({'fútbol': 5})
+Counter({'fútbol': 5})
+Counter({'política': 2, 'marcas': 1, 'entretenimiento': 1, 'música': 1})
+Counter({'otros': 3, 'marcas': 2})
+Counter({'otros': 4, 'política': 1})
+Counter({'fútbol': 2, 'marcas': 1, 'otros': 1, 'política': 1})
+Counter({'marcas': 3, 'fútbol': 1, 'política': 1})
+Counter({'marcas': 2, 'política': 2, 'fútbol': 1})
+Counter({'marcas': 5})
+Counter({'marcas': 3, 'otros': 2})
+Counter({'otros': 4, 'política': 1})
+Counter({'política': 3, 'fútbol': 2})
+Counter({'política': 2, 'entretenimiento': 2, 'otros': 1})
+Counter({'otros': 2, 'política': 2, 'fútbol': 1})
+Counter({'marcas': 4, 'fútbol': 1})
+Counter({'otros': 3, 'fútbol': 1, 'marcas': 1})
+Counter({'otros': 3, 'fútbol': 1, 'música': 1})
+Counter({'marcas': 5})
+Counter({'marcas': 5})
+Counter({'marcas': 5})
+Counter({'marcas': 5})
+Counter({'marcas': 5})
+Counter({'marcas': 5})
+Counter({'marcas': 5})
+Counter({'marcas': 5})
+Counter({'marcas': 5})
+Counter({'marcas': 2, 'otros': 2, 'política': 1})
+Counter({'marcas': 5})
+Counter({'otros': 2, 'cine': 2, 'entretenimiento': 1})
+Counter({'marcas': 5})
+Counter({'otros': 3, 'marcas': 1, 'cine': 1})
+Counter({'otros': 3, 'marcas': 1, 'política': 1})
+Counter({'política': 5})
+Counter({'política': 3, 'entretenimiento': 1, 'otros': 1})
+Counter({'otros': 4, 'marcas': 1})
+Counter({'economía': 3, 'política': 1, 'otros': 1})
+Counter({'política': 4, 'otros': 1})
+Counter({'otros': 3, 'marcas': 1, 'entretenimiento': 1})
+Counter({'política': 4, 'marcas': 1})
+Counter({'entretenimiento': 4, 'otros': 1})
+Counter({'cine': 3, 'otros': 2})
+Counter({'otros': 3, 'marcas': 2})
+Counter({'otros': 4, 'política': 1})
+Counter({'política': 3, 'economía': 1, 'otros': 1})
+Counter({'otros': 2, 'marcas': 1, 'entretenimiento': 1, 'cine': 1})
+Counter({'otros': 3, 'política': 2})
+Counter({'otros': 3, 'marcas': 1, 'fútbol': 1})
+Counter({'política': 4, 'marcas': 1})
+Counter({'entretenimiento': 5})
+Counter({'política': 3, 'otros': 2})
+Counter({'política': 4, 'otros': 1})
+Counter({'política': 5})
+Counter({'política': 4, 'otros': 1})
+Counter({'política': 4, 'otros': 1})
+Counter({'otros': 4, 'entretenimiento': 1})
+Counter({'política': 3, 'otros': 2})
+Counter({'política': 4, 'otros': 1})
+Counter({'política': 5})
+Counter({'política': 3, 'otros': 1, 'economía': 1})
+Counter({'política': 4, 'otros': 1})
+Counter({'política': 5})
+Counter({'política': 4, 'otros': 1})
+Counter({'política': 4, 'otros': 1})
+Counter({'política': 4, 'economía': 1})
+Counter({'política': 4, 'otros': 1})
+Counter({'entretenimiento': 3, 'otros': 2})
+Counter({'política': 5})
+Counter({'política': 3, 'otros': 2})
+Counter({'otros': 2, 'política': 1, 'deportes': 1, 'entretenimiento': 1})
+Counter({'política': 5})
+Counter({'otros': 4, 'política': 1})
+Counter({'política': 4, 'otros': 1})
+Counter({'política': 3, 'otros': 2})
+Counter({'entretenimiento': 5})
+Counter({'política': 4, 'economía': 1})
+Counter({'política': 4, 'otros': 1})
+Counter({'política': 3, 'otros': 2})
+Counter({'política': 3, 'otros': 2})
+Counter({'política': 4, 'otros': 1})
+Counter({'entretenimiento': 3, 'otros': 2})
+Counter({'otros': 3, 'política': 2})
+Counter({'política': 3, 'otros': 2})
+Counter({'política': 5})
+Counter({'entretenimiento': 5})
+Counter({'entretenimiento': 3, 'otros': 2})
+Counter({'política': 5})
+Counter({'política': 5})
+Counter({'política': 3, 'otros': 2})
+Counter({'otros': 3, 'política': 2})
+Counter({'otros': 5})
+Counter({'otros': 3, 'política': 1, 'entretenimiento': 1})
+Counter({'otros': 5})
+Counter({'política': 5})
+Counter({'política': 2, 'tecnología': 2, 'otros': 1})
+Counter({'otros': 3, 'política': 2})
+Counter({'política': 4, 'otros': 1})
+Counter({'política': 4, 'otros': 1})
+Counter({'política': 4, 'otros': 1})
+Counter({'tecnología': 3, 'política': 1, 'fútbol': 1})
+Counter({'entretenimiento': 5})
+Counter({'otros': 5})
+Counter({'entretenimiento': 5})
+Counter({'entretenimiento': 3, 'otros': 2})
+Counter({'otros': 2, 'política': 2, 'entretenimiento': 1})
+Counter({'política': 4, 'otros': 1})
+Counter({'entretenimiento': 5})
+Counter({'otros': 3, 'cine': 2})
+Counter({'política': 3, 'otros': 2})
+Counter({'cine': 3, 'otros': 2})
+Counter({'otros': 5})
+Counter({'política': 3, 'otros': 2})
+Counter({'política': 3, 'entretenimiento': 2})
+Counter({'otros': 4, 'tecnología': 1})
+Counter({'economía': 3, 'política': 1, 'entretenimiento': 1})
+Counter({'otros': 3, 'música': 1, 'cine': 1})
+Counter({'otros': 3, 'cine': 2})
+Counter({'economía': 4, 'otros': 1})
+Counter({'economía': 3, 'política': 2})
+Counter({'política': 2, 'economía': 2, 'otros': 1})
+Counter({'otros': 3, 'política': 2})
+Counter({'política': 5})
+Counter({'política': 5})
+Counter({'política': 3, 'otros': 2})
+Counter({'política': 4, 'economía': 1})
+Counter({'otros': 4, 'política': 1})
+Counter({'entretenimiento': 5})
+Counter({'entretenimiento': 3, 'otros': 2})
+Counter({'otros': 3, 'economía': 1, 'política': 1})
+Counter({'entretenimiento': 5})
+Counter({'política': 5})
+Counter({'política': 4, 'otros': 1})
+Counter({'entretenimiento': 3, 'otros': 1, 'política': 1})
+Counter({'economía': 3, 'política': 2})
+Counter({'otros': 3, 'política': 2})
+Counter({'política': 5})
+Counter({'política': 3, 'otros': 2})
+Counter({'otros': 2, 'entretenimiento': 2, 'tecnología': 1})
+Counter({'música': 3, 'otros': 2})
+Counter({'otros': 3, 'música': 2})
+Counter({'política': 5})
+Counter({'otros': 4, 'entretenimiento': 1})
+Counter({'entretenimiento': 3, 'otros': 2})
+Counter({'otros': 3, 'entretenimiento': 2})
+Counter({'política': 2, 'fútbol': 2, 'otros': 1})
+Counter({'política': 5})
+Counter({'otros': 4, 'política': 1})
+Counter({'política': 5})
+Counter({'música': 3, 'otros': 2})
+Counter({'otros': 5})
+Counter({'política': 3, 'otros': 1, 'economía': 1})
+Counter({'otros': 3, 'política': 1, 'entretenimiento': 1})
+Counter({'otros': 5})
+Counter({'otros': 3, 'música': 2})
+Counter({'entretenimiento': 5})
+WE TOOK 1890 SAMPLES TO MAKE THIS PROBS AND RANDOM DICTIONARIES
+EVALUATING MODEL: ST2_MPDI_MINTOPICSIZE_30
+FIRST EVALUATION
+ACC: 0.3747920848867221 
+PREC: 0.6314736083463961 
+RECALL: 0.3747920848867221 
+F1: 0.46608330314644575
+                 hoteles  restaurantes  fútbol  marcas  SDG  política  otros  entretenimiento  cine  economía  música  tecnología  literatura  deportes
+hoteles             6451          1323      22       2    9       112    241               48     0         3       3           0           0         0
+restaurantes        1280          5389      36       1    4       100    234                1     0         2       4           0           1         0
+fútbol                 8            16    2054       5    0       194    277               11     3         0       4           3           1         0
+marcas                31            79      24    1956    0       437    148                8     4         1       6           6           1         0
+SDG                    4            15       0       0  204         8      6                1     0         0       0           0           0         0
+política              73           102     670      86    1     12909   3505              235   119       372      64          54           3         0
+otros                178           205     612     126    5      5349   8796              328   355       111     257         116          11         0
+entretenimiento       11            12     124      17    1       651   1449              932    76         9      26          60           0         0
+cine                   2             4       6       0    0        30    314                2   109         0       6           2           0         0
+economía               2             4      23       8    0       820    212                6     1       150       5           8           0         0
+música                 2             5      13       4    0       138    565                3    11         0     155          10           1         0
+tecnología             1             0       1       0    0        35     27                2    36         0       1          89           0         0
+literatura             0             0       0       0    0         8     34                4     0         0       1           2          13         0
+deportes               0             0       3       0    0        24     48                3     1         0       4           0           0         0
+FIRST ACCURACY X TOPIC
+                Corrects  Total Accuracy
+hoteles             6451  13872   46.50%
+restaurantes        5389  12889   41.81%
+fútbol              2054   3596   57.12%
+marcas              1956   3769   51.90%
+SDG                  204    338   60.36%
+política           12909  31379   41.14%
+otros               8796  28188   31.20%
+entretenimiento      932   5421   17.19%
+cine                 109    596   18.29%
+economía             150   2549    5.88%
+música               155   1498   10.35%
+tecnología            89    287   31.01%
+literatura            13     93   13.98%
+deportes               0    135    0.00%
+                Discards of topic % discard Correct  Total  Accuracy Accuracy Without Discards
+hoteles                      5658    40.79%    7576  13872  0.546136                    92.23%
+restaurantes                 5837    45.29%    6378  12889  0.494841                    90.44%
+fútbol                       1020    28.36%    2220   3596  0.617353                    86.18%
+marcas                       1068    28.34%    1980   3769  0.525338                    73.31%
+SDG                           100    29.59%     206    338  0.609467                    86.55%
+política                    13186    42.02%   15792  31379  0.503267                    86.80%
+otros                       11739    41.65%   11873  28188  0.421208                    72.18%
+entretenimiento              2053    37.87%    1812   5421  0.334256                    53.80%
+cine                          121    20.30%     286    596  0.479866                    60.21%
+economía                     1310    51.39%     508   2549  0.199294                    41.00%
+música                        591    39.45%     372   1498  0.248331                    41.01%
+tecnología                     95    33.10%      90    287  0.313589                    46.88%
+literatura                     31    33.33%      13     93  0.139785                    20.97%
+deportes                       52    38.52%      13    135  0.096296                    15.66%
+[223, 258, 21, 81, 59, 247, 177, 317, 371, 290, 297, 335, 143]
+121214
+                 accuracy precision    recall        f1
+hoteles          0.546136  0.761254  0.545468  0.635544
+restaurantes     0.494841  0.871788  0.491447   0.62856
+fútbol           0.617353  0.509058  0.617009  0.557859
+marcas           0.525338   0.81448  0.522841  0.636861
+SDG              0.609467  0.705479   0.60767  0.652932
+política         0.503267  0.692267   0.50277  0.582494
+otros            0.421208  0.719053   0.41883  0.529336
+entretenimiento  0.334256  0.498624  0.332538  0.398987
+cine             0.479866   0.52963  0.479062  0.503078
+economía         0.199294  0.301126  0.196215  0.237605
+música           0.248331  0.116614  0.248165  0.158669
+tecnología       0.313589  0.263158  0.313589  0.286169
+literatura       0.139785  0.433333  0.139785  0.211382
+deportes         0.096296  0.342105  0.094891  0.148571
+Total            0.405225   0.60265  0.403865   0.47991
+LABELING MODEL ST2_MPDI_MINTOPICSIZE_30 WITH 5 SAMPLES PER CLUSTER AND 20 PERCENT
+CENTROIDS LABELING
+                                              centroid
+222  [0.0010638420152773536, 0.02486717640982935, -...
+39   [-0.0037211454258907653, -0.000105572740046893...
+162  [-0.005071192674922015, -0.044773536501312404,...
+223  [-0.008730409813800915, 0.014070786521880934, ...
+251  [-0.013839664903231436, 0.0007443965376216589,...
+..                                                 ...
+340  [0.007566035773995662, -0.03525195537405389, 0...
+100  [0.0097948354454466, -0.037010916649658034, -0...
+322  [-0.04483158216887229, -0.035013555269059096, ...
+139  [-0.0047675722911508095, 0.014927116181191176,...
+6    [0.02990472541665131, -0.024774648995964595, 0...
+
+[378 rows x 1 columns]
+15:24:04 10000
+15:24:35 20000
+15:25:05 30000
+15:25:34 40000
+              multilabel_pred  ...                                               code
+0                     hoteles  ...  [0.02229468338191509, 0.04988320916891097, -0....
+1                      marcas  ...  [-0.018330132588744164, 0.018677465617656708, ...
+2                     hoteles  ...  [-0.019600467756390568, -0.0014924199786037207...
+3                     hoteles  ...  [-0.014428417198359966, -0.012858327478170393,...
+4        hoteles restaurantes  ...  [0.004129432141780852, -0.04616278037428856, 0...
+...                       ...  ...                                                ...
+104605           otros música  ...  [-0.042201928794384, 0.003297873307019472, 0.0...
+104606         otros política  ...  [0.06179757043719292, -0.030855100601911545, 0...
+104607  otros entretenimiento  ...  [-0.01415607053786516, -0.014073787257075308, ...
+104608         otros política  ...  [-0.01079250406473875, -0.039611443877220154, ...
+104609         otros política  ...  [0.00485140411183238, 0.010219629853963852, 0....
+
+[104610 rows x 5 columns]
+CENTROIDS LABELING COMPLETED, SAVING
+KNEIGHBORS LABELING
+15:39:38 5000
+15:53:35 10000
+16:07:36 15000
+16:21:35 20000
+16:35:31 25000
+16:49:26 30000
+17:03:22 35000
+17:17:18 40000
+FINISHED KNEIGHBORS, LABELING
+KNEIGHBORS EVALUATION
+<class 'list'> <class 'list'>
+['hoteles', 'hoteles', 'hoteles', 'hoteles', 'hoteles', 'hoteles', 'hoteles', 'hoteles', 'hoteles', 'hoteles'] ['hoteles', 'hoteles', 'hoteles', 'restaurantes', 'hoteles', 'restaurantes', 'restaurantes', 'hoteles', 'hoteles', 'hoteles']
+ACC: 0.5731317514757005 
+PREC: 0.5541978600131832 
+RECALL: 0.5731317514757005 
+F1: 0.556321722299346
+                 hoteles  restaurantes  fútbol  marcas  SDG  política  otros  entretenimiento  cine  economía  música  tecnología  literatura  deportes
+hoteles             3549          1442      25      19    9       114    486                8     0         4       2           0           0         0
+restaurantes        1185          4066      37      13    4       105    417                4     2         0       4           0           0         0
+fútbol                14            23     552       2    1       170    247                7     0         1       1           1           1         0
+marcas                33            81      13     543    0       211    166                5     1         9       6           0           0         0
+SDG                   21            29       1       0   24         9     12                2     0         1       0           1           0         0
+política             100           106     186      96    2      9632   2492              121    67       341      38           4           1         0
+otros                282           276     275     100   10      4345   5880              185   148       100     125           9           4         0
+entretenimiento       20            21      51      18    0       632   1088              145    50         7      12           8           1         0
+cine                   1             7       3       0    0        24     77                0     8         1       0           0           0         0
+economía               6            11      14      23    0      1010    126                7     3       109       1           0           0         0
+música                 9             8      18       3    0        91    398                8     4         0      51           0           1         0
+tecnología             1             1       0       2    0        23     29                2    31         0       0           6           0         0
+literatura             1             0       0       0    0         6     24                0     0         0       0           0           0         0
+deportes               0             1      12       0    0        12     25                2     0         0       0           0           0         0
+FINAL EVALUATION WITH KNEIGHBORS AND MONOLABELING
+ACC: 0.6096166714463245 
+PREC: 0.6032032484932088 
+RECALL: 0.6096166714463245 
+F1: 0.5995374232953345
+                 hoteles  restaurantes  fútbol  marcas  SDG  política  otros  entretenimiento  cine  economía  música  tecnología  literatura  deportes
+hoteles            10000          2765      47      21   18       226    727               56     0         7       5           0           0         0
+restaurantes        2465          9455      73      14    8       205    651                5     2         2       8           0           1         0
+fútbol                22            39    2606       7    1       364    524               18     3         1       5           4           2         0
+marcas                64           160      37    2499    0       648    314               13     5        10      12           6           1         0
+SDG                   25            44       1       0  228        17     18                3     0         1       0           1           0         0
+política             173           208     856     182    3     22541   5997              356   186       713     102          58           4         0
+otros                460           481     887     226   15      9694  14676              513   503       211     382         125          15         0
+entretenimiento       31            33     175      35    1      1283   2537             1077   126        16      38          68           1         0
+cine                   3            11       9       0    0        54    391                2   117         1       6           2           0         0
+economía               8            15      37      31    0      1830    338               13     4       259       6           8           0         0
+música                11            13      31       7    0       229    963               11    15         0     206          10           2         0
+tecnología             2             1       1       2    0        58     56                4    67         0       1          95           0         0
+literatura             1             0       0       0    0        14     58                4     0         0       1           2          13         0
+deportes               0             1      15       0    0        36     73                5     1         0       4           0           0         0
+                pred             true  cluster
+1             marcas          hoteles       -1
+5            hoteles          hoteles       -1
+19           hoteles          hoteles       -1
+24      restaurantes          hoteles       -1
+25      restaurantes          hoteles       -1
+...              ...              ...      ...
+104596         otros         política       -1
+104598  restaurantes  entretenimiento       -1
+104606         otros         política       -1
+104608         otros            otros       -1
+104609         otros           música       -1
+
+[42861 rows x 3 columns]
+CENTROID MODEL EVALUATION
+ACC: 0.5467674575954831 
+PREC: 0.5321433666903103 
+RECALL: 0.5467674575954831 
+F1: 0.5349446221247349
+                 hoteles  restaurantes  fútbol  marcas  SDG  política  otros  entretenimiento  cine  economía  música  tecnología  literatura  deportes
+hoteles             3172          1657      12      29    2       148    618               14     0         3       3           0           0         0
+restaurantes        1169          3889      31      24    2       131    564               19     0         2       5           0           1         0
+fútbol                18            30     404      12    0       166    361               16     1         1      10           1           0         0
+marcas                38            93       9     512    1       189    198               17     0         2       9           0           0         0
+SDG                   17            30       1       1   18        15     13                3     0         1       0           1           0         0
+política             217           149      98     109    0      8552   3339              230    58       357      63           6           8         0
+otros                376           299     162     113    5      3584   6510              290   107        95     179           9          10         0
+entretenimiento       28            29      25      14    0       532   1171              185    40         3      21           4           1         0
+cine                   4             3       3       0    0        17     85                1     4         1       3           0           0         0
+economía              14            10       6      17    0       985    143               11     2       120       2           0           0         0
+música                 9             5       6       4    0        60    433                8     3         0      62           0           1         0
+tecnología             0             1       0       3    0        27     29                2    26         1       0           6           0         0
+literatura             0             0       0       0    0         5     25                0     0         0       0           0           1         0
+deportes               0             1       9       0    0        10     29                1     0         0       2           0           0         0
+FINAL SYSTEM MONOLABELING+CENTORIDS EVALUATION
+ACC: 0.5988146448714272 
+PREC: 0.5922927239237102 
+RECALL: 0.5988146448714272 
+F1: 0.5908056844863546
+                 hoteles  restaurantes  fútbol  marcas  SDG  política  otros  entretenimiento  cine  economía  música  tecnología  literatura  deportes
+hoteles             9623          2980      34      31   11       260    859               62     0         6       6           0           0         0
+restaurantes        2449          9278      67      25    6       231    798               20     0         4       9           0           2         0
+fútbol                26            46    2458      17    0       360    638               27     4         1      14           4           1         0
+marcas                69           172      33    2468    1       626    346               25     4         3      15           6           1         0
+SDG                   21            45       1       1  222        23     19                4     0         1       0           1           0         0
+política             290           251     768     195    1     21461   6844              465   177       729     127          60          11         0
+otros                554           504     774     239   10      8933  15306              618   462       206     436         125          21         0
+entretenimiento       39            41     149      31    1      1183   2620             1117   116        12      47          64           1         0
+cine                   6             7       9       0    0        47    399                3   113         1       9           2           0         0
+economía              16            14      29      25    0      1805    355               17     3       270       7           8           0         0
+música                11            10      19       8    0       198    998               11    14         0     217          10           2         0
+tecnología             1             1       1       3    0        62     56                4    62         1       1          95           0         0
+literatura             0             0       0       0    0        13     59                4     0         0       1           2          14         0
+deportes               0             1      12       0    0        34     77                4     1         0       6           0           0         0
+KNEIGHBORS MULTILABEL EVALUATION
+Acc: 0.7230815893236275 	 Prec: 0.6164185626342509 	 Recall: 0.7230815893236274 	 F1: 0.6617800333793608
+Acc: 0.7658063282668961 	 Prec: 0.665346844655216 	 Recall: 0.765806328266896 	 F1: 0.7080285753495685
+CENTROIDS MULTILABEL EVALUATION
+Acc: 0.7226616271202259 	 Prec: 0.5092423172845374 	 Recall: 0.6077025266992417 	 F1: 0.5528911655976392
+Acc: 0.765634260586942 	 Prec: 0.5672343809940483 	 Recall: 0.6584850163963184 	 F1: 0.6073560181820836
+random
+[PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_first_monolabel_evaluation_5_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_first_monolabel_evaluation_25_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_first_multilabel_evaluation_25_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_kneighbors_monolabel_evaluation_25_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_kneighbors_final_monolabel_evaluation_25_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_centroids_monolabel_evaluation_25_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_centroids_final_monolabel_evaluation_25_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_kneighbors_multilabel_evaluation_25_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_kneighbors_final_multilabel_evaluation_25_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_centroids_multilabel_evaluation_25_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_centroids_final_multilabel_evaluation_25_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_first_monolabel_evaluation_5_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_first_multilabel_evaluation_5_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_kneighbors_monolabel_evaluation_5_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_kneighbors_final_monolabel_evaluation_5_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_centroids_monolabel_evaluation_5_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_centroids_final_monolabel_evaluation_5_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_kneighbors_multilabel_evaluation_5_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_kneighbors_final_multilabel_evaluation_5_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_centroids_multilabel_evaluation_5_20.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/random_centroids_final_multilabel_evaluation_5_20.xls')]
+first_monolabel_evaluation_5_10.xls
+ACC: 0.3747920848867221 	 PREC: 0.6314736083463961 	 RECALL: 0.3747920848867221 	 F1: 0.46608330314644575 
+
+first_monolabel_evaluation_25_20.xls
+ACC: 0.4056399961762738 	 PREC: 0.6838055838911965 	 RECALL: 0.4056399961762738 	 F1: 0.5027122666264073 
+
+first_multilabel_evaluation_25_20.xls
+ACC: 0.3691141605000359 	 PREC: 0.5719913767259035 	 RECALL: 0.3667358005436215 	 F1: 0.44267272603398344 
+
+kneighbors_monolabel_evaluation_25_20.xls
+ACC: 0.6114649681528662 	 PREC: 0.5948688641778089 	 RECALL: 0.6114649681528662 	 F1: 0.5923593409084983 
+
+kneighbors_final_monolabel_evaluation_25_20.xls
+ACC: 0.6561705381894656 	 PREC: 0.6500629435556323 	 RECALL: 0.6561705381894656 	 F1: 0.6430765788051674 
+
+centroids_monolabel_evaluation_25_20.xls
+ACC: 0.5836074753272206 	 PREC: 0.5754874977796364 	 RECALL: 0.5836074753272206 	 F1: 0.5711464270506112 
+
+centroids_final_monolabel_evaluation_25_20.xls
+ACC: 0.644756715419176 	 PREC: 0.639980863847434 	 RECALL: 0.644756715419176 	 F1: 0.634589139715546 
+
+kneighbors_multilabel_evaluation_25_20.xls
+ACC: 0.749002589766921 	 PREC: 0.6717633470464399 	 RECALL: 0.7490025897669209 	 F1: 0.7011189235040589 
+
+kneighbors_final_multilabel_evaluation_25_20.xls
+ACC: 0.7980116623649747 	 PREC: 0.728751871724074 	 RECALL: 0.7980116623649746 	 F1: 0.7547211813487994 
+
+centroids_multilabel_evaluation_25_20.xls
+ACC: 0.7511257320174518 	 PREC: 0.5442156276262641 	 RECALL: 0.6151787188290186 	 F1: 0.5727290051862677 
+
+centroids_final_multilabel_evaluation_25_20.xls
+ACC: 0.7988815600802982 	 PREC: 0.542023919259381 	 RECALL: 0.5965040978470857 	 F1: 0.5632607672823973 
+
+first_monolabel
+ACC: 0.3747920848867221 	 PREC: 0.6314736083463961 	 RECALL: 0.3747920848867221 	 F1: 0.46608330314644575 
+
+first_multilabel
+ACC: 0.4052254690052304 	 PREC: 0.6026504408934941 	 RECALL: 0.40386473559072883 	 F1: 0.4799098139040678 
+
+kneighbors_monolabel
+ACC: 0.5731317514757005 	 PREC: 0.5541978600131832 	 RECALL: 0.5731317514757005 	 F1: 0.556321722299346 
+
+kneighbors_final_monolabel
+ACC: 0.6096166714463245 	 PREC: 0.6032032484932088 	 RECALL: 0.6096166714463245 	 F1: 0.5995374232953345 
+
+centroids_monolabel
+ACC: 0.5467674575954831 	 PREC: 0.5321433666903103 	 RECALL: 0.5467674575954831 	 F1: 0.5349446221247349 
+
+centroids_final_monolabel
+ACC: 0.5988146448714272 	 PREC: 0.5922927239237102 	 RECALL: 0.5988146448714272 	 F1: 0.5908056844863546 
+
+kneighbors_multilabel
+ACC: 0.7230815893236275 	 PREC: 0.6164185626342509 	 RECALL: 0.7230815893236274 	 F1: 0.6617800333793608 
+
+kneighbors_final_multilabel
+ACC: 0.7658063282668961 	 PREC: 0.665346844655216 	 RECALL: 0.765806328266896 	 F1: 0.7080285753495685 
+
+centroids_multilabel
+ACC: 0.7226616271202259 	 PREC: 0.5092423172845374 	 RECALL: 0.6077025266992417 	 F1: 0.5528911655976392 
+
+centroids_final_multilabel
+ACC: 0.765634260586942 	 PREC: 0.5672343809940483 	 RECALL: 0.6584850163963184 	 F1: 0.6073560181820836 
+
+MULTILABEL CLUSTERING SCORE: 0.7436823104693141

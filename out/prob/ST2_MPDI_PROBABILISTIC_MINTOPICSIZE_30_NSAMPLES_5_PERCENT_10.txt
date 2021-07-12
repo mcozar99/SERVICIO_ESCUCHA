@@ -1,0 +1,69 @@
+SELECTED: ['t1rain', 'i1nfo', 's1ilhouette', 's1tats', 'v1isualization', 'label', 'c1entroid_evaluation']
+PERCENT: 10,	 N_SAMPLES: 5
+ST2_MPDI_MINTOPICSIZE_30
+292 276 46
+1.0579710144927537 0.8333333333333334
+probabilities
+[PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_first_monolabel_evaluation_25_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_first_multilabel_evaluation_25_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_kneighbors_monolabel_evaluation_25_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_kneighbors_final_monolabel_evaluation_25_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_centroids_monolabel_evaluation_25_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_centroids_final_monolabel_evaluation_25_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_kneighbors_multilabel_evaluation_25_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_kneighbors_final_multilabel_evaluation_25_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_centroids_multilabel_evaluation_25_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_centroids_final_multilabel_evaluation_25_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_first_monolabel_evaluation_5_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_first_multilabel_evaluation_5_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_kneighbors_monolabel_evaluation_5_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_kneighbors_final_monolabel_evaluation_5_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_centroids_monolabel_evaluation_5_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_centroids_final_monolabel_evaluation_5_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_kneighbors_multilabel_evaluation_5_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_kneighbors_final_multilabel_evaluation_5_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_centroids_multilabel_evaluation_5_10.xls'), PosixPath('results/ST2_MPDI_MINTOPICSIZE_30/evaluation/probabilities_centroids_final_multilabel_evaluation_5_10.xls')]
+first_monolabel_evaluation_25_10.xls
+ACC: 0.388041296243189 	 PREC: 0.6581812892321424 	 RECALL: 0.388041296243189 	 F1: 0.4767422977199287 
+
+first_multilabel_evaluation_25_10.xls
+ACC: 0.3399116913035132 	 PREC: 0.513103606331744 	 RECALL: 0.33657860524386346 	 F1: 0.4044996492639767 
+
+kneighbors_monolabel_evaluation_25_10.xls
+ACC: 0.578474603952311 	 PREC: 0.5584553663928148 	 RECALL: 0.578474603952311 	 F1: 0.5555368934621584 
+
+kneighbors_final_monolabel_evaluation_25_10.xls
+ACC: 0.6250549660644298 	 PREC: 0.6194433028767382 	 RECALL: 0.6250549660644298 	 F1: 0.605008350951778 
+
+centroids_monolabel_evaluation_25_10.xls
+ACC: 0.5744383005529502 	 PREC: 0.5578120181944545 	 RECALL: 0.5744383005529502 	 F1: 0.5579064430451783 
+
+centroids_final_monolabel_evaluation_25_10.xls
+ACC: 0.6234012044737597 	 PREC: 0.6165442133565842 	 RECALL: 0.6234012044737597 	 F1: 0.6062297504608813 
+
+kneighbors_multilabel_evaluation_25_10.xls
+ACC: 0.5327654723642754 	 PREC: 0.45727801172005994 	 RECALL: 0.5296106263154368 	 F1: 0.4884759363916908 
+
+kneighbors_final_multilabel_evaluation_25_10.xls
+ACC: 0.5552441287515198 	 PREC: 0.49028417685094616 	 RECALL: 0.5498908255778371 	 F1: 0.51526561882139 
+
+centroids_multilabel_evaluation_25_10.xls
+ACC: 0.5355678345814664 	 PREC: 0.45787645241850317 	 RECALL: 0.5325625242139731 	 F1: 0.4888697995691146 
+
+centroids_final_multilabel_evaluation_25_10.xls
+ACC: 0.5563767837716772 	 PREC: 0.4900932638821002 	 RECALL: 0.5510085245946801 	 F1: 0.5155297288284609 
+
+first_monolabel
+ACC: 0.36396138036516584 	 PREC: 0.6142814071403003 	 RECALL: 0.36396138036516584 	 F1: 0.4523215643402047 
+
+first_multilabel
+ACC: 0.24200848239706257 	 PREC: 0.34327077829601155 	 RECALL: 0.23710624966118746 	 F1: 0.27798504036020616 
+
+kneighbors_monolabel
+ACC: 0.5528569095448076 	 PREC: 0.5432804094082928 	 RECALL: 0.5528569095448076 	 F1: 0.5441013384345882 
+
+kneighbors_final_monolabel
+ACC: 0.5904789217092056 	 PREC: 0.5864680425784504 	 RECALL: 0.5904789217092056 	 F1: 0.5808251478330205 
+
+centroids_monolabel
+ACC: 0.5361984088098738 	 PREC: 0.5344869180840875 	 RECALL: 0.5361984088098738 	 F1: 0.530182577895173 
+
+centroids_final_monolabel
+ACC: 0.5836535704043591 	 PREC: 0.5819086974892018 	 RECALL: 0.5836535704043591 	 F1: 0.5752850961321052 
+
+kneighbors_multilabel
+ACC: 0.36542501944305794 	 PREC: 0.3051977451257237 	 RECALL: 0.35988717505351125 	 F1: 0.3273634937344319 
+
+kneighbors_final_multilabel
+ACC: 0.3965422450862966 	 PREC: 0.33278603140239876 	 RECALL: 0.38867337490338094 	 F1: 0.3553182766989023 
+
+centroids_multilabel
+ACC: 0.3631150680797223 	 PREC: 0.3003242512209163 	 RECALL: 0.3574036204553349 	 F1: 0.32429205262209143 
+
+centroids_final_multilabel
+ACC: 0.39556539496161325 	 PREC: 0.329800443763855 	 RECALL: 0.387690065298005 	 F1: 0.3541404912196366 
+
+MULTILABEL CLUSTERING SCORE: 1.0579710144927537
+PERCENT OF WELL PREDICTED MULTILABEL CLUSTERS: 0.8333333333333334

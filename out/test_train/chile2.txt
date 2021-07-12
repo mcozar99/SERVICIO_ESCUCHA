@@ -1,0 +1,382 @@
+SELECTED: ['t1rain', 'info', 's1ilhouette', 's1tats', 'v1isualization', 'l1abel', 'c1entroid_evaluation']
+PERCENT: 40,	 N_SAMPLES: 100000
+ST2_MPDI_MINTOPICSIZE_30
+MODEL NAME: chile_MINTOPICSIZE_30
+NUMBER OF TOPICS: 137
+TOTAL INPUTS: 104610
+DISCARDS: 56280
+%CLASSIFIED: 46.20%
+MODEL NAME: chile_MINTOPICSIZE_50
+NUMBER OF TOPICS: 18
+TOTAL INPUTS: 104610
+DISCARDS: 2592
+%CLASSIFIED: 97.52%
+MODEL NAME: chile_MINTOPICSIZE_100
+NUMBER OF TOPICS: 11
+TOTAL INPUTS: 104610
+DISCARDS: 1088
+%CLASSIFIED: 98.96%
+MODEL NAME: chile_MINTOPICSIZE_200
+NUMBER OF TOPICS: 6
+TOTAL INPUTS: 104610
+DISCARDS: 986
+%CLASSIFIED: 99.06%
+MODEL NAME: chile_MINTOPICSIZE_1000
+NUMBER OF TOPICS: 5
+TOTAL INPUTS: 104610
+DISCARDS: 2016
+%CLASSIFIED: 98.07%
+TOPIC: -1 	 NUMBER OF INPUTS: 56280
+http, rt, hoy, rajoy, psoe, https, españa, madrid, ver, rubalcaba
+TOPIC: 37 	 NUMBER OF INPUTS: 21650
+hotel, comida, calidad, restaurante, desayuno, comer, mejor, piscina, baño, excelente
+TOPIC: 24 	 NUMBER OF INPUTS: 2005
+comida, restaurante, excelente, mejor, calidad, peor, horrible, recomendable, cocina, decepción
+TOPIC: 77 	 NUMBER OF INPUTS: 1589
+rt, alejandrosanz, gracias, abrazo, besazo, feliz, amigo, felicidades, guapa, mexico
+TOPIC: 73 	 NUMBER OF INPUTS: 1574
+http, blog, flor, valencia, captura, santiago, facebook, https, rosa10, ver
+TOPIC: 133 	 NUMBER OF INPUTS: 1502
+gracias, abrazo, feliz, buenos, buenas, amigos, felicidades, amigo, cariño, espero
+TOPIC: 49 	 NUMBER OF INPUTS: 1439
+madrid, partido, barça, barcelona, rey, halamadrid, liga, realmadrid, campeones, golazo
+TOPIC: 120 	 NUMBER OF INPUTS: 1416
+alguien, ahora, voy, años, mañana, días, hoy, acabo, día, gracias
+TOPIC: 128 	 NUMBER OF INPUTS: 1135
+rajoy, investidura, rubalcaba, reforma, investidurarajoy, psoe, amaiur, laboral, zapatero, mariano
+TOPIC: 38 	 NUMBER OF INPUTS: 987
+telediariointer, 20, contamos, rajoy, por, preguntamos, garzón, urdangarín, barajas, andalucía
+TOPIC: 85 	 NUMBER OF INPUTS: 928
+http, rajoy, psoe, epílogo, rubalcaba, portadaepc, garzón, griñán, reforma, juez
+TOPIC: 121 	 NUMBER OF INPUTS: 472
+000, déficit, euros, recorte, españa, deuda, 16, bancos, 15, recortes
+TOPIC: 104 	 NUMBER OF INPUTS: 464
+hotel, excelente, vacaciones, precio, precios, madrid, estancia, desastre, ideal, recomendable
+TOPIC: 98 	 NUMBER OF INPUTS: 422
+javierarenas_pp, elcambioandaluz, andalucia, andaluces, marianorajoy, libroblancodeturismo, andalucía, juanma_moreno, andaluz, andaluzas
+TOPIC: 127 	 NUMBER OF INPUTS: 410
+psoe, asturias, amaiur, andalucía, foro, escaño, rubalcaba, erc, propio, diputado
+TOPIC: 99 	 NUMBER OF INPUTS: 382
+mas, garcia_abadillo, ver, madrid, va, hablar, hace, messi, rey, grabar
+TOPIC: 114 	 NUMBER OF INPUTS: 381
+hoy, alguien, ahora, politica, congreso, ahorapodemos, parece, increible, reunion, siempre
+TOPIC: 50 	 NUMBER OF INPUTS: 343
+abc, dsjq2t9u, bj9h8es4, gam3qndo, rfqv9x4v, mbmrludn, 2dxr6t5b, wb305mj4, hh2edvmz, pdgrsg4o
+TOPIC: 55 	 NUMBER OF INPUTS: 331
+http, reunión, presentación, sesión, artículo, madrid, plenaria, ybjdhqbc, u9zbxe94, 8nw5htbv
+TOPIC: 13 	 NUMBER OF INPUTS: 276
+delicioso, desastre, maravilla, vergonzoso, peor, encanta, desagradable, ricos, fatal, encantó
+TOPIC: 25 	 NUMBER OF INPUTS: 271
+memoria, sensores, datos, vídeo, visualización, máquinas, aplicación, mejoras, funcional, sistemas
+TOPIC: 32 	 NUMBER OF INPUTS: 265
+http, rt, iran, china, us, syndicate, dailystarleb, spain, we, syria
+TOPIC: 67 	 NUMBER OF INPUTS: 265
+elcambioandaluz, javierarenas_pp, http, eliasbendodo, andalucía, andalucia, ppmalaga, innovación, fuentedepiedra, educación
+TOPIC: 115 	 NUMBER OF INPUTS: 260
+pedroj_ramirez, pedroj_, rt, julia_otero, anacubilla, rafam_simancas, ver, agatha, ainadiazv, ristomejide
+TOPIC: 93 	 NUMBER OF INPUTS: 247
+españa, dicen, años, pregunto, gente, mirando, hoy, pagar, ahora, niños
+TOPIC: 9 	 NUMBER OF INPUTS: 228
+oca0npkv, mundo_ciclista, oscardfdocepeda, marisamartinezl, fjavi_sanchez, ugt_andalucia, agenda_alboran, manelfmartinez, abp1993, armijopaco
+TOPIC: 66 	 NUMBER OF INPUTS: 224
+siria, heridos, ataque, terremoto, rusia, víctimas, sirio, fuentes, atentado, agencia
+TOPIC: 135 	 NUMBER OF INPUTS: 217
+mariviromero, gracias, enhorabuena, marivi, guapa, felicidades, feliz, placer, suerte, mariví
+TOPIC: 100 	 NUMBER OF INPUTS: 212
+garzón, tribunal, franquismo, justicia, juicio, sentencia, prevaricación, condena, malversación, fiscalía
+TOPIC: 47 	 NUMBER OF INPUTS: 209
+abc_es, abc, http, abcdesevilla, asturias, santamaría, andalucía, josé, aybarrapacheco, garzón
+TOPIC: 69 	 NUMBER OF INPUTS: 208
+http, málaga, elcambioandaluz, eliasbendodo, ayuntamiento, mayteotero, malaga, ciudadjardin, ppmalaga, juanma_moreno
+TOPIC: 110 	 NUMBER OF INPUTS: 207
+secretario, garcía, portavoz, soraya, vicepresidenta, lópez, alcaldesa, santamaria, josé, madrid
+TOPIC: 88 	 NUMBER OF INPUTS: 197
+programa, tertulia, 13television, radio, 24horas_rne, 24, abcpuntoradio, tdtarde, 24h, telemadrid
+TOPIC: 33 	 NUMBER OF INPUTS: 188
+precio, calidad, excelente, comida, inmejorable, recomendable, menú, adecuada, insuperable, trato
+TOPIC: 126 	 NUMBER OF INPUTS: 176
+lachispadelavida, lidiasanzperez, mariviromero, pedroj_ramirez, anapastor_tve, federicoquevedo, verla, santiagocervera, elprimernaufragio, anariverobernal
+TOPIC: 56 	 NUMBER OF INPUTS: 175
+adidas, toyota, bimbo, suzuki, bbva, proace, verso, hyundai, tablondeanuncios, movistar
+TOPIC: 79 	 NUMBER OF INPUTS: 172
+javierarenas_pp, http, elcambioandaluz, eliasbendodo, diputacionmlg, andalucía, diario_sur, foro, juanma_moreno, propuesta
+TOPIC: 122 	 NUMBER OF INPUTS: 150
+reforma, gasto, recortes, reformas, salarios, presupuestaria, salariales, salario, fiscal, recortar
+TOPIC: 108 	 NUMBER OF INPUTS: 149
+buenos, feliz, descanséis, sábado, lunes, domingo, disfrutéis, sueños, soñad, felices
+TOPIC: 105 	 NUMBER OF INPUTS: 148
+manuel, rouco, rubalcaba, antonio, cardenal, avales, comparando, mingote, josé, mortadelo
+TOPIC: 53 	 NUMBER OF INPUTS: 143
+bankia, servitje, banco, bankinter, mercadona, cláusulas, supermercado, dinero, barato, bombones
+TOPIC: 46 	 NUMBER OF INPUTS: 137
+heineken, heineken_es, manisatardis, cruzcampo, estrellagalicia, cerveza, novia, unas, mahou, vegmery
+TOPIC: 0 	 NUMBER OF INPUTS: 133
+pdwfyyra, disponible, http, inbhfico, ondacero_es, jwso98fc, sf3aqqhy, sorprendentemente, gratuitos, bienvenidos
+TOPIC: 62 	 NUMBER OF INPUTS: 128
+http, cataluña, ayudas, fondoreptiles, 3749, ciutadans_cs, donación, elperiodico_cas, 73, barcelona
+TOPIC: 45 	 NUMBER OF INPUTS: 127
+http, zsnxwt8m, yzlyzhrf, 6cf0iaou, wzdohafs, 6j2r1d4d, lbhh77nd, iri0jtnc, jiz2xmni, bm39wxld
+TOPIC: 103 	 NUMBER OF INPUTS: 126
+iescolar, barcelona, com, enric_hernandez, buenafuente, catalufo, gabor2227, kikurimblas, fotlipou, marccalabuig
+TOPIC: 117 	 NUMBER OF INPUTS: 126
+cataluña, catalanes, psc, bipartito, rigau, spanair, sevillahoy, decreto, administración, nóminas
+TOPIC: 28 	 NUMBER OF INPUTS: 123
+volveremos, luna, perfecto, recomendaria, digno, broma, maravilloso, estupendo, disfrutar, espectacular
+TOPIC: 1 	 NUMBER OF INPUTS: 121
+elevándose, eleven, elevado, elevemos, elevador, elevadoras, elevadísimos, elevando, elevaron, elevada
+TOPIC: 11 	 NUMBER OF INPUTS: 120
+http, lamarcadeleste, universal_spain, belategui, davidmaeztu, natamateo, raldarondo, cabadlozano, davizmartinez, el_webboy
+TOPIC: 130 	 NUMBER OF INPUTS: 113
+mariviromero, ccifuentes, trinidad_anton, rialpulperia, estrellagalicia, sanchez_sonia, almualonsocw, beamartinh, mhellopez19, monicanaranjo
+TOPIC: 124 	 NUMBER OF INPUTS: 112
+contrato, laboral, reformalaboral, contratos, formación, salario, procedente, desempleo, 25, sueldo
+TOPIC: 18 	 NUMBER OF INPUTS: 105
+yk01vj7e, eyrwplzx, gtt37ado, 0cftulof, ikp6p2jz, wrmxldnt, gw1ehily, dvbbpyw0, vbagdyhc, qhq6stt9
+TOPIC: 35 	 NUMBER OF INPUTS: 104
+madrid, barcelona, 20minutos, madridista, partido, halamadrid, realmadrid, golazo, fútbol, estadio
+TOPIC: 82 	 NUMBER OF INPUTS: 102
+http, navidad, deliciosa, vuelveeee, mañaaaaana, pr9e90xf, vjiwm6md, qu8fyp9o, ynfozgx0, ommmmmmmm
+TOPIC: 131 	 NUMBER OF INPUTS: 100
+alejandrosanz, chile, venezuela, argentina, facebook, juliidesanz, gisela_sanz, partidoxlailusion, besazo, perú
+TOPIC: 40 	 NUMBER OF INPUTS: 97
+concierto, videocapítulo, méxico, http, querétaro, teatro, veracruz, guanajuato, puebla, guadalajara
+TOPIC: 29 	 NUMBER OF INPUTS: 97
+eldigitalcastillalamancha, cospedal, http, riolobos, mdcospedal, clm, castillala, xklbsogj, pide, talavera
+TOPIC: 52 	 NUMBER OF INPUTS: 96
+https, 2017, cervecero, willem, wawsberghe, cerveza, cruzcampo, v9ljxjgik2, lossimsaniversario, 8iuwmjmvec
+TOPIC: 44 	 NUMBER OF INPUTS: 94
+europapress_es, lfwrslq7, avgoa6es, tm3ydhxa, r5a5mzq7, ginw9am8, 2pxypd7r, siciliana, dsyu0krt, ns4mbvgs
+TOPIC: 101 	 NUMBER OF INPUTS: 91
+jajajajaja, yotrabajomañana, jajajajajaja, amapolas, jajajajja, fcbarcelona, lorenzoooo, jajajajajajajajajajaja, jajjajajajajajajajaa, maitemurcia
+TOPIC: 30 	 NUMBER OF INPUTS: 87
+cofradiasmlg, malagasanta, malaga, http, cofradía, trinidad, málagasanta, málaga, zamarrilla, rescate
+TOPIC: 78 	 NUMBER OF INPUTS: 87
+jajajaja, david_busta, jajajajaja, sauda, jajajajajajajajaja, jajajajajajajajajaja, jajajajajaja, jugo, jugando, monikaibiza
+TOPIC: 89 	 NUMBER OF INPUTS: 86
+hora25, 21, hora, empezamos, análisis, 20, sintonizarla, 15, contodo, adelantando
+TOPIC: 22 	 NUMBER OF INPUTS: 85
+buenas, http, hola, lunes, 28, abril, saludo, 17, saludos, 16
+TOPIC: 51 	 NUMBER OF INPUTS: 81
+cruzcampo, adidas, bimbo, movistar, cerveza, patrocinador, spqrjr92, z2slcel4, n2d0zard, español
+TOPIC: 41 	 NUMBER OF INPUTS: 81
+wqx6u7q1, 2c9owprp, apyuzpck, g8z6mvwk, nld5v73c, 3k6hnpbc, u37brudy, gv5lj3li, n3ex5d7a, c8wqxklh
+TOPIC: 112 	 NUMBER OF INPUTS: 80
+feliz, gracias, navidad, felicitaciones, felicidades, felicidad, felices, cumpleaños, paz, prosperidad
+TOPIC: 83 	 NUMBER OF INPUTS: 79
+http, investigará, 2sfxkyxc, cocaína, denuncia, denuncian, mzlwrozv, policialhttp, peronista, marianorajoy
+TOPIC: 76 	 NUMBER OF INPUTS: 76
+13tv_aldia, 13television, preguntando, preguntamos, marianorajoy, dham_13tv, españa, preguntan, interrogante, question
+TOPIC: 71 	 NUMBER OF INPUTS: 73
+21, periodistas, http, au27hsuu, cburftvn, qniy7chh, bf83kfzy, wuouwvmg, fh3tckp8, piqlptgr
+TOPIC: 72 	 NUMBER OF INPUTS: 73
+notariadohttp, jfl96kc4, tkmoudtm, btm1uc97, yh7vunl2, fspbx7we, toyeaww9, swcrmaz6, tvhkbjzs, 3r6uxmh0
+TOPIC: 65 	 NUMBER OF INPUTS: 72
+boyswillbeboys, cancion, happy, paurubio, great, redone_official, rt, very, all, man
+TOPIC: 70 	 NUMBER OF INPUTS: 69
+periodismo, medios, http, redessociales, va3zgwen, wnwvafek, vpyv2wtz, lw6jputx, vw8wiam0, periodismohumano
+TOPIC: 34 	 NUMBER OF INPUTS: 69
+estrellas, merece, tres, estrella, merecen, mejor, heath, decepcionas, justitas, mejoran
+TOPIC: 75 	 NUMBER OF INPUTS: 68
+losdesayunosdetve, entrevista, empezamos, homosexuales, entrevistamos, repasaremos, empiezan, congreso, debate, empresarios
+TOPIC: 132 	 NUMBER OF INPUTS: 67
+estafa, peor, pésima, restaurante, fantástico, toscana, viscabarça, inesperadamente, taco, sensacional
+TOPIC: 23 	 NUMBER OF INPUTS: 65
+saludos, saludo, http, abril, lunes, 18, fks90l93, 8vmmeez9, vstmekpl, huoxoh3a
+TOPIC: 17 	 NUMBER OF INPUTS: 65
+aehzywpz, i9w32dyy, a3jdexa2, dk3oywil, vdllsd6t, mumqbzk3, mffrk3lb, vvss7udn, wvwxxjza, bb3c8xfa
+TOPIC: 31 	 NUMBER OF INPUTS: 65
+soundhound, http, ipanema, alboranos, arbelo, rosana, conchita, lucrecia, khopiqdr, guarana
+TOPIC: 59 	 NUMBER OF INPUTS: 64
+q9hzeylp, yeswespainisdifferent, http, barcelona, compac, yt98xj2k, spain, video, madrid, alejandrosanz
+TOPIC: 63 	 NUMBER OF INPUTS: 61
+telediariointer, confianza, enhorabuena, 000, audiencia, 20, espectacular, siguieron, oeoeoeoeoeoeoe, 855
+TOPIC: 125 	 NUMBER OF INPUTS: 61
+fiscal, fraude, impuesto, plusvalías, euros, pensiones, efectivo, millones, pagos, patrimonio
+TOPIC: 5 	 NUMBER OF INPUTS: 61
+10, excepcional, personal, detalle, diez, excepcionales, señores, necesario, profesional, elevadoras
+TOPIC: 129 	 NUMBER OF INPUTS: 60
+mariviromero, gracias, lulusalada, milamorr, guapa, josemariamayo, jrvillaurrutia, gemmadelcorral, rubia, feliz
+TOPIC: 74 	 NUMBER OF INPUTS: 60
+hahahahahahahahah, hahahahahaha, guals, hahahahahahahahaha, hahahshahshshaha, mariocondeconde, trasgodegaceta, fede_dejuan, hahshahaha, mcuquerella
+TOPIC: 14 	 NUMBER OF INPUTS: 59
+rubalcaba38, eventosriver84, gmail, com, suscriptores, eperiodico, hotmail, meteorólogo, apmadrid, pilotaor
+TOPIC: 42 	 NUMBER OF INPUTS: 59
+12, 16, asturias, andalucía, 47, 48, 46, 72, 52, 44
+TOPIC: 21 	 NUMBER OF INPUTS: 58
+madrid, http, by96crqj, unzw2xor, ymood5qi, v4ymrzct, dvvrv39p, uvcx8j9x, df4lsl0i, dwbzdryq
+TOPIC: 87 	 NUMBER OF INPUTS: 58
+dham_13tv, federicoquevedo, 13tv_aldia, valcarce, gómez, joaquín, alejandro_vara, nereaalzola, llarandi, amartinbeaumont
+TOPIC: 48 	 NUMBER OF INPUTS: 58
+20, madrid, murcia, valencia, barcelona, malaga, t72nxwy3, y217duiz, cspkiqmr, jqsfu2si
+TOPIC: 39 	 NUMBER OF INPUTS: 57
+chocolate, quiero, bañadas, dulce, amor, mielcitas, tesourostuga, amarte, arbusto, oreoooos
+TOPIC: 15 	 NUMBER OF INPUTS: 55
+iz8hx3qz, r5asv0lj, p764qsh6, lyjwnhmx, 0rntsrmu, u63hoifn, jftvtfq6, 3raza8r3, es3om0iy, suoqml8i
+TOPIC: 123 	 NUMBER OF INPUTS: 55
+proveedores, formación, cmin, recargo, garantizar, convocatorias, facturas, remitir, garantizan, deberán
+TOPIC: 96 	 NUMBER OF INPUTS: 54
+sevilla, feria, málaga, participo, exposición, celebra, zaragoza, elprimernaufragio, inaugurando, 19
+TOPIC: 97 	 NUMBER OF INPUTS: 54
+debateand, javierarenas_pp, campsgatoalagua, joaquinotv, el_q_cuestiona, andalucia, abarea_es, gloriaduran, conchaclc, elcambioandaluz
+TOPIC: 36 	 NUMBER OF INPUTS: 53
+recomendable, 100, agradable, asequible, patético, desgracia, sencillamente, rural, parejas, frio
+TOPIC: 106 	 NUMBER OF INPUTS: 52
+feliz, navidad, felicidades, salud, gracias, calletiiii, golito, próspero, cariño, dormir
+TOPIC: 107 	 NUMBER OF INPUTS: 52
+buenasnoches, dormir, lunes, martes, ahora, apurado, jjsibinacal, intentare, preferidas, violencia0
+TOPIC: 4 	 NUMBER OF INPUTS: 51
+elevadísimos, elevamos, elevando, elfergonzalez, elevar, elevaron, elevará, elevemos, elexpecial, elfaristol_ib3
+TOPIC: 64 	 NUMBER OF INPUTS: 49
+diario, viernes, http, lunes, miércoles, enero, kvh7qdzi, v3ziha7f, kgbk09vs, j3jjetv6
+TOPIC: 113 	 NUMBER OF INPUTS: 49
+justicia, injusticia, problema, favoritismo, arbitrariedad, interpretar, falacia, pretendida, contrareforma, distinguir
+TOPIC: 86 	 NUMBER OF INPUTS: 48
+http, yjiohqgl, yt7iloki, zicfe8or, jci9ykwv, guindos, docentes, bombas, financia, trabajadores
+TOPIC: 12 	 NUMBER OF INPUTS: 48
+elevador, elevadoras, elevadísimos, elevamos, elevando, elevar, elevaron, elevará, elevemos, elevándose
+TOPIC: 84 	 NUMBER OF INPUTS: 48
+millones, 000, aumenta, ingresos, españa, deuda, 769, 300, euros, gasto
+TOPIC: 16 	 NUMBER OF INPUTS: 47
+días, lunes, miércoles, feliz, domingo, dias, buenísimos, martes, semana, elenamoreno_82
+TOPIC: 81 	 NUMBER OF INPUTS: 47
+http, entrevista, k8glsb0c, p5y2vsym, analizan, farmacéutico, vídeo, jurídicos, solvente, málaga
+TOPIC: 116 	 NUMBER OF INPUTS: 47
+todos, edchrne, zueñoz, muuuuucho, felicez, graciaz, cuento, llegar, alegría, despegamos
+TOPIC: 7 	 NUMBER OF INPUTS: 46
+elevar, elevador, elevadoras, elevadísimos, elevamos, elevando, elevaron, elevemos, elfaristol_ib3, elfenix03
+TOPIC: 102 	 NUMBER OF INPUTS: 46
+spanair, morera, socialistes_cat, nacionalismo, navarro, indultats, parlament_cat, prouretallades, unio_cat, jmgarcia90
+TOPIC: 91 	 NUMBER OF INPUTS: 46
+cristiano, aplaudido, rosa, triplehijueputa, vamosssssss, proteicos, mags, yaiza, yaidarias, jodiendo
+TOPIC: 20 	 NUMBER OF INPUTS: 45
+martes, lunes, elevadoos, elevadísimos, elevamos, elevando, elevar, elevemos, elevaron, elevará
+TOPIC: 54 	 NUMBER OF INPUTS: 45
+suzuki, toyota, tecnología, negociaciones, siguemeytesigo, kenia, motor, vehículos, colombia, japonesas
+TOPIC: 8 	 NUMBER OF INPUTS: 45
+elconfidencial, http, t68yzk5h, pb0jun3h, 0a8ry0rm, oh9srcsz, 7fz2m9is, wrbqjuvz, patética, mentiroso
+TOPIC: 27 	 NUMBER OF INPUTS: 44
+larazon_es, larazon, garcía, merlos, ydbabnpm, wqtaz7y0, j4y3ncdm, dhw5esdb, aguinaldo, mafiosa
+TOPIC: 2 	 NUMBER OF INPUTS: 44
+elevamos, eleva, elevadísimos, elevan, elevando, elevar, elevaron, elevará, elevemos, elevándose
+TOPIC: 10 	 NUMBER OF INPUTS: 43
+intereconomía, intereconomia, http, 727287, 725963, o3wrdacx, bytf2z4r, 703635, 731333, 705723
+TOPIC: 119 	 NUMBER OF INPUTS: 42
+clooney, película, shostakovich, macbeth, cine, george, novela, losdescendientes, director, clásico
+TOPIC: 19 	 NUMBER OF INPUTS: 41
+lunes, martes, estupendo, viernes, sábado, feliz2012, excelente, feliz, mañana, elevemos
+TOPIC: 80 	 NUMBER OF INPUTS: 41
+http, el_pais, w1s5hruu, retuitea, elpais_cultura, corrompe, cómic, moebius, psoedeandalucia, malestar
+TOPIC: 95 	 NUMBER OF INPUTS: 39
+difíciles, querer, exacerbar, desazón, teatralidad, pasiones, sinrazón, perdonar, engañosa, demonios
+TOPIC: 3 	 NUMBER OF INPUTS: 39
+elevar, elevadoos, elevador, elevadoras, elevadísimos, elevamos, elevando, elevaron, elevará, elevemos
+TOPIC: 92 	 NUMBER OF INPUTS: 37
+mariajosebaza, jopegu62, helados_iceberg, golfcostadelsol, disneyoniceesp, alvarito_am, julia_otero2, fuengirolacine, gratisima, chalobarrera
+TOPIC: 61 	 NUMBER OF INPUTS: 36
+alejandrro, molina, premiosgoya, almejide, syl_sotomayor, nievesturpin, bobadas, burgostróspido, proscojoncio, abrazaco
+TOPIC: 43 	 NUMBER OF INPUTS: 36
+km, nikeplus, nike, ritmo, https, carrera, 00, yoelegicorrer, 02, s8zoqge8tc
+TOPIC: 57 	 NUMBER OF INPUTS: 36
+telesucesos, criterio, telediario, telediariointer, 20, empezamos, arrancamos, teleprograma_tv, tpdeoro, vamos
+TOPIC: 94 	 NUMBER OF INPUTS: 36
+adidas, zapatillas, remera, marcos, tenis, pablo_iglesias_, mezclilla, toluca, flacas, playera
+TOPIC: 134 	 NUMBER OF INPUTS: 35
+gracias, navidad, felicidades, feliz, abrazo, amigo, anabelenroy_tve, merecido, vosotros, felices
+TOPIC: 109 	 NUMBER OF INPUTS: 34
+muchopsoeporhacer, caamaño, gallardón, aguilar, lópez, jiménez, guindos, morenés, margallo, elvira
+TOPIC: 111 	 NUMBER OF INPUTS: 33
+gasto, economía, reforma, economia, financiera, crecimiento, correcciones, progresividad, relanzar, farmacéutico
+TOPIC: 90 	 NUMBER OF INPUTS: 33
+participo, tertulia, telemadrid, participaré, debatalrojovivo, altoyclaro, programa, debate, 13, espejopublico
+TOPIC: 68 	 NUMBER OF INPUTS: 32
+accidente, heridos, carreteras, 112cmadrid, motoristas, autobús, camión, vehículos, semana, vuelca
+TOPIC: 6 	 NUMBER OF INPUTS: 32
+km, carrera, 51, 46, 45, 41, 49, 06, 05, 07
+TOPIC: 118 	 NUMBER OF INPUTS: 32
+dham_13tv, pablo_iglesias_, albert_rivera, 13tv_aldia, sanchezcastejon, jesuscintora, ammuguillan, _esther_diez, federicoquevedo, alejandro_vara
+TOPIC: 26 	 NUMBER OF INPUTS: 30
+guarras, murcianas, farmacia, birra, gato, beber, muchachada, desoperadas, supernanny, trercera
+TOPIC: 58 	 NUMBER OF INPUTS: 30
+https, youtube, qhnq7b, noalcopagoconfiscatorio, majadahonda, video, halamadrid, http, alcampo, 2017
+TOPIC: 60 	 NUMBER OF INPUTS: 30
+http, sudán, schgbwzo, somalíes, etiopía, economista, autobús, estabilidad, siria, mejorar
+TOPIC: 11 	 NUMBER OF INPUTS: 49048
+rajoy, gracias, rt, gobierno, mañana, madrid, españa, mejor, rubalcaba, reforma
+TOPIC: 3 	 NUMBER OF INPUTS: 27258
+http, rt, https, alejandrosanz, elcambioandaluz, elmundoes, madrid, españa, rajoy, malaga
+TOPIC: 16 	 NUMBER OF INPUTS: 21000
+hotel, comida, habitaciones, calidad, restaurante, desayuno, comer, mejor, piscina, baño
+TOPIC: -1 	 NUMBER OF INPUTS: 2592
+recomiendo, telediariointer, recomendable, desayuno, ifilosofia, 20, restaurante, ritmo, kiiip1q7, precio
+TOPIC: 7 	 NUMBER OF INPUTS: 1989
+comida, restaurante, excelente, mejor, calidad, peor, horrible, recomendable, cocina, decepción
+TOPIC: 10 	 NUMBER OF INPUTS: 992
+telediariointer, 20, contamos, rajoy, españa, por, urdangarín, andalucía, preguntamos, barajas
+TOPIC: 4 	 NUMBER OF INPUTS: 438
+perfecto, pena, agradable, delicioso, maravilloso, encanto, vergonzoso, peor, encantará, encanta
+TOPIC: 8 	 NUMBER OF INPUTS: 278
+memoria, sensores, datos, vídeo, visualización, máquinas, aplicación, mejoras, hardware, funcional
+TOPIC: 12 	 NUMBER OF INPUTS: 189
+precio, calidad, comida, inmejorable, recomendable, gran, menú, adecuada, insuperable, trato
+TOPIC: 1 	 NUMBER OF INPUTS: 132
+pdwfyyra, disponible, http, agtagsjl, ondacero_es, cvin9nmf, fascina, gratuitos, fotógrafo, fotos
+TOPIC: 2 	 NUMBER OF INPUTS: 123
+elevadísimos, elevado, elevador, elevadoras, elevadísimo, 日本のすべての私のファンへの挨拶, elevada, elevaron, elevemos, elevamos
+TOPIC: 14 	 NUMBER OF INPUTS: 121
+luna, perfecto, recomendaria, digno, broma, bonita, maravilloso, estupendo, disfrutar, espectacular
+TOPIC: 6 	 NUMBER OF INPUTS: 111
+lunes, miércoles, martes, dias, sábado, domingo, miercoles, lluviosos, feliz2012, ultimo
+TOPIC: 9 	 NUMBER OF INPUTS: 97
+recomendable, 100, recomendamos, recomendado, recomiendo, agradable, 100x100, sumamente, aconsejable, asequible
+TOPIC: 13 	 NUMBER OF INPUTS: 71
+estrellas, merece, tres, estrella, merecen, mejor, heath, decepcionas, justitas, mejoran
+TOPIC: 15 	 NUMBER OF INPUTS: 63
+arrepentireis, buscáis, inesperada, cerrara, preocupéis, dejaros, augurios, avisados, irreversible, disfrutad
+TOPIC: 5 	 NUMBER OF INPUTS: 57
+eventosriver84, gmail, rubalcaba38, com, suscriptores, email, hotmail, apmadrid, pilotaor, meteorólogo
+TOPIC: 0 	 NUMBER OF INPUTS: 51
+elevadísimos, elevamos, elevando, elfergonzalez, elevar, elevaron, elevará, elevemos, elexpecial, elfaristol_ib3
+TOPIC: 9 	 NUMBER OF INPUTS: 49628
+hoy, rajoy, rt, mañana, madrid, ahora, españa, rubalcaba, mejor, reforma
+TOPIC: 4 	 NUMBER OF INPUTS: 26913
+http, rt, https, alejandrosanz, elcambioandaluz, elmundoes, madrid, españa, rajoy, javierarenas_pp
+TOPIC: 7 	 NUMBER OF INPUTS: 22815
+hotel, comida, calidad, restaurante, desayuno, comer, mejor, excelente, piscina, baño
+TOPIC: 6 	 NUMBER OF INPUTS: 2002
+comida, restaurante, excelente, mejor, calidad, peor, horrible, recomendable, cocina, decepción
+TOPIC: -1 	 NUMBER OF INPUTS: 1088
+http, elconfidencial, recomendable, intereconomía, psoe, intereconomia, ifilosofia, 10, ritmo, telesucesos
+TOPIC: 8 	 NUMBER OF INPUTS: 994
+telediariointer, 20, contamos, rajoy, españa, por, urdangarín, preguntamos, barajas, andalucía
+TOPIC: 2 	 NUMBER OF INPUTS: 507
+perfecto, pena, limpio, excelente, genial, delicioso, maravilla, maravilloso, encanto, vergonzoso
+TOPIC: 5 	 NUMBER OF INPUTS: 289
+memoria, sensores, datos, vídeo, código, máquinas, aplicación, hardware, funcional, procesado
+TOPIC: 0 	 NUMBER OF INPUTS: 134
+pdwfyyra, disponible, http, ondacero_es, jwso98fc, sf3aqqhy, fascina, sorprendentemente, gratuitos, fotógrafo
+TOPIC: 1 	 NUMBER OF INPUTS: 122
+elevador, elevadoras, elevados, elevadísimo, elevadísimos, elevado, elevaron, elevemos, elevándose, elevada
+TOPIC: 3 	 NUMBER OF INPUTS: 118
+pdwfyyra, http, lamarcadeleste, favstar100, universal_spain, belategui, el_webboy, cabadlozano, futbolycine, raldarondo
+TOPIC: 2 	 NUMBER OF INPUTS: 51237
+rajoy, rt, psoe, madrid, 30, 20, españa, telediariointer, ver, rubalcaba
+TOPIC: 0 	 NUMBER OF INPUTS: 27212
+http, rt, https, alejandrosanz, elmundoes, elcambioandaluz, madrid, españa, rajoy, malaga
+TOPIC: 4 	 NUMBER OF INPUTS: 22688
+hotel, comida, calidad, restaurante, desayuno, comer, mejor, excelente, piscina, baño
+TOPIC: 3 	 NUMBER OF INPUTS: 2078
+comida, excelente, restaurante, mejor, calidad, peor, horrible, recomendable, decepción, cocina
+TOPIC: -1 	 NUMBER OF INPUTS: 986
+pdwfyyra, disponible, todos, http, ritmo, reparacion, mecanico, peugeot, hacemos, 100
+TOPIC: 1 	 NUMBER OF INPUTS: 409
+perfecto, pena, agradable, delicioso, desastre, maravilloso, encanto, vergonzoso, encantará, encanta
+TOPIC: 1 	 NUMBER OF INPUTS: 51214
+rajoy, rt, madrid, psoe, 30, 20, españa, telediariointer, rubalcaba, gran
+TOPIC: 0 	 NUMBER OF INPUTS: 27378
+http, rt, https, alejandrosanz, elcambioandaluz, elmundoes, madrid, disponible, españa, malaga
+TOPIC: 2 	 NUMBER OF INPUTS: 22054
+hotel, comida, calidad, restaurante, desayuno, comer, mejor, piscina, baño, excelente
+TOPIC: -1 	 NUMBER OF INPUTS: 2016
+buenos, recomendable, precio, calidad, excelente, buena, recomiendo, ritmo, decimos, www
+TOPIC: 3 	 NUMBER OF INPUTS: 1948
+comida, restaurante, mejor, excelente, calidad, caro, peor, horrible, cocina, decepción

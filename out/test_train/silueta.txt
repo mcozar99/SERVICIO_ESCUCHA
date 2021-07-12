@@ -1,0 +1,11 @@
+SELECTED: ['t1rain', 'info', 'silhouette', 's1tats', 'v1isualization', 'l1abel', 'c1entroid_evaluation']
+PERCENT: 40,	 N_SAMPLES: 100000
+ST2_MPDI_MINTOPICSIZE_30
+MODEL NAME: chile_MINTOPICSIZE_200
+NUMBER OF TOPICS: 69
+TOTAL INPUTS: 104610
+DISCARDS: 34114
+%CLASSIFIED: 67.39%
+2021-05-03 11:53:17.206492  - Got params
+For these 69 topics. The average silhouette_score is: 0.4845232756887027
+2021-05-03 11:59:25.931664  - Calculated Silhouette, Plotting
