@@ -8,10 +8,10 @@ sys.path.append('../../')
 sys.path.append('../../../')
 
 # authorization tokens
-consumer_key = "mag4RQB6jXTbSydTeHkikxKTD"
-consumer_secret = "8RumMMZXZVbi9in9YrQdn61FqMU90S0RzhaFhj6zLbxOzRjqnv"
-access_key = "1332295380638310400-QSZkmQdGTcho6Ohx6ouydr1yrxrFfn"
-access_secret = "RgS8RDPVYmCVQbd4ooGGCMWAyrYJOaW9QrmmNjFOZLoSI"
+consumer_key = ""
+consumer_secret = ""
+access_key = ""
+access_secret = ""
 
 # StreamListener class inherits from tweepy.StreamListener and overrides on_status/on_error methods.
 class StreamListener(tweepy.StreamListener):
